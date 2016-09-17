@@ -125,14 +125,14 @@ public class Main extends JFrame implements MouseListener
 		this.setIconImage(img.getImage());
 		
 		//Time Slider Details
-		timeSlider.setMinimum(1);
+		/**timeSlider.setMinimum(1);
 		timeSlider.setMaximum(15);
 		timeSlider.setValue(1);
 		timeSlider.setMajorTickSpacing(2);
 		timeSlider.setPaintLabels(true);
 		timeSlider.setPaintTicks(true);
-		timeSlider.addChangeListener(new TimeChange());
-		
+		timeSlider.addChangeListener(new TimeChange());**/
+		setTimerSliderDetails(timeSlider);
 		
 		//Fetching Details of all Players
 		wplayer= Player.fetch_players();
@@ -147,9 +147,9 @@ public class Main extends JFrame implements MouseListener
 	    WNames=Wnames.toArray(WNames);	
 		BNames=Bnames.toArray(BNames);
 		
-		Cell cell;
+		//Cell cell;
 		board.setBorder(BorderFactory.createLoweredBevelBorder());
-		pieces.Piece P;
+		//pieces.Piece P;
 		content=getContentPane();
 		setSize(Width,Height);
 		setTitle("Chess");
@@ -205,7 +205,8 @@ public class Main extends JFrame implements MouseListener
 		
 		
 		//Defining all the Cells
-		boardState=new Cell[8][8];
+                defineAllCells();
+		/**boardState=new Cell[8][8];
 		for(int i=0;i<8;i++)
 			for(int j=0;j<8;j++)
 			{	
@@ -250,7 +251,7 @@ public class Main extends JFrame implements MouseListener
 				cell.addMouseListener(this);
 				board.add(cell);
 				boardState[i][j]=cell;
-			}
+			}**/
 		showPlayer=new JPanel(new FlowLayout());  
 		showPlayer.add(timeSlider);
 		JLabel setTime=new JLabel("Set Timer(in mins):"); 
@@ -294,6 +295,70 @@ public class Main extends JFrame implements MouseListener
 	    content.add(split);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
     }
+        
+        //A function used to define all cells
+        public void defineAllCells(){
+        pieces.Piece P;
+        Cell cell;
+        boardState=new Cell[8][8];
+		for(int i=0;i<8;i++)
+			for(int j=0;j<8;j++)
+			{	
+				P=null;
+				if(i==0&&j==0)
+					P=br01;
+				else if(i==0&&j==7)
+					P=br02;
+				else if(i==7&&j==0)
+					P=wr01;
+				else if(i==7&&j==7)
+					P=wr02;
+				else if(i==0&&j==1)
+					P=bk01;
+				else if (i==0&&j==6)
+					P=bk02;
+				else if(i==7&&j==1)
+					P=wk01;
+				else if (i==7&&j==6)
+					P=wk02;
+				else if(i==0&&j==2)
+					P=bb01;
+				else if (i==0&&j==5)
+					P=bb02;
+				else if(i==7&&j==2)
+					P=wb01;
+				else if(i==7&&j==5)
+					P=wb02;
+				else if(i==0&&j==3)
+					P=bk;
+				else if(i==0&&j==4)
+					P=bq;
+				else if(i==7&&j==3)
+					P=wk;
+				else if(i==7&&j==4)
+					P=wq;
+				else if(i==1)
+				P=bp[j];
+				else if(i==6)
+					P=wp[j];
+				cell=new Cell(i,j,P);
+				cell.addMouseListener(this);
+				board.add(cell);
+				boardState[i][j]=cell;
+                        }
+        }
+        
+        
+        //A function to set time slider details
+        public void setTimerSliderDetails(JSlider timeSlider){
+                timeSlider.setMinimum(1);
+		timeSlider.setMaximum(15);
+		timeSlider.setValue(1);
+		timeSlider.setMajorTickSpacing(2);
+		timeSlider.setPaintLabels(true);
+		timeSlider.setPaintTicks(true);
+		timeSlider.addChangeListener(new TimeChange());
+        }
 	
 	// A function to change the chance from White Player to Black Player or vice verse
 	// It is made public because it is to be accessed in the Time Class
