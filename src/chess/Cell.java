@@ -14,18 +14,18 @@ public class Cell extends JPanel implements Cloneable{
 	
 	//Member Variables
 	private static final long serialVersionUID = 1L;
-	private boolean ispossibledestination;
+	private boolean isPossibleDestination;
 	private JLabel content;
 	private Piece piece;
-	int x,y;                             //is public because this is to be accessed by all the other class
+	int xAxisPosition,yAxisPosition;                             //is public because this is to be accessed by all the other class
 	private boolean isSelected=false;
-	private boolean ischeck=false;
+	private boolean isCheck=false;
 	
 	//Constructors
 	public Cell(int x,int y,Piece p)
 	{		
-		this.x=x;
-		this.y=y;
+		this.xAxisPosition=x;
+		this.yAxisPosition=y;
 		
 		setLayout(new BorderLayout());
 	
@@ -42,16 +42,16 @@ public class Cell extends JPanel implements Cloneable{
 	//A constructor that takes a cell as argument and returns a new cell will the same data but different reference
 	public Cell(Cell cell) throws CloneNotSupportedException
 	{
-		this.x=cell.x;
-		this.y=cell.y;
+		this.xAxisPosition=cell.xAxisPosition;
+		this.yAxisPosition=cell.yAxisPosition;
 		setLayout(new BorderLayout());
-		if((x+y)%2==0)
+		if((xAxisPosition+yAxisPosition)%2==0)
 			setBackground(new Color(113,198,113));
 		else
 			setBackground(Color.white);
-		if(cell.getpiece()!=null)
+		if(cell.getPiece()!=null)
 		{
-			setPiece(cell.getpiece().getcopy());
+			setPiece(cell.getPiece().getcopy());
 		}
 		else
 			piece=null;
@@ -80,63 +80,68 @@ public class Cell extends JPanel implements Cloneable{
 	}
 	
 	
-	public Piece getpiece()    //Function to access piece of a particular cell
+	public Piece getPiece()    //Function to access piece of a particular cell
 	{
 		return this.piece;
 	}
-	
+        
+	public int getPieceColour()   //Function to access piece's color
+        {
+            return this.piece.getcolor();
+        }
+        
 	public void select()       //Function to mark a cell indicating it's selection
 	{
-		this.setBorder(BorderFactory.createLineBorder(Color.red,6));
+		this.setBorder(BorderFactory.createLineBorder(Color.blue,6));
 		this.isSelected=true;
 	}
 	
-	public boolean isselected()   //Function to return if the cell is under selection
+	public boolean isSelected()   //Function to return if the cell is under selection
 	{
 		return this.isSelected;
 	}
 	
-	public void deselect()      //Function to delselect the cell
+	public void deSelect()      //Function to delselect the cell
 	{
 		this.setBorder(null);
 		this.isSelected=false;
 	}
 	
-	public void setpossibledestination()     //Function to highlight a cell to indicate that it is a possible valid move
+	public void setPossibleDestination()     //Function to highlight a cell to indicate that it is a possible valid move
 	{
 		this.setBorder(BorderFactory.createLineBorder(Color.blue,4));
-		this.ispossibledestination=true;
+		this.isPossibleDestination=true;
 	}
 	
-	public void removepossibledestination()      //Remove the cell from the list of possible moves
+	public void removePossibleDestination()      //Remove the cell from the list of possible moves
 	{
 		this.setBorder(null);
-		this.ispossibledestination=false;
+		this.isPossibleDestination=false;
 	}
 	
-	public boolean ispossibledestination()    //Function to check if the cell is a possible destination 
+	public boolean isPossibleDestination()    //Function to check if the cell is a possible destination 
 	{
-		return this.ispossibledestination;
+		return this.isPossibleDestination;
 	}
 	
-	public void setcheck()     //Function to highlight the current cell as checked (For King)
+	public void setCheck()     //Function to highlight the current cell as checked (For King)
 	{
 		this.setBackground(Color.RED);
-		this.ischeck=true;
+		this.isCheck=true;
 	}
 	
-	public void removecheck()   //Function to deselect check
+	public void removeCheck()   //Function to deSelect check
 	{
 		this.setBorder(null);
-		if((x+y)%2==0)
+		if((xAxisPosition+yAxisPosition)%2==0)
 			setBackground(new Color(113,198,113));
 		else
 			setBackground(Color.white);
-		this.ischeck=false;
+		this.isCheck=false;
 	}
 	
-	public boolean ischeck()    //Function to check if the current cell is in check
+	public boolean isCheck()    //Function to check if the current cell is in check
 	{
-		return ischeck;
+		return isCheck;
 	}
 }
