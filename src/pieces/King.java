@@ -193,6 +193,51 @@ public class King extends Piece {
 
     //Checking for attack from left,right,up and down
     private boolean isRookAttacking(Cell[][] state) {
+/*        for (int i = xAxisPosition + 1; i < 8; i++) {
+            if (state[i][yAxisPosition].getPiece() == null) {
+            } else if (state[i][yAxisPosition].getPiece().getcolor() == this.getcolor()) {
+                break;
+            } else if ((state[i][yAxisPosition].getPiece() instanceof Rook)
+                    || (state[i][yAxisPosition].getPiece() instanceof Queen)) {
+                return true;
+            } else {
+                break;
+            }
+        }
+*/      
+    	if(this.isRookAttackingFromRight(state) ){
+    		return true;
+    	}
+    	
+    	if(this.isRookAttackingFromLeft(state)) {
+    		return true;
+    	}
+    	
+    	if(this.isRookAttackingFromAbove(state)) {
+    		return true;
+    	}
+    	
+    	if(this.isRookAttackingFromBelow(state)) {
+    		return true;
+    	}
+    	
+    	
+        /*for (int i = yAxisPosition + 1; i < 8; i++) {
+            if (state[xAxisPosition][i].getPiece() == null) {
+            } else if (state[xAxisPosition][i].getPiece().getcolor() == this.getcolor()) {
+                break;
+            } else if ((state[xAxisPosition][i].getPiece() instanceof Rook) || (state[xAxisPosition][i].getPiece() instanceof Queen)) {
+                return true;
+            } else {
+                break;
+            }
+        }*/
+        return false;
+    }
+    
+    // Helper Fucntions
+    private boolean isRookAttackingFromRight(Cell[][] state) {
+
         for (int i = xAxisPosition + 1; i < 8; i++) {
             if (state[i][yAxisPosition].getPiece() == null) {
             } else if (state[i][yAxisPosition].getPiece().getcolor() == this.getcolor()) {
@@ -204,7 +249,13 @@ public class King extends Piece {
                 break;
             }
         }
-        for (int i = xAxisPosition - 1; i >= 0; i--) {
+
+    	return false;
+    }
+    
+    private boolean isRookAttackingFromLeft(Cell[][] state) {
+
+    	for (int i = xAxisPosition - 1; i >= 0; i--) {
             if (state[i][yAxisPosition].getPiece() == null) {
             } else if (state[i][yAxisPosition].getPiece().getcolor() == this.getcolor()) {
                 break;
@@ -215,26 +266,41 @@ public class King extends Piece {
                 break;
             }
         }
-        for (int i = yAxisPosition + 1; i < 8; i++) {
-            if (state[xAxisPosition][i].getPiece() == null) {
-            } else if (state[xAxisPosition][i].getPiece().getcolor() == this.getcolor()) {
-                break;
-            } else if ((state[xAxisPosition][i].getPiece() instanceof Rook) || (state[xAxisPosition][i].getPiece() instanceof Queen)) {
-                return true;
-            } else {
-                break;
-            }
-        }
-        for (int i = yAxisPosition - 1; i >= 0; i--) {
-            if (state[xAxisPosition][i].getPiece() == null) {
-            } else if (state[xAxisPosition][i].getPiece().getcolor() == this.getcolor()) {
-                break;
-            } else if ((state[xAxisPosition][i].getPiece() instanceof Rook) || (state[xAxisPosition][i].getPiece() instanceof Queen)) {
-                return true;
-            } else {
-                break;
-            }
-        }
-        return false;
+    	return false;
     }
+    
+
+    private boolean isRookAttackingFromAbove(Cell[][] state) {
+
+    	for (int i = yAxisPosition - 1; i >= 0; i--) {
+            if (state[xAxisPosition][i].getPiece() == null) {
+            } else if (state[xAxisPosition][i].getPiece().getcolor() == this.getcolor()) {
+                break;
+            } else if ((state[xAxisPosition][i].getPiece() instanceof Rook) || (state[xAxisPosition][i].getPiece() instanceof Queen)) {
+                return true;
+            } else {
+                break;
+            }
+        }
+    	return false;
+    }
+
+
+    private boolean isRookAttackingFromBelow(Cell[][] state) {
+
+    	for (int i = yAxisPosition + 1; i < 8; i++) {
+            if (state[xAxisPosition][i].getPiece() == null) {
+            } else if (state[xAxisPosition][i].getPiece().getcolor() == this.getcolor()) {
+                break;
+            } else if ((state[xAxisPosition][i].getPiece() instanceof Rook) || (state[xAxisPosition][i].getPiece() instanceof Queen)) {
+                return true;
+            } else {
+                break;
+            }
+        }
+    	return false;
+    }
+
+    
+    
 }
