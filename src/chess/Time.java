@@ -18,12 +18,10 @@ public class Time {
         Timerem = Main.timeRemaining;
     }
 
-    //A function that starts the timer
     public void startTimer() {
         countdownTimer.start();
     }
 
-    //A function that resets the timer
     public void resetTimer() {
         Timerem = Main.timeRemaining;
     }
