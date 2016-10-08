@@ -13,17 +13,29 @@ public class Time {
     int Timerem;
 
     public Time(JLabel passedLabel) {
-        countdownTimer = new Timer(1000, new CountdownTimerListener());
-        this.label = passedLabel;
-        Timerem = Main.timeRemaining;
+        setCountdownTimer(1000);
+        setLabel(passedLabel);
+        setTimeRemaining();
     }
+
+	private void setTimeRemaining() {
+		Timerem = Main.timeRemaining;
+	}
+
+	private void setCountdownTimer(int delay) {
+		countdownTimer = new Timer(delay, new CountdownTimerListener());
+	}
+
+	private void setLabel(JLabel passedLabel) {
+		this.label = passedLabel;
+	}
 
     public void startTimer() {
         countdownTimer.start();
     }
 
     public void resetTimer() {
-        Timerem = Main.timeRemaining;
+        setTimeRemaining();
     }
 
     //A function that is called after every second. It updates the timer and takes other necessary actions
@@ -32,8 +44,8 @@ public class Time {
         public void actionPerformed(ActionEvent e) {
             int min, sec;
             if (Timerem > 0) {
-                min = Timerem / 60;
-                sec = Timerem % 60;
+                min = getMinutes();
+                sec = getSeconds();
                 label.setText(String.valueOf(min) + ":" + (sec >= 10 ? String.valueOf(sec) : "0" + String.valueOf(sec)));
                 Timerem--;
             } else {
@@ -43,5 +55,13 @@ public class Time {
                 Main.Mainboard.changeChance();
             }
         }
+
+		private int getSeconds() {
+			return Timerem % 60;
+		}
+
+		private int getMinutes() {
+			return Timerem / 60;
+		}
     }
 }
