@@ -19,12 +19,12 @@ public class Time {
     }
 
     //A function that starts the timer
-    public void start() {
+    public void startTimer() {
         countdownTimer.start();
     }
 
     //A function that resets the timer
-    public void reset() {
+    public void resetTimer() {
         Timerem = Main.timeRemaining;
     }
 
@@ -40,8 +40,8 @@ public class Time {
                 Timerem--;
             } else {
                 label.setText("Time's up!");
-                reset();
-                start();
+                resetTimer();
+                startTimer();
                 Main.Mainboard.changeChance();
             }
         }

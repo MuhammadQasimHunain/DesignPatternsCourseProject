@@ -344,8 +344,8 @@ public class Main extends JFrame implements MouseListener {
         previous = null;
         chance ^= 1;
         if (!end && timer != null) {
-            timer.reset();
-            timer.start();
+            timer.resetTimer();
+            timer.startTimer();
             showPlayer.remove(CHNC);
             if (Main.move == "White") {
                 Main.move = "Black";
@@ -607,8 +607,8 @@ public class Main extends JFrame implements MouseListener {
                 }
                 changeChance();
                 if (!end) {
-                    timer.reset();
-                    timer.start();
+                    timer.resetTimer();
+                    timer.startTimer();
                 }
             }
             if (previous != null) {
@@ -693,7 +693,7 @@ public class Main extends JFrame implements MouseListener {
             displayTime.remove(start);
             displayTime.add(label);
             timer = new Time(label);
-            timer.start();
+            timer.startTimer();
         }
     }
 
