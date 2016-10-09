@@ -10,7 +10,7 @@ public class Time {
 
     private JLabel label;
     Timer countdownTimer;
-    int Timerem;
+    int timeRemaining;
 
     public Time(JLabel passedLabel) {
         setCountdownTimer(1000);
@@ -19,11 +19,11 @@ public class Time {
     }
 
 	private void setTimeRemaining() {
-		Timerem = Main.timeRemaining;
+		this.timeRemaining = Main.timeRemaining;
 	}
 
 	private void setCountdownTimer(int delay) {
-		countdownTimer = new Timer(delay, new CountdownTimerListener());
+		this.countdownTimer = new Timer(delay, new CountdownTimerListener());
 	}
 
 	private void setLabel(JLabel passedLabel) {
@@ -42,26 +42,34 @@ public class Time {
     class CountdownTimerListener implements ActionListener {
 
         public void actionPerformed(ActionEvent e) {
-            int min, sec;
-            if (Timerem > 0) {
-                min = getMinutes();
-                sec = getSeconds();
-                label.setText(String.valueOf(min) + ":" + (sec >= 10 ? String.valueOf(sec) : "0" + String.valueOf(sec)));
-                Timerem--;
+            int minutes, seconds;
+            if (timeRemaining > 0) {
+                minutes = getMinutes();
+                seconds = getSeconds();
+                setTextIfTimeRemains(minutes, seconds);
+                timeRemaining--;
             } else {
-                label.setText("Time's up!");
+                setTextIfTimeIsUp();
                 resetTimer();
                 startTimer();
                 Main.Mainboard.changeChance();
             }
         }
 
+		void setTextIfTimeIsUp() {
+			label.setText("Time's up!");
+		}
+
+		void setTextIfTimeRemains(int minutes, int seconds) {
+			label.setText(String.valueOf(minutes) + ":" + (seconds >= 10 ? String.valueOf(seconds) : "0" + String.valueOf(seconds)));
+		}
+
 		private int getSeconds() {
-			return Timerem % 60;
+			return timeRemaining % 60;
 		}
 
 		private int getMinutes() {
-			return Timerem / 60;
+			return timeRemaining / 60;
 		}
     }
 }
