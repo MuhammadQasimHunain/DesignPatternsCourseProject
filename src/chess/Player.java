@@ -56,6 +56,7 @@ public class Player implements Serializable {
 
     //Increments the number of games played
     public void updateGamesPlayed() {
+    	if(gamesPlayed!=null)
         gamesPlayed++;
     }
 
