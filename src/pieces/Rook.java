@@ -20,7 +20,7 @@ public class Rook extends Piece {
     //Move function defined
     public ArrayList<Cell> move(Cell state[][], int xAxisPosition, int yAxisPosition) {
         //Rook can move only horizontally or vertically
-        possibleMoves.clear();
+        this.possibleMoves.clear();
         int tempx = xAxisPosition - 1;
         possibleMovesLeftSide(tempx, state, yAxisPosition);
         
@@ -33,17 +33,17 @@ public class Rook extends Piece {
         tempy = yAxisPosition + 1;
         possibleMovesUpSide(tempy, state, xAxisPosition);
         
-        return possibleMoves;
+        return this.possibleMoves;
     }
 
     private void possibleMovesUpSide(int tempy, Cell[][] state, int xAxisPosition) {
         while (tempy < 8) {
             if (state[xAxisPosition][tempy].getPiece() == null) {
-                possibleMoves.add(state[xAxisPosition][tempy]);
+                this.possibleMoves.add(state[xAxisPosition][tempy]);
             } else if (state[xAxisPosition][tempy].getPieceColor() == this.getcolor()) {
                 break;
             } else {
-                possibleMoves.add(state[xAxisPosition][tempy]);
+                this.possibleMoves.add(state[xAxisPosition][tempy]);
                 break;
             }
             tempy++;
@@ -53,11 +53,11 @@ public class Rook extends Piece {
     private void possibleMovesDown(int tempy, Cell[][] state, int xAxisPosition) {
         while (tempy >= 0) {
             if (state[xAxisPosition][tempy].getPiece() == null) {
-                possibleMoves.add(state[xAxisPosition][tempy]);
+                this.possibleMoves.add(state[xAxisPosition][tempy]);
             } else if (state[xAxisPosition][tempy].getPieceColor() == this.getcolor()) {
                 break;
             } else {
-                possibleMoves.add(state[xAxisPosition][tempy]);
+                this.possibleMoves.add(state[xAxisPosition][tempy]);
                 break;
             }
             tempy--;
@@ -67,11 +67,11 @@ public class Rook extends Piece {
     private void possibleMovesRightSide(int tempx, Cell[][] state, int yAxisPosition) {
         while (tempx < 8) {
             if (state[tempx][yAxisPosition].getPiece() == null) {
-                possibleMoves.add(state[tempx][yAxisPosition]);
+                this.possibleMoves.add(state[tempx][yAxisPosition]);
             } else if (state[tempx][yAxisPosition].getPieceColor() == this.getcolor()) {
                 break;
             } else {
-                possibleMoves.add(state[tempx][yAxisPosition]);
+                this.possibleMoves.add(state[tempx][yAxisPosition]);
                 break;
             }
             tempx++;
@@ -81,11 +81,11 @@ public class Rook extends Piece {
     private void possibleMovesLeftSide(int tempx, Cell[][] state, int yAxisPosition) {
         while (tempx >= 0) {
             if (state[tempx][yAxisPosition].getPiece() == null) {
-                possibleMoves.add(state[tempx][yAxisPosition]);
+                this.possibleMoves.add(state[tempx][yAxisPosition]);
             } else if (state[tempx][yAxisPosition].getPieceColor() == this.getcolor()) {
                 break;
             } else {
-                possibleMoves.add(state[tempx][yAxisPosition]);
+                this.possibleMoves.add(state[tempx][yAxisPosition]);
                 break;
             }
             tempx--;

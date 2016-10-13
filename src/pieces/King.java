@@ -42,18 +42,18 @@ public class King extends Piece {
     @Override
     public ArrayList<Cell> move(Cell state[][], int xPosition, int yPosition) {
         //King can move only one step. So all the adjacent 8 cells have been considered.
-        possibleMoves.clear();
+        this.possibleMoves.clear();
         int posX[] = {xPosition, xPosition, xPosition + 1, xPosition + 1, xPosition + 1, xPosition - 1, xPosition - 1, xPosition - 1};
         int posY[] = {yPosition - 1, yPosition + 1, yPosition - 1, yPosition, yPosition + 1, yPosition - 1, yPosition, yPosition + 1};
         for (int i = 0; i < 8; i++) {
             if ((posX[i] >= 0 && posX[i] < 8 && posY[i] >= 0 && posY[i] < 8)) {
                 if ((state[posX[i]][posY[i]].getPiece() == null
                         || state[posX[i]][posY[i]].getPieceColor() != this.getcolor())) {
-                    possibleMoves.add(state[posX[i]][posY[i]]);
+                    this.possibleMoves.add(state[posX[i]][posY[i]]);
                 }
             }
         }
-        return possibleMoves;
+        return this.possibleMoves;
     }
 
     //Function to check if king is under threat

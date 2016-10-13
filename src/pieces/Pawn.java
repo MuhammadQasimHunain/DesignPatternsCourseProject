@@ -23,44 +23,44 @@ public class Pawn extends Piece {
         //It can move in a diagonal fashion only for attacking a piece of opposite color
         //It cannot move backward or move forward to attack a piece
 
-        possibleMoves.clear();
+        this.possibleMoves.clear();
         if (getcolor() == Piece.WHITE_COLOR) {
             if (xAxisPostion == 0) {
-                return possibleMoves;
+                return this.possibleMoves;
             }
             if (state[xAxisPostion - 1][yAxisPosition].getPiece() == null) {
-                possibleMoves.add(state[xAxisPostion - 1][yAxisPosition]);
+                this.possibleMoves.add(state[xAxisPostion - 1][yAxisPosition]);
                 if (xAxisPostion == 6) {
                     if (state[4][yAxisPosition].getPiece() == null) {
-                        possibleMoves.add(state[4][yAxisPosition]);
+                        this.possibleMoves.add(state[4][yAxisPosition]);
                     }
                 }
             }
             if ((yAxisPosition > 0) && (state[xAxisPostion - 1][yAxisPosition - 1].getPiece() != null) && (state[xAxisPostion - 1][yAxisPosition - 1].getPieceColor() != this.getcolor())) {
-                possibleMoves.add(state[xAxisPostion - 1][yAxisPosition - 1]);
+                this.possibleMoves.add(state[xAxisPostion - 1][yAxisPosition - 1]);
             }
             if ((yAxisPosition < 7) && (state[xAxisPostion - 1][yAxisPosition + 1].getPiece() != null) && (state[xAxisPostion - 1][yAxisPosition + 1].getPieceColor() != this.getcolor())) {
-                possibleMoves.add(state[xAxisPostion - 1][yAxisPosition + 1]);
+                this.possibleMoves.add(state[xAxisPostion - 1][yAxisPosition + 1]);
             }
         } else {
             if (xAxisPostion == 8) {
-                return possibleMoves;
+                return this.possibleMoves;
             }
             if (state[xAxisPostion + 1][yAxisPosition].getPiece() == null) {
-                possibleMoves.add(state[xAxisPostion + 1][yAxisPosition]);
+                this.possibleMoves.add(state[xAxisPostion + 1][yAxisPosition]);
                 if (xAxisPostion == 1) {
                     if (state[3][yAxisPosition].getPiece() == null) {
-                        possibleMoves.add(state[3][yAxisPosition]);
+                        this.possibleMoves.add(state[3][yAxisPosition]);
                     }
                 }
             }
             if ((yAxisPosition > 0) && (state[xAxisPostion + 1][yAxisPosition - 1].getPiece() != null) && (state[xAxisPostion + 1][yAxisPosition - 1].getPieceColor() != this.getcolor())) {
-                possibleMoves.add(state[xAxisPostion + 1][yAxisPosition - 1]);
+                this.possibleMoves.add(state[xAxisPostion + 1][yAxisPosition - 1]);
             }
             if ((yAxisPosition < 7) && (state[xAxisPostion + 1][yAxisPosition + 1].getPiece() != null) && (state[xAxisPostion + 1][yAxisPosition + 1].getPieceColor() != this.getcolor())) {
-                possibleMoves.add(state[xAxisPostion + 1][yAxisPosition + 1]);
+                this.possibleMoves.add(state[xAxisPostion + 1][yAxisPosition + 1]);
             }
         }
-        return possibleMoves;
+        return this.possibleMoves;
     }
 }

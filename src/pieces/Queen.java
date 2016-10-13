@@ -22,7 +22,7 @@ public class Queen extends Piece {
         //Queen has most number of possible moves
         //Queen can move any number of steps in all 8 direction
         //The possible moves of queen is a combination of Rook and Bishop
-        possibleMoves.clear();
+        this.possibleMoves.clear();
 
         //Checking possible moves in vertical direction
         int tempx = xAxisPosition - 1;
@@ -55,17 +55,17 @@ public class Queen extends Piece {
         tempy = yAxisPosition + 1;
         possibleMovesSouthEast(tempx, tempy, state);
         
-        return possibleMoves;
+        return this.possibleMoves;
     }
 
     private void possibleMovesSouthEast(int tempx, int tempy, Cell[][] state) {
         while (tempx < 8 && tempy < 8) {
             if (state[tempx][tempy].getPiece() == null) {
-                possibleMoves.add(state[tempx][tempy]);
+                this.possibleMoves.add(state[tempx][tempy]);
             } else if (state[tempx][tempy].getPieceColor() == this.getcolor()) {
                 break;
             } else {
-                possibleMoves.add(state[tempx][tempy]);
+                this.possibleMoves.add(state[tempx][tempy]);
                 break;
             }
             tempx++;
@@ -76,11 +76,11 @@ public class Queen extends Piece {
     private void possibleMovesSouthWest(int tempx, int tempy, Cell[][] state) {
         while (tempx >= 0 && tempy >= 0) {
             if (state[tempx][tempy].getPiece() == null) {
-                possibleMoves.add(state[tempx][tempy]);
+                this.possibleMoves.add(state[tempx][tempy]);
             } else if (state[tempx][tempy].getPieceColor() == this.getcolor()) {
                 break;
             } else {
-                possibleMoves.add(state[tempx][tempy]);
+                this.possibleMoves.add(state[tempx][tempy]);
                 break;
             }
             tempx--;
@@ -91,11 +91,11 @@ public class Queen extends Piece {
     private void possibleMovesNorthWest(int tempx, int tempy, Cell[][] state) {
         while (tempx >= 0 && tempy < 8) {
             if (state[tempx][tempy].getPiece() == null) {
-                possibleMoves.add(state[tempx][tempy]);
+                this.possibleMoves.add(state[tempx][tempy]);
             } else if (state[tempx][tempy].getPieceColor() == this.getcolor()) {
                 break;
             } else {
-                possibleMoves.add(state[tempx][tempy]);
+                this.possibleMoves.add(state[tempx][tempy]);
                 break;
             }
             tempx--;
@@ -106,11 +106,11 @@ public class Queen extends Piece {
     private void possibleMovesNorthEast(int tempx, int tempy, Cell[][] state) {
         while (tempx < 8 && tempy >= 0) {
             if (state[tempx][tempy].getPiece() == null) {
-                possibleMoves.add(state[tempx][tempy]);
+                this.possibleMoves.add(state[tempx][tempy]);
             } else if (state[tempx][tempy].getPieceColor() == this.getcolor()) {
                 break;
             } else {
-                possibleMoves.add(state[tempx][tempy]);
+                this.possibleMoves.add(state[tempx][tempy]);
                 break;
             }
             tempx++;
@@ -121,11 +121,11 @@ public class Queen extends Piece {
     private void possibleMovesUp(int tempy, Cell[][] state, int xAxisPosition) {
         while (tempy < 8) {
             if (state[xAxisPosition][tempy].getPiece() == null) {
-                possibleMoves.add(state[xAxisPosition][tempy]);
+                this.possibleMoves.add(state[xAxisPosition][tempy]);
             } else if (state[xAxisPosition][tempy].getPieceColor() == this.getcolor()) {
                 break;
             } else {
-                possibleMoves.add(state[xAxisPosition][tempy]);
+                this.possibleMoves.add(state[xAxisPosition][tempy]);
                 break;
             }
             tempy++;
@@ -135,11 +135,11 @@ public class Queen extends Piece {
     private void possibleMovesDown(int tempy, Cell[][] state, int xAxisPosition) {
         while (tempy >= 0) {
             if (state[xAxisPosition][tempy].getPiece() == null) {
-                possibleMoves.add(state[xAxisPosition][tempy]);
+                this.possibleMoves.add(state[xAxisPosition][tempy]);
             } else if (state[xAxisPosition][tempy].getPieceColor() == this.getcolor()) {
                 break;
             } else {
-                possibleMoves.add(state[xAxisPosition][tempy]);
+                this.possibleMoves.add(state[xAxisPosition][tempy]);
                 break;
             }
             tempy--;
@@ -149,11 +149,11 @@ public class Queen extends Piece {
     private void possibleMovesRight(int tempx, Cell[][] state, int yAxisPosition) {
         while (tempx < 8) {
             if (state[tempx][yAxisPosition].getPiece() == null) {
-                possibleMoves.add(state[tempx][yAxisPosition]);
+                this.possibleMoves.add(state[tempx][yAxisPosition]);
             } else if (state[tempx][yAxisPosition].getPieceColor() == this.getcolor()) {
                 break;
             } else {
-                possibleMoves.add(state[tempx][yAxisPosition]);
+                this.possibleMoves.add(state[tempx][yAxisPosition]);
                 break;
             }
             tempx++;
@@ -163,11 +163,11 @@ public class Queen extends Piece {
     private void possibleMovesLeft(int tempx, Cell[][] state, int yAxisPosition) {
         while (tempx >= 0) {
             if (state[tempx][yAxisPosition].getPiece() == null) {
-                possibleMoves.add(state[tempx][yAxisPosition]);
+                this.possibleMoves.add(state[tempx][yAxisPosition]);
             } else if (state[tempx][yAxisPosition].getPieceColor() == this.getcolor()) {
                 break;
             } else {
-                possibleMoves.add(state[tempx][yAxisPosition]);
+                this.possibleMoves.add(state[tempx][yAxisPosition]);
                 break;
             }
             tempx--;
