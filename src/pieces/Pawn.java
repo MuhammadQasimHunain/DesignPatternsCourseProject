@@ -21,10 +21,10 @@ public class Pawn extends Piece {
     public ArrayList<Cell> move(Cell state[][], int xAxisPostion, int yAxisPosition) {
         //Pawn can move only one step except the first chance when it may move 2 steps
         //It can move in a diagonal fashion only for attacking a piece of opposite color
-        //It cannot move backward or move forward to attact a piece
+        //It cannot move backward or move forward to attack a piece
 
         possibleMoves.clear();
-        if (getcolor() == 0) {
+        if (getcolor() == Piece.WHITE_COLOR) {
             if (xAxisPostion == 0) {
                 return possibleMoves;
             }
