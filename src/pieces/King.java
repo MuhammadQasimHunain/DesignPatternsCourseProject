@@ -6,6 +6,10 @@ import chess.Cell;
 
 public class King extends Piece {
 
+	public static final int WHITE_KING_X_AXIS_POSITION = 7;
+	public static final int WHITE_KING_Y_AXIS_POSTION = 3;
+	public static final int BLACK_KING_X_AXIS_POSITION = 0;
+	public static final int BLACK_KING_Y_AXIS_POSITION = 3;
     private int xAxisPosition, yAxisPosition; //Extra variables for King class to keep a track of king's position
 
     //King Constructor

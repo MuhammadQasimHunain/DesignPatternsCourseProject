@@ -86,8 +86,8 @@ public class Main extends JFrame implements MouseListener {
         blackBishop02 = new Bishop("BB02", "Black_Bishop.png", Piece.BLACK_COLOR);
         whiteQueen = new Queen("WQ", "White_Queen.png", Piece.WHITE_COLOR);
         blackQueen = new Queen("BQ", "Black_Queen.png", Piece.BLACK_COLOR);
-        whiteKing = new King("WK", "White_King.png", Piece.WHITE_COLOR, 7, 3);
-        blackKing = new King("BK", "Black_King.png", Piece.BLACK_COLOR, 0, 3);
+        whiteKing = new King("WK", "White_King.png", Piece.WHITE_COLOR, King.WHITE_KING_X_AXIS_POSITION, King.WHITE_KING_Y_AXIS_POSTION);
+        blackKing = new King("BK", "Black_King.png", Piece.BLACK_COLOR, King.BLACK_KING_X_AXIS_POSITION, King.BLACK_KING_Y_AXIS_POSITION);
         whitePawn = new Pawn[8];
         blackPawn = new Pawn[8];
         for (int i = 0; i < 8; i++) {

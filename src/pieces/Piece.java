@@ -14,7 +14,7 @@ import chess.Cell;
 
 public abstract class Piece implements Cloneable {
 
-	public static  int WHITE_COLOR = 0;
+	public static final int WHITE_COLOR = 0;
 	public static final int BLACK_COLOR = 1;
 	
 	//Member Variables
