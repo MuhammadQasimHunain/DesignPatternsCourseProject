@@ -56,12 +56,14 @@ public class Player implements Serializable {
 
     //Increments the number of games played
     public void updateGamesPlayed() {
-        gamesPlayed++;
+    	if(gamesPlayed != null)
+    		gamesPlayed++;	
     }
 
     //Increments the number of games won
     public void updateGamesWon() {
-        gamesWon++;
+    	if(gamesWon != null)
+    		gamesWon++;
     }
 
     public static ArrayList<Player> fetchPlayers() //Function to fetch the list of the players

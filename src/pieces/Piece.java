@@ -11,9 +11,13 @@ import chess.Cell;
  * inherited class It implements Cloneable interface as a copy of the piece is
  * required very often
  */
+
 public abstract class Piece implements Cloneable {
 
-    //Member Variables
+	public static  int WHITE_COLOR = 0;
+	public static final int BLACK_COLOR = 1;
+	
+	//Member Variables
     private int color;
     private String id = null;
     private String path;

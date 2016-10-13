@@ -6,6 +6,9 @@ import javax.swing.*;
 
 import pieces.*;
 
+ 
+
+
 /**
  * This is the Cell Class. It is the token class of our GUI. There are total of
  * 64 cells that together makes up the Chess Board

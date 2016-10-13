@@ -80,29 +80,29 @@ public class King extends Piece {
                 }
             }
         }
-        if (getcolor() == 0) {
+        if (getcolor() == Piece.WHITE_COLOR) {
             if (xAxisPosition > 0 && yAxisPosition > 0
                     && state[xAxisPosition - 1][yAxisPosition - 1].getPiece() != null
-                    && state[xAxisPosition - 1][yAxisPosition - 1].getPieceColor() == 1
+                    && state[xAxisPosition - 1][yAxisPosition - 1].getPieceColor() == Piece.BLACK_COLOR
                     && (state[xAxisPosition - 1][yAxisPosition - 1].getPiece() instanceof Pawn)) {
                 return true;
             }
             if (xAxisPosition > 0 && yAxisPosition < 7
                     && state[xAxisPosition - 1][yAxisPosition + 1].getPiece() != null
-                    && state[xAxisPosition - 1][yAxisPosition + 1].getPieceColor() == 1
+                    && state[xAxisPosition - 1][yAxisPosition + 1].getPieceColor() == Piece.BLACK_COLOR
                     && (state[xAxisPosition - 1][yAxisPosition + 1].getPiece() instanceof Pawn)) {
                 return true;
             }
         } else {
             if (xAxisPosition < 7 && yAxisPosition > 0
                     && state[xAxisPosition + 1][yAxisPosition - 1].getPiece() != null
-                    && state[xAxisPosition + 1][yAxisPosition - 1].getPieceColor() == 0
+                    && state[xAxisPosition + 1][yAxisPosition - 1].getPieceColor() == Piece.WHITE_COLOR
                     && (state[xAxisPosition + 1][yAxisPosition - 1].getPiece() instanceof Pawn)) {
                 return true;
             }
             if (xAxisPosition < 7 && yAxisPosition < 7
                     && state[xAxisPosition + 1][yAxisPosition + 1].getPiece() != null
-                    && state[xAxisPosition + 1][yAxisPosition + 1].getPieceColor() == 0
+                    && state[xAxisPosition + 1][yAxisPosition + 1].getPieceColor() == Piece.WHITE_COLOR
                     && (state[xAxisPosition + 1][yAxisPosition + 1].getPiece() instanceof Pawn)) {
                 return true;
             }
@@ -193,18 +193,7 @@ public class King extends Piece {
 
     //Checking for attack from left,right,up and down
     private boolean isRookAttacking(Cell[][] state) {
-/*        for (int i = xAxisPosition + 1; i < 8; i++) {
-            if (state[i][yAxisPosition].getPiece() == null) {
-            } else if (state[i][yAxisPosition].getPiece().getcolor() == this.getcolor()) {
-                break;
-            } else if ((state[i][yAxisPosition].getPiece() instanceof Rook)
-                    || (state[i][yAxisPosition].getPiece() instanceof Queen)) {
-                return true;
-            } else {
-                break;
-            }
-        }
-*/      
+
     	if(this.isRookAttackingFromRight(state) ){
     		return true;
     	}
@@ -221,17 +210,6 @@ public class King extends Piece {
     		return true;
     	}
     	
-    	
-        /*for (int i = yAxisPosition + 1; i < 8; i++) {
-            if (state[xAxisPosition][i].getPiece() == null) {
-            } else if (state[xAxisPosition][i].getPiece().getcolor() == this.getcolor()) {
-                break;
-            } else if ((state[xAxisPosition][i].getPiece() instanceof Rook) || (state[xAxisPosition][i].getPiece() instanceof Queen)) {
-                return true;
-            } else {
-                break;
-            }
-        }*/
         return false;
     }
     

@@ -72,27 +72,27 @@ public class Main extends JFrame implements MouseListener {
 
     private static void variableInitialization() {
         //variable initialization
-        whiteRook01 = new Rook("WR01", "White_Rook.png", 0);
-        whiteRook02 = new Rook("WR02", "White_Rook.png", 0);
-        blackRook01 = new Rook("BR01", "Black_Rook.png", 1);
-        blackRook02 = new Rook("BR02", "Black_Rook.png", 1);
-        whiteKnight01 = new Knight("WK01", "White_Knight.png", 0);
-        whiteKnight02 = new Knight("WK02", "White_Knight.png", 0);
-        blackKnight01 = new Knight("BK01", "Black_Knight.png", 1);
-        blackKnight02 = new Knight("BK02", "Black_Knight.png", 1);
-        whiteBishop01 = new Bishop("WB01", "White_Bishop.png", 0);
-        whiteBishop02 = new Bishop("WB02", "White_Bishop.png", 0);
-        blackBishop01 = new Bishop("BB01", "Black_Bishop.png", 1);
-        blackBishop02 = new Bishop("BB02", "Black_Bishop.png", 1);
-        whiteQueen = new Queen("WQ", "White_Queen.png", 0);
-        blackQueen = new Queen("BQ", "Black_Queen.png", 1);
-        whiteKing = new King("WK", "White_King.png", 0, 7, 3);
-        blackKing = new King("BK", "Black_King.png", 1, 0, 3);
+        whiteRook01 = new Rook("WR01", "White_Rook.png", Piece.WHITE_COLOR);
+        whiteRook02 = new Rook("WR02", "White_Rook.png", Piece.WHITE_COLOR);
+        blackRook01 = new Rook("BR01", "Black_Rook.png", Piece.BLACK_COLOR);
+        blackRook02 = new Rook("BR02", "Black_Rook.png", Piece.BLACK_COLOR);
+        whiteKnight01 = new Knight("WK01", "White_Knight.png", Piece.WHITE_COLOR);
+        whiteKnight02 = new Knight("WK02", "White_Knight.png", Piece.WHITE_COLOR);
+        blackKnight01 = new Knight("BK01", "Black_Knight.png", Piece.BLACK_COLOR);
+        blackKnight02 = new Knight("BK02", "Black_Knight.png", Piece.BLACK_COLOR);
+        whiteBishop01 = new Bishop("WB01", "White_Bishop.png", Piece.WHITE_COLOR);
+        whiteBishop02 = new Bishop("WB02", "White_Bishop.png", Piece.WHITE_COLOR);
+        blackBishop01 = new Bishop("BB01", "Black_Bishop.png", Piece.BLACK_COLOR);
+        blackBishop02 = new Bishop("BB02", "Black_Bishop.png", Piece.BLACK_COLOR);
+        whiteQueen = new Queen("WQ", "White_Queen.png", Piece.WHITE_COLOR);
+        blackQueen = new Queen("BQ", "Black_Queen.png", Piece.BLACK_COLOR);
+        whiteKing = new King("WK", "White_King.png", Piece.WHITE_COLOR, 7, 3);
+        blackKing = new King("BK", "Black_King.png", Piece.BLACK_COLOR, 0, 3);
         whitePawn = new Pawn[8];
         blackPawn = new Pawn[8];
         for (int i = 0; i < 8; i++) {
-            whitePawn[i] = new Pawn("WP0" + (i + 1), "White_Pawn.png", 0);
-            blackPawn[i] = new Pawn("BP0" + (i + 1), "Black_Pawn.png", 1);
+            whitePawn[i] = new Pawn("WP0" + (i + 1), "White_Pawn.png", Piece.WHITE_COLOR);
+            blackPawn[i] = new Pawn("BP0" + (i + 1), "Black_Pawn.png", Piece.BLACK_COLOR);
         }
     }
 
@@ -155,12 +155,12 @@ public class Main extends JFrame implements MouseListener {
         bComboPanel.setLayout(new FlowLayout());
         wselect = new Button("Select");
         bselect = new Button("Select");
-        wselect.addActionListener(new SelectHandler(0));
-        bselect.addActionListener(new SelectHandler(1));
+        wselect.addActionListener(new SelectHandler(Piece.WHITE_COLOR));
+        bselect.addActionListener(new SelectHandler(Piece.BLACK_COLOR));
         WNewPlayer = new Button("New Player");
         BNewPlayer = new Button("New Player");
-        WNewPlayer.addActionListener(new Handler(0));
-        BNewPlayer.addActionListener(new Handler(1));
+        WNewPlayer.addActionListener(new Handler(Piece.WHITE_COLOR));
+        BNewPlayer.addActionListener(new Handler(Piece.BLACK_COLOR));
         wComboPanel.add(wScroll);
         wComboPanel.add(wselect);
         wComboPanel.add(WNewPlayer);
@@ -359,7 +359,7 @@ public class Main extends JFrame implements MouseListener {
 
     //A function to retrieve the black King or white King
     private King getKing(int color) {
-        if (color == 0) {
+        if (color == Piece.WHITE_COLOR) {
             return whiteKing;
         } else {
             return blackKing;
@@ -717,17 +717,17 @@ public class Main extends JFrame implements MouseListener {
         public void actionPerformed(ActionEvent arg0) {
             // TODO Auto-generated method stub
             tempPlayer = null;
-            String n = (color == 0) ? wName : bName;
-            JComboBox<String> jc = (color == 0) ? wCombo : bCombo;
-            JComboBox<String> ojc = (color == 0) ? bCombo : wCombo;
-            ArrayList<Player> pl = (color == 0) ? wPlayer : bPlayer;
+            String n = (color == Piece.WHITE_COLOR) ? wName : bName;
+            JComboBox<String> jc = (color == Piece.WHITE_COLOR) ? wCombo : bCombo;
+            JComboBox<String> ojc = (color == Piece.WHITE_COLOR) ? bCombo : wCombo;
+            ArrayList<Player> pl = (color == Piece.WHITE_COLOR) ? wPlayer : bPlayer;
             //ArrayList<Player> otherPlayer=(color==0)?bPlayer:wPlayer;
             ArrayList<Player> opl = Player.fetchPlayers();
             if (opl.isEmpty()) {
                 return;
             }
-            JPanel det = (color == 0) ? wDetails : bDetails;
-            JPanel PL = (color == 0) ? whitePlayer : blackPlayer;
+            JPanel det = (color == Piece.WHITE_COLOR) ? wDetails : bDetails;
+            JPanel PL = (color == Piece.WHITE_COLOR) ? whitePlayer : blackPlayer;
             if (selected == true) {
                 det.removeAll();
             }
@@ -752,7 +752,7 @@ public class Main extends JFrame implements MouseListener {
             if (tempPlayer == null) {
                 return;
             }
-            if (color == 0) {
+            if (color == Piece.WHITE_COLOR) {
                 white = tempPlayer;
             } else {
                 black = tempPlayer;
@@ -786,14 +786,14 @@ public class Main extends JFrame implements MouseListener {
         public void actionPerformed(ActionEvent e) {
             // TODO Auto-generated method stub
             String name;
-            name = (color == 0) ? wName : bName;
+            name = (color == Piece.WHITE_COLOR) ? wName : bName;
 
             JPanel j;
-            j = (color == 0) ? whitePlayer : blackPlayer;
+            j = (color == Piece.WHITE_COLOR) ? whitePlayer : blackPlayer;
 
             ArrayList<Player> N = Player.fetchPlayers();
             Iterator<Player> it = N.iterator();
-            JPanel detail = (color == 0) ? wDetails : bDetails;
+            JPanel detail = (color == Piece.WHITE_COLOR) ? wDetails : bDetails;
             name = JOptionPane.showInputDialog(j, "Enter your name");
 
             if (name != null) {
@@ -808,7 +808,7 @@ public class Main extends JFrame implements MouseListener {
                 if (name.length() != 0) {
                     Player tem = new Player(name);
                     tem.updatePlayer();
-                    if (color == 0) {
+                    if (color == Piece.WHITE_COLOR) {
                         white = tem;
                     } else {
                         black = tem;
