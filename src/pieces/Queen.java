@@ -13,7 +13,7 @@ public class Queen extends Piece {
     //Constructors
     public Queen(String i, String p, int c) {
         setId(i);
-        setPath(p);
+        setImagePath(p);
         setColor(c);
     }
 

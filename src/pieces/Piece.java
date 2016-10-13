@@ -31,7 +31,7 @@ public abstract class Piece implements Cloneable {
     }
 
     //Path Setter
-    public void setPath(String path) {
+    public void setImagePath(String path) {
         this.imagePath = path;
     }
 
@@ -41,7 +41,7 @@ public abstract class Piece implements Cloneable {
     }
 
     //Path getter
-    public String getPath() {
+    public String getImagePath() {
         return imagePath;
     }
 

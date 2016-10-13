@@ -13,7 +13,7 @@ public class King extends Piece {
         setXAxisPosition(xPosition);
         setYAxisPosition(yPosition);
         setId(id);
-        setPath(position);
+        setImagePath(position);
         setColor(color);
     }
 

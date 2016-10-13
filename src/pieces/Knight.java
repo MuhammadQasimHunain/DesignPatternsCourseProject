@@ -14,7 +14,7 @@ public class Knight extends Piece {
     //Constructor
     public Knight(String i, String p, int c) {
         setId(i);
-        setPath(p);
+        setImagePath(p);
         setColor(c);
     }
 

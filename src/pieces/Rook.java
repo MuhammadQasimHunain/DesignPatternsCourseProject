@@ -13,7 +13,7 @@ public class Rook extends Piece {
     //Constructor
     public Rook(String id, String path, int color) {
         setId(id);
-        setPath(path);
+        setImagePath(path);
         setColor(color);
     }
 

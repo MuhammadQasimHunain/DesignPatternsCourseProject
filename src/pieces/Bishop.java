@@ -9,7 +9,7 @@ public class Bishop extends Piece {
     //Constructor
     public Bishop(String id, String path, int color) {
         setId(id);
-        setPath(path);
+        setImagePath(path);
         setColor(color);
     }
 
