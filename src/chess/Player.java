@@ -30,8 +30,8 @@ public class Player implements Serializable {
     public Player(String name) {
         this.name = name.trim();
         //this.lname = lname.trim();
-        gamesPlayed = new Integer(0);
-        gamesWon = new Integer(0);
+        this.gamesPlayed = new Integer(0);
+        this.gamesWon = new Integer(0);
     }
 
     //Name Getter
@@ -41,11 +41,17 @@ public class Player implements Serializable {
 
     //Returns the number of games played
     public Integer getGamesPlayed() {
-        return gamesPlayed;
+    	if(gamesPlayed == null)
+            gamesPlayed = new Integer(0);
+
+    	return gamesPlayed;
     }
 
     //Returns the number of games won
     public Integer getGamesWon() {
+    	if(gamesWon == null)
+    		gamesWon = new Integer(0);
+    	
         return gamesWon;
     }
 

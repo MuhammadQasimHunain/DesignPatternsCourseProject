@@ -20,7 +20,7 @@ public abstract class Piece implements Cloneable {
 	//Member Variables
     private int color;
     private String id = null;
-    private String path;
+    private String imagePath;
     protected ArrayList<Cell> possibleMoves = new ArrayList<Cell>();  //Protected (access from child classes)
 
     public abstract ArrayList<Cell> move(Cell pos[][], int x, int y);  //Abstract Function. Must be overridden
@@ -32,7 +32,7 @@ public abstract class Piece implements Cloneable {
 
     //Path Setter
     public void setPath(String path) {
-        this.path = path;
+        this.imagePath = path;
     }
 
     //Color Setter
@@ -42,7 +42,7 @@ public abstract class Piece implements Cloneable {
 
     //Path getter
     public String getPath() {
-        return path;
+        return imagePath;
     }
 
     //Id getter
