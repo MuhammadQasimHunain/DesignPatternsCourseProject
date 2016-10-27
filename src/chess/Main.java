@@ -2,6 +2,9 @@ package chess;
 
 import javax.crypto.NullCipher;
 import javax.imageio.ImageIO;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
 import javax.swing.event.ChangeEvent;
@@ -14,6 +17,7 @@ import java.awt.event.*;
 import java.awt.image.BufferedImage;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.File;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -580,7 +584,7 @@ public class Main extends JFrame implements MouseListener,Serializable {
         Mainboard.setResizable(false);
     }
 
-    //These are the abstract function of the parent class. Only relevant method here is the On-Click Fuction
+    //These are the abstract function of the parent class. Only relevant method here is the On-Click Function
     //which is called when the user clicks on a particular cell
     @Override
     public void mouseClicked(MouseEvent arg0) {
@@ -610,11 +614,13 @@ public class Main extends JFrame implements MouseListener,Serializable {
             destinationList.clear();
             previous = null;
         } else if (cell.getPiece() == null || previous.getPieceColor() != cell.getPieceColor()) {
+        	
             if (cell.isPossibleDestination()) {
                 if (cell.getPiece() != null) {
+                	cell.getPiece().playSoundForKill();
                     cell.removePiece();
                 }
-                cell.setPiece(previous.getPiece());
+                cell.setPiece(previous.getPiece()); // moving the Piece
                 if (previous.isCheck()) {
                     previous.removeCheck();
                 }

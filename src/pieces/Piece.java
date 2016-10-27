@@ -25,6 +25,8 @@ public abstract class Piece implements Cloneable, Serializable {
     protected ArrayList<Cell> possibleMoves = new ArrayList<Cell>();  //Protected (access from child classes)
 
     public abstract ArrayList<Cell> move(Cell pos[][], int x, int y);  //Abstract Function. Must be overridden
+    
+    public abstract void playSoundForKill();
 
     //Id Setter
     public void setId(String id) {
