@@ -12,4 +12,10 @@ public class NullPiece extends Piece {
 		return null;
 	}
 
+	@Override
+	public void playSoundForKill() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
