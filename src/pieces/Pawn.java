@@ -17,7 +17,7 @@ public class Pawn extends Piece {
         setColor(c);
     }
 
-    //Move Function Overridden
+	//Move Function Overridden
     public ArrayList<Cell> move(Cell state[][], int xAxisPostion, int yAxisPosition) {
         //Pawn can move only one step except the first chance when it may move 2 steps
         //It can move in a diagonal fashion only for attacking a piece of opposite color

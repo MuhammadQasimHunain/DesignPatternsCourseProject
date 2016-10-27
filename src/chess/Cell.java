@@ -1,7 +1,9 @@
 package chess;
 
 import java.awt.*;
+import java.io.Serializable;
 import java.util.ArrayList;
+
 import javax.swing.*;
 
 import pieces.*;
@@ -14,7 +16,7 @@ import pieces.*;
  * 64 cells that together makes up the Chess Board
  *
  */
-public class Cell extends JPanel implements Cloneable {
+public class Cell extends JPanel implements Cloneable,Serializable {
 
     //Member Variables
     private static final long serialVersionUID = 1L;
@@ -66,9 +68,11 @@ public class Cell extends JPanel implements Cloneable {
     public void setPiece(Piece p) //Function to inflate a cell with a piece
     {
         piece = p;
+        if(!(p instanceof NullPiece)){
         ImageIcon imgIcon = new javax.swing.ImageIcon(this.getClass().getResource(p.getImagePath()));
         content = new JLabel(imgIcon);
         this.add(content);
+        }
     }
 
     public void removePiece() //Function to remove a piece from the cell

@@ -1,5 +1,6 @@
 package pieces;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import chess.Cell;
@@ -12,7 +13,7 @@ import chess.Cell;
  * required very often
  */
 
-public abstract class Piece implements Cloneable {
+public abstract class Piece implements Cloneable, Serializable {
 
 	public static final int WHITE_COLOR = 0;
 	public static final int BLACK_COLOR = 1;
