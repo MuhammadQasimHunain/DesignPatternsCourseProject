@@ -14,11 +14,4 @@
 	<natures>
 		<nature>org.eclipse.jdt.core.javanature</nature>
 	</natures>
-	<linkedResources>
-		<link>
-			<name>src/pieces/AlertSound.wav</name>
-			<type>1</type>
-			<location>/home/feroze/Documents/uni-work/semester-1/Design patterns and refactoring/DesignPatternsCourseProject/src/pieces/AlertSound.wav</location>
-		</link>
-	</linkedResources>
 </projectDescription>
