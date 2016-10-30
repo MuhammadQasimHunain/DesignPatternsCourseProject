@@ -16,14 +16,9 @@
 	</natures>
 	<linkedResources>
 		<link>
-			<name>src/chess/AlertSound.wav</name>
-			<type>1</type>
-			<location>/Users/Hassaan/Desktop/AlertSound.wav</location>
-		</link>
-		<link>
 			<name>src/pieces/AlertSound.wav</name>
 			<type>1</type>
-			<location>/Users/Hassaan/Desktop/AlertSound.wav</location>
+			<location>/home/feroze/Documents/uni-work/semester-1/Design patterns and refactoring/DesignPatternsCourseProject/src/pieces/AlertSound.wav</location>
 		</link>
 	</linkedResources>
 </projectDescription>
