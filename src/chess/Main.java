@@ -72,7 +72,7 @@ public class Main extends JFrame implements MouseListener,Serializable {
     private Button start, whiteselect, blackselect, whiteNewPlayer, blackNewPlayer;
     public static int timeRemaining = 60;
 
-    public static void main(String[] args) {
+    public static void startMain() {
 
         variableInitialization();
 
