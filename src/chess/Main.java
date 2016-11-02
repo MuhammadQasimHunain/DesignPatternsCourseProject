@@ -1,31 +1,53 @@
 package chess;
 
-import javax.crypto.NullCipher;
-import javax.imageio.ImageIO;
-import javax.sound.sampled.AudioInputStream;
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.Clip;
-import javax.swing.*;
-import javax.swing.border.TitledBorder;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
-
-import pieces.*;
-
-import java.awt.*;
-import java.awt.event.*;
+import java.awt.BorderLayout;
+import java.awt.Button;
+import java.awt.Color;
+import java.awt.Container;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.GridLayout;
+import java.awt.HeadlessException;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.io.File;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Iterator;
 import java.util.ListIterator;
+
+import javax.imageio.ImageIO;
+import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JSlider;
+import javax.swing.JSplitPane;
+import javax.swing.border.TitledBorder;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
+
+import pieces.Bishop;
+import pieces.King;
+import pieces.Knight;
+import pieces.NullPiece;
+import pieces.Pawn;
+import pieces.Piece;
+import pieces.Queen;
+import pieces.Rook;
 
 public class Main extends JFrame implements MouseListener,Serializable {
 
@@ -755,14 +777,14 @@ public class Main extends JFrame implements MouseListener,Serializable {
   				ArrayList<Piece> piecesList = new ArrayList<Piece>();
   				for(int i=0;i<8;i++){
   					for(int j=0;j<8;j++){
-  						/*if(null==boardState[i][j].getPiece()){
+  						if(null==boardState[i][j].getPiece()){
   							Piece nullPiece= new NullPiece();
   							piecesList.add(nullPiece);
   						}
-  						else{*/
+  						else{
   							piecesList.add(boardState[i][j].getPiece()); 
-  						//}
   					}
+  				}
   				}
   	    	FileOutputStream fileOut =
   	    	         new FileOutputStream("/Users/omerhayat/Projects/DesignPatternsCourseProject/session.ser");
@@ -790,11 +812,7 @@ public class Main extends JFrame implements MouseListener,Serializable {
 				for(int i=0;i<8;i++){
   					for(int j=0;j<8;j++){
   						if(null!=boardState[i][j].getPiece()){
-  							Piece nullPiece = new NullPiece();
-  							boardState[i][j].setPiece(nullPiece);
-  						}
-  							else{
-  								boardState[i][j].removePiece();
+  							boardState[i][j].removePiece();
   							}
   					}
 				}
@@ -814,6 +832,7 @@ public class Main extends JFrame implements MouseListener,Serializable {
 						catch(NullPointerException ex){
 							item=null;
 						}
+							if(!(item instanceof NullPiece))
 							boardState[i][j].setPiece(item);
 					}
 				}
