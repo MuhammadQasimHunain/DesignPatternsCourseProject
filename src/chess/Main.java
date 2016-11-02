@@ -11,6 +11,7 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
 import pieces.*;
+import theme.*;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -334,7 +335,7 @@ public class Main extends JFrame implements MouseListener,Serializable {
                 } else if (i == 6) {
                     P = whitePawn[j];
                 }
-                cell = new Cell(i, j, P);
+                cell = new Cell(i, j, P, new HersheyChocolate());
                 cell.addMouseListener(this);
                 board.add(cell);
                 boardState[i][j] = cell;

@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import javax.swing.*;
 
 import pieces.*;
+import theme.Theme;
 
  
 
@@ -29,16 +30,18 @@ public class Cell extends JPanel implements Cloneable,Serializable {
     
     
     //Constructors
-    public Cell(int xPosition, int yPosition, Piece piece) {
+    public Cell(int xPosition, int yPosition, Piece piece, Theme theme) {
         this.xAxisPosition = xPosition;
         this.yAxisPosition = yPosition;
 
         setLayout(new BorderLayout());
 
         if ((this.xAxisPosition + this.yAxisPosition) % 2 == 0) {
-            setBackground(new Color(113, 198, 113));
+//            setBackground(new Color(113, 198, 113));
+        	setBackground(theme.getDarkCellColor());
         } else {
-            setBackground(Color.white);
+//            setBackground(Color.white);
+        	setBackground(theme.getLightCellColor());
         }
 
         if (piece != null) {
