@@ -15,11 +15,13 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.PrintWriter;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -72,6 +74,7 @@ public class Main extends JFrame implements MouseListener,Serializable {
     private JPanel blackDetails = new JPanel(new GridLayout(3, 3));
     private JPanel whiteComboPanel = new JPanel();
     private JPanel bComboPanel = new JPanel();
+    private JPanel sessionComboPanel = new JPanel();
     private JPanel controlPanel, whitePlayer, blackPlayer, temp, displayTime, showPlayer, time;
     private JSplitPane split;
     private JLabel label, mov;
@@ -83,16 +86,19 @@ public class Main extends JFrame implements MouseListener,Serializable {
     private ArrayList<Player> wPlayer, bPlayer;
     private ArrayList<String> wNames = new ArrayList<String>();
     private ArrayList<String> bNames = new ArrayList<String>();
-    private JComboBox<String> whiteCombo, blackCombo;
+    private JComboBox<String> whiteCombo, blackCombo, sessionCombo;
     private String whiteName = null, blackName = null, winner = null;
     static String move;
     private Player tempPlayer;
-    private JScrollPane whiteScroll, blackScroll;
+    private JScrollPane whiteScroll, blackScroll,sessionScroll;
     private String[] whiteNames = {}, blackNames = {};
     private JSlider timeSlider;
     private BufferedImage image;
     private Button start, whiteselect, blackselect, whiteNewPlayer, blackNewPlayer;
     public static int timeRemaining = 60;
+    private String whitePlayerName;
+    private String blackPlayerName;
+    private String[] sessionList = {};
 
     public static void main(String[] args) {
 
@@ -186,6 +192,9 @@ public class Main extends JFrame implements MouseListener,Serializable {
         blackCombo = new JComboBox<String>(blackNames);
         whiteScroll = new JScrollPane(whiteCombo);
         blackScroll = new JScrollPane(blackCombo);
+        populateScroolList();
+        sessionCombo = new JComboBox<String>(sessionList);
+        sessionScroll = new JScrollPane(sessionCombo);
         whiteComboPanel.setLayout(new FlowLayout());
         bComboPanel.setLayout(new FlowLayout());
         whiteselect = new Button("Select");
@@ -200,11 +209,12 @@ public class Main extends JFrame implements MouseListener,Serializable {
         blackNewPlayer.addActionListener(new Handler(1));
         Button saveCurrentSessionBtn = new Button("Save current session");
         Button restorePrevSessionBtn = new Button("Restore previous session");
-        saveCurrentSessionBtn.setPreferredSize(new Dimension(80, 20));
+        saveCurrentSessionBtn.setPreferredSize(new Dimension(20, 20));
         saveCurrentSessionBtn.addActionListener(new SessionSaveHandler());
         restorePrevSessionBtn.addActionListener(new SessionRestoreHandler());
-        JPanel session = new JPanel(new GridLayout(1, 1));
+        JPanel session = new JPanel(new GridLayout(2, 2));
         session.setSize(10, 10);
+        session.add(sessionScroll);
         session.add(saveCurrentSessionBtn);
         session.add(restorePrevSessionBtn);
         whiteComboPanel.add(whiteScroll);
@@ -227,6 +237,17 @@ public class Main extends JFrame implements MouseListener,Serializable {
         controlPanel.add(blackPlayer);
         controlPanel.add(session);
     }
+
+	private void populateScroolList() {
+		File folder = new File(System.getProperty("user.dir") + File.separator + "sessions");
+        File[] listOfFiles = folder.listFiles();
+        sessionList = new String[listOfFiles.length];
+        for (int i = 0; i < listOfFiles.length; i++) {
+            if (listOfFiles[i].isFile()) {
+            	sessionList[i] =  listOfFiles[i].getName().split("\\.")[0];
+          }
+        }
+	}
 
     private void defineTimeVariables() throws HeadlessException {
         showPlayer = new JPanel(new FlowLayout());
@@ -786,8 +807,13 @@ public class Main extends JFrame implements MouseListener,Serializable {
   					}
   				}
   				}
+  				String path=System.getProperty("user.dir") + File.separator + "sessions" + File.separator + whitePlayerName+"-"+blackPlayerName+".ser";
+  				
+  			PrintWriter writer = new PrintWriter(path ,"UTF-8");
+  			writer.close();
+  				
   	    	FileOutputStream fileOut =
-  	    	         new FileOutputStream("/Users/omerhayat/Projects/DesignPatternsCourseProject/session.ser");
+  	    	         new FileOutputStream(path);
   	    	         ObjectOutputStream out = new ObjectOutputStream(fileOut);
   	    	         out.writeObject(piecesList);
   	    	         out.close();
@@ -816,9 +842,10 @@ public class Main extends JFrame implements MouseListener,Serializable {
   							}
   					}
 				}
-				
+				String path=System.getProperty("user.dir") + File.separator + "sessions" +File.separator + (String)sessionCombo.getSelectedItem()+".ser";
+			 
 	    	FileInputStream fileIn =
-	    	         new FileInputStream("/Users/omerhayat/Projects/DesignPatternsCourseProject/session.ser");
+	    	         new FileInputStream(path);
 	    	ObjectInputStream in = new ObjectInputStream(fileIn);
 	    	ArrayList<Piece> piecesList = new ArrayList<Piece>();
 	    	piecesList = (ArrayList<Piece>)in.readObject();
@@ -863,7 +890,8 @@ public class Main extends JFrame implements MouseListener,Serializable {
         public void actionPerformed(ActionEvent arg0) {
             // TODO Auto-generated method stub
             tempPlayer = null;
-            String n = (color == 0) ? whiteName : blackName;
+            String playerName = (color == 0) ? whiteName : blackName;
+           
             JComboBox<String> jc = (color == 0) ? whiteCombo : blackCombo;
             JComboBox<String> ojc = (color == 0) ? blackCombo : whiteCombo;
             ArrayList<Player> pl = (color == 0) ? wPlayer : bPlayer;
@@ -877,19 +905,19 @@ public class Main extends JFrame implements MouseListener,Serializable {
             if (selected == true) {
                 det.removeAll();
             }
-            n = (String) jc.getSelectedItem();
+            playerName = (String) jc.getSelectedItem();
             Iterator<Player> it = pl.iterator();
             Iterator<Player> oit = opl.iterator();
             while (it.hasNext()) {
                 Player p = it.next();
-                if (p.name().equals(n)) {
+                if (p.name().equals(playerName)) {
                     tempPlayer = p;
                     break;
                 }
             }
             while (oit.hasNext()) {
                 Player p = oit.next();
-                if (p.name().equals(n)) {
+                if (p.name().equals(playerName)) {
                     opl.remove(p);
                     break;
                 }
@@ -911,6 +939,10 @@ public class Main extends JFrame implements MouseListener,Serializable {
             det.add(new JLabel(" " + tempPlayer.name()));
             det.add(new JLabel(" " + tempPlayer.getGamesPlayed()));
             det.add(new JLabel(" " + tempPlayer.getGamesWon()));
+            if ((color == 0) )
+            	whitePlayerName=tempPlayer.name();
+            else
+            	blackPlayerName=tempPlayer.name();
 
             PL.revalidate();
             PL.repaint();
