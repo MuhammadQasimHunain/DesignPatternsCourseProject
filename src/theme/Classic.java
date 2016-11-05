@@ -5,7 +5,8 @@ import java.awt.Color;
 public class Classic extends Theme {
 
 	public Classic (){
-		this.darkCellColor = Color.black;
+//		this.darkCellColor = Color.black;
+		this.darkCellColor = new Color((float)0.0, (float)0.0, (float)0.0, (float)0.5);
 		this.lightCellColor = Color.white;
 		this.pieceImageFolderPath = "";
 		

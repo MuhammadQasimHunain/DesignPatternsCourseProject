@@ -6,7 +6,6 @@
 package chess;
 
 import java.awt.Graphics;
-import sun.java2d.pipe.DrawImage;
 import java.awt.Image;
 import javax.swing.ImageIcon;
 

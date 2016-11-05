@@ -7,6 +7,8 @@ package chess;
 
 import java.awt.Graphics;
 
+import theme.ThemeFactory;
+
 /**
  *
  * @author feroze
@@ -110,14 +112,18 @@ public class GameSettings extends javax.swing.JFrame {
 
     private void classicActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_classicActionPerformed
         // TODO add your handling code here:
+    	Main.selectedTheme = ThemeFactory.classicTheme;
+    	
     }//GEN-LAST:event_classicActionPerformed
 
     private void blueBerryPieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_blueBerryPieActionPerformed
         // TODO add your handling code here:
+    	Main.selectedTheme = ThemeFactory.blueberryPieTheme;
     }//GEN-LAST:event_blueBerryPieActionPerformed
 
     private void hersheysChocoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hersheysChocoActionPerformed
         // TODO add your handling code here:
+    	Main.selectedTheme = ThemeFactory.hersheyChocolateTheme;
     }//GEN-LAST:event_hersheysChocoActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
