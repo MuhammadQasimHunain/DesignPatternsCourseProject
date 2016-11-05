@@ -116,6 +116,7 @@ public class Main extends JFrame implements MouseListener,Serializable {
     private String whitePlayerName;
     private String blackPlayerName;
     private String[] sessionList = {};
+    public static Theme selectedTheme = new HersheyChocolate();
 
     public static void startMain() {
 
@@ -144,6 +145,8 @@ public class Main extends JFrame implements MouseListener,Serializable {
         whiteQueen = new Queen("WQ", "White_Queen.png", 0);
         blackQueen = new Queen("BQ", "Black_Queen.png", 1);
         whiteKing = new King("WK", "White_King.png", 0, 7, 3);
+        String path = System.getProperty("user.dir");
+        path = path + "/src/";
         blackKing = new King("BK", "Black_King.png", 1, 0, 3);
         whitePawn = new Pawn[8];
         blackPawn = new Pawn[8];
@@ -151,6 +154,10 @@ public class Main extends JFrame implements MouseListener,Serializable {
             whitePawn[i] = new Pawn("WP0" + (i + 1), "White_Pawn.png", 0);
             blackPawn[i] = new Pawn("BP0" + (i + 1), "Black_Pawn.png", 1);
         }
+//        String path = System.getProperty("user.dir");
+//        path = path + "/src/pieces/NewPieceImages";
+        System.out.println("Path : " + path);
+        
     }
 
     //Constructor
@@ -403,7 +410,7 @@ public class Main extends JFrame implements MouseListener,Serializable {
                 } else if (i == 6) {
                     P = whitePawn[j];
                 }
-                cell = new Cell(i, j, P, new HersheyChocolate());
+                cell = new Cell(i, j, P);
                 cell.addMouseListener(this);
                 board.add(cell);
                 boardState[i][j] = cell;

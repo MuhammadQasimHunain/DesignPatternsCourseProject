@@ -30,7 +30,7 @@ public class Cell extends JPanel implements Cloneable,Serializable {
     
     
     //Constructors
-    public Cell(int xPosition, int yPosition, Piece piece, Theme theme) {
+    public Cell(int xPosition, int yPosition, Piece piece) {
         this.xAxisPosition = xPosition;
         this.yAxisPosition = yPosition;
 
@@ -38,10 +38,10 @@ public class Cell extends JPanel implements Cloneable,Serializable {
 
         if ((this.xAxisPosition + this.yAxisPosition) % 2 == 0) {
 //            setBackground(new Color(113, 198, 113));
-        	setBackground(theme.getDarkCellColor());
+        	setBackground(Main.selectedTheme.getDarkCellColor());
         } else {
 //            setBackground(Color.white);
-        	setBackground(theme.getLightCellColor());
+        	setBackground(Main.selectedTheme.getLightCellColor());
         }
 
         if (piece != null) {
@@ -57,9 +57,11 @@ public class Cell extends JPanel implements Cloneable,Serializable {
         setLayout(new BorderLayout());
 
         if ((xAxisPosition + yAxisPosition) % 2 == 0) {
-            setBackground(new Color(113, 198, 113));
+//            setBackground(new Color(113, 198, 113));
+        	setBackground(Main.selectedTheme.getDarkCellColor());
         } else {
-            setBackground(Color.white);
+//            setBackground(Color.white);
+        	setBackground(Main.selectedTheme.getLightCellColor());
         }
         if (cell.getPiece() != null) {
             setPiece(cell.getPieceCopy());
@@ -93,7 +95,7 @@ public class Cell extends JPanel implements Cloneable,Serializable {
     {
         return this.piece;
     }
-
+    
     public int getPieceColor() //Function to access piece's color
     {
         return this.piece.getcolor();
@@ -156,9 +158,11 @@ public class Cell extends JPanel implements Cloneable,Serializable {
     {
         this.setBorder(null);
         if ((xAxisPosition + yAxisPosition) % 2 == 0) {
-            setBackground(new Color(113, 198, 113));
+//            setBackground(new Color(113, 198, 113));
+        	setBackground(Main.selectedTheme.getDarkCellColor());
         } else {
-            setBackground(Color.white);
+//            setBackground(Color.white);
+        	setBackground(Main.selectedTheme.getLightCellColor());
         }
         this.isCheck = false;
     }
