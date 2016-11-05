@@ -1,21 +1,55 @@
 package chess;
 
-import javax.imageio.ImageIO;
-import javax.swing.*;
-import javax.swing.border.TitledBorder;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
-
-import pieces.*;
-import java.awt.*;
-import java.awt.event.*;
+import java.awt.BorderLayout;
+import java.awt.Button;
+import java.awt.Color;
+import java.awt.Container;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.GridLayout;
+import java.awt.HeadlessException;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.ListIterator;
 
-public class Main extends JFrame implements MouseListener {
+import javax.imageio.ImageIO;
+import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JSlider;
+import javax.swing.JSplitPane;
+import javax.swing.border.TitledBorder;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
+
+import pieces.Bishop;
+import pieces.King;
+import pieces.Knight;
+import pieces.NullPiece;
+import pieces.Pawn;
+import pieces.Piece;
+import pieces.Queen;
+import pieces.Rook;
+
+public class Main extends JFrame implements MouseListener,Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -34,9 +68,9 @@ public class Main extends JFrame implements MouseListener {
     private ArrayList<Cell> destinationList = new ArrayList<Cell>();
     private Player white = null, black = null;
     private JPanel board = new JPanel(new GridLayout(8, 8));
-    private JPanel wDetails = new JPanel(new GridLayout(3, 3));
-    private JPanel bDetails = new JPanel(new GridLayout(3, 3));
-    private JPanel wComboPanel = new JPanel();
+    private JPanel whiteDetails = new JPanel(new GridLayout(3, 3));
+    private JPanel blackDetails = new JPanel(new GridLayout(3, 3));
+    private JPanel whiteComboPanel = new JPanel();
     private JPanel bComboPanel = new JPanel();
     private JPanel controlPanel, whitePlayer, blackPlayer, temp, displayTime, showPlayer, time;
     private JSplitPane split;
@@ -49,15 +83,15 @@ public class Main extends JFrame implements MouseListener {
     private ArrayList<Player> wPlayer, bPlayer;
     private ArrayList<String> wNames = new ArrayList<String>();
     private ArrayList<String> bNames = new ArrayList<String>();
-    private JComboBox<String> wCombo, bCombo;
-    private String wName = null, bName = null, winner = null;
+    private JComboBox<String> whiteCombo, blackCombo;
+    private String whiteName = null, blackName = null, winner = null;
     static String move;
     private Player tempPlayer;
-    private JScrollPane wScroll, bScroll;
-    private String[] WNames = {}, BNames = {};
+    private JScrollPane whiteScroll, blackScroll;
+    private String[] whiteNames = {}, blackNames = {};
     private JSlider timeSlider;
     private BufferedImage image;
-    private Button start, wselect, bselect, WNewPlayer, BNewPlayer;
+    private Button start, whiteselect, blackselect, whiteNewPlayer, blackNewPlayer;
     public static int timeRemaining = 60;
 
     public static void main(String[] args) {
@@ -72,27 +106,27 @@ public class Main extends JFrame implements MouseListener {
 
     private static void variableInitialization() {
         //variable initialization
-        whiteRook01 = new Rook("WR01", "White_Rook.png", Piece.WHITE_COLOR);
-        whiteRook02 = new Rook("WR02", "White_Rook.png", Piece.WHITE_COLOR);
-        blackRook01 = new Rook("BR01", "Black_Rook.png", Piece.BLACK_COLOR);
-        blackRook02 = new Rook("BR02", "Black_Rook.png", Piece.BLACK_COLOR);
-        whiteKnight01 = new Knight("WK01", "White_Knight.png", Piece.WHITE_COLOR);
-        whiteKnight02 = new Knight("WK02", "White_Knight.png", Piece.WHITE_COLOR);
-        blackKnight01 = new Knight("BK01", "Black_Knight.png", Piece.BLACK_COLOR);
-        blackKnight02 = new Knight("BK02", "Black_Knight.png", Piece.BLACK_COLOR);
-        whiteBishop01 = new Bishop("WB01", "White_Bishop.png", Piece.WHITE_COLOR);
-        whiteBishop02 = new Bishop("WB02", "White_Bishop.png", Piece.WHITE_COLOR);
-        blackBishop01 = new Bishop("BB01", "Black_Bishop.png", Piece.BLACK_COLOR);
-        blackBishop02 = new Bishop("BB02", "Black_Bishop.png", Piece.BLACK_COLOR);
-        whiteQueen = new Queen("WQ", "White_Queen.png", Piece.WHITE_COLOR);
-        blackQueen = new Queen("BQ", "Black_Queen.png", Piece.BLACK_COLOR);
-        whiteKing = new King("WK", "White_King.png", Piece.WHITE_COLOR, King.WHITE_KING_X_AXIS_POSITION, King.WHITE_KING_Y_AXIS_POSTION);
-        blackKing = new King("BK", "Black_King.png", Piece.BLACK_COLOR, King.BLACK_KING_X_AXIS_POSITION, King.BLACK_KING_Y_AXIS_POSITION);
+        whiteRook01 = new Rook("WR01", "White_Rook.png", 0);
+        whiteRook02 = new Rook("WR02", "White_Rook.png", 0);
+        blackRook01 = new Rook("BR01", "Black_Rook.png", 1);
+        blackRook02 = new Rook("BR02", "Black_Rook.png", 1);
+        whiteKnight01 = new Knight("WK01", "White_Knight.png", 0);
+        whiteKnight02 = new Knight("WK02", "White_Knight.png", 0);
+        blackKnight01 = new Knight("BK01", "Black_Knight.png", 1);
+        blackKnight02 = new Knight("BK02", "Black_Knight.png", 1);
+        whiteBishop01 = new Bishop("WB01", "White_Bishop.png", 0);
+        whiteBishop02 = new Bishop("WB02", "White_Bishop.png", 0);
+        blackBishop01 = new Bishop("BB01", "Black_Bishop.png", 1);
+        blackBishop02 = new Bishop("BB02", "Black_Bishop.png", 1);
+        whiteQueen = new Queen("WQ", "White_Queen.png", 0);
+        blackQueen = new Queen("BQ", "Black_Queen.png", 1);
+        whiteKing = new King("WK", "White_King.png", 0, 7, 3);
+        blackKing = new King("BK", "Black_King.png", 1, 0, 3);
         whitePawn = new Pawn[8];
         blackPawn = new Pawn[8];
         for (int i = 0; i < 8; i++) {
-            whitePawn[i] = new Pawn("WP0" + (i + 1), "White_Pawn.png", Piece.WHITE_COLOR);
-            blackPawn[i] = new Pawn("BP0" + (i + 1), "Black_Pawn.png", Piece.BLACK_COLOR);
+            whitePawn[i] = new Pawn("WP0" + (i + 1), "White_Pawn.png", 0);
+            blackPawn[i] = new Pawn("BP0" + (i + 1), "Black_Pawn.png", 1);
         }
     }
 
@@ -119,6 +153,7 @@ public class Main extends JFrame implements MouseListener {
         resizingForInActiveGame();
 
         content.add(split);
+         
         setDefaultCloseOperation(EXIT_ON_CLOSE);
     }
 
@@ -128,46 +163,57 @@ public class Main extends JFrame implements MouseListener {
             private static final long serialVersionUID = 1L;
 
             @Override
-            public void paintComponent(Graphics g) {
+            public void paintComponent(Graphics graphics) {
                 try {
                     image = ImageIO.read(this.getClass().getResource("clash.jpg"));
                 } catch (IOException ex) {
                     System.out.println("not found");
                 }
 
-                g.drawImage(image, 0, 0, null);
+                graphics.drawImage(image, 0, 0, null);
             }
         };
 
         temp.setMinimumSize(new Dimension(800, 700));
-        controlPanel.setMinimumSize(new Dimension(285, 700));
+        controlPanel.setMinimumSize(new Dimension(300, 1024));
         split = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, temp, controlPanel);
     }
 
     private void defineGameBoard() throws HeadlessException {
         JPanel whitestats = new JPanel(new GridLayout(3, 3));
         JPanel blackstats = new JPanel(new GridLayout(3, 3));
-        wCombo = new JComboBox<String>(WNames);
-        bCombo = new JComboBox<String>(BNames);
-        wScroll = new JScrollPane(wCombo);
-        bScroll = new JScrollPane(bCombo);
-        wComboPanel.setLayout(new FlowLayout());
+        whiteCombo = new JComboBox<String>(whiteNames);
+        blackCombo = new JComboBox<String>(blackNames);
+        whiteScroll = new JScrollPane(whiteCombo);
+        blackScroll = new JScrollPane(blackCombo);
+        whiteComboPanel.setLayout(new FlowLayout());
         bComboPanel.setLayout(new FlowLayout());
-        wselect = new Button("Select");
-        bselect = new Button("Select");
-        wselect.addActionListener(new SelectHandler(Piece.WHITE_COLOR));
-        bselect.addActionListener(new SelectHandler(Piece.BLACK_COLOR));
-        WNewPlayer = new Button("New Player");
-        BNewPlayer = new Button("New Player");
-        WNewPlayer.addActionListener(new Handler(Piece.WHITE_COLOR));
-        BNewPlayer.addActionListener(new Handler(Piece.BLACK_COLOR));
-        wComboPanel.add(wScroll);
-        wComboPanel.add(wselect);
-        wComboPanel.add(WNewPlayer);
-        bComboPanel.add(bScroll);
-        bComboPanel.add(bselect);
-        bComboPanel.add(BNewPlayer);
-        whitePlayer.add(wComboPanel, BorderLayout.NORTH);
+        whiteselect = new Button("Select");
+        blackselect = new Button("Select");
+        whiteselect.addActionListener(new SelectHandler(0));
+        blackselect.addActionListener(new SelectHandler(1));
+        whiteNewPlayer = new Button("New Player");
+        blackNewPlayer = new Button("New Player");
+   
+        
+        whiteNewPlayer.addActionListener(new Handler(0));
+        blackNewPlayer.addActionListener(new Handler(1));
+        Button saveCurrentSessionBtn = new Button("Save current session");
+        Button restorePrevSessionBtn = new Button("Restore previous session");
+        saveCurrentSessionBtn.setPreferredSize(new Dimension(80, 20));
+        saveCurrentSessionBtn.addActionListener(new SessionSaveHandler());
+        restorePrevSessionBtn.addActionListener(new SessionRestoreHandler());
+        JPanel session = new JPanel(new GridLayout(1, 1));
+        session.setSize(10, 10);
+        session.add(saveCurrentSessionBtn);
+        session.add(restorePrevSessionBtn);
+        whiteComboPanel.add(whiteScroll);
+        whiteComboPanel.add(whiteselect);
+        whiteComboPanel.add(whiteNewPlayer);
+        bComboPanel.add(blackScroll);
+        bComboPanel.add(blackselect);
+        bComboPanel.add(blackNewPlayer);
+        whitePlayer.add(whiteComboPanel, BorderLayout.NORTH);
         blackPlayer.add(bComboPanel, BorderLayout.NORTH);
         whitestats.add(new JLabel("Name   :"));
         whitestats.add(new JLabel("Played :"));
@@ -179,6 +225,7 @@ public class Main extends JFrame implements MouseListener {
         blackPlayer.add(blackstats, BorderLayout.WEST);
         controlPanel.add(whitePlayer);
         controlPanel.add(blackPlayer);
+        controlPanel.add(session);
     }
 
     private void defineTimeVariables() throws HeadlessException {
@@ -241,22 +288,22 @@ public class Main extends JFrame implements MouseListener {
         while (bitr.hasNext()) {
             bNames.add(bitr.next().name());
         }
-        WNames = wNames.toArray(WNames);
-        BNames = bNames.toArray(BNames);
+        whiteNames = wNames.toArray(whiteNames);
+        blackNames = bNames.toArray(blackNames);
     }
 
     private void initializeMainMethodVariable() {
         timeRemaining = 60;
         timeSlider = new JSlider();
         move = "White";
-        wName = null;
-        bName = null;
+        whiteName = null;
+        blackName = null;
         winner = null;
-        board = new JPanel(new GridLayout(12, 12));
-        wDetails = new JPanel(new GridLayout(3, 3));
-        bDetails = new JPanel(new GridLayout(3, 3));
+        board = new JPanel(new GridLayout(8, 8));
+        whiteDetails = new JPanel(new GridLayout(3, 3));
+        blackDetails = new JPanel(new GridLayout(3, 3));
         bComboPanel = new JPanel();
-        wComboPanel = new JPanel();
+        whiteComboPanel = new JPanel();
         wNames = new ArrayList<String>();
         bNames = new ArrayList<String>();
         board.setMinimumSize(new Dimension(800, 700));
@@ -316,6 +363,16 @@ public class Main extends JFrame implements MouseListener {
             }
         }
     }
+    
+   /* public void setPreviousSession(){
+    	FileOutputStream fileOut =
+    	         new FileOutputStream("/tmp/employee.ser");
+    	         ObjectOutputStream out = new ObjectOutputStream(fileOut);
+    	         out.writeObject();
+    	         out.close();
+    	         fileOut.close();
+    	         System.out.printf("Serialized data is saved in /tmp/employee.ser");
+    } */
 
     //A function to set time slider details
     public void setTimerSliderDetails(JSlider timeSlider) {
@@ -359,7 +416,7 @@ public class Main extends JFrame implements MouseListener {
 
     //A function to retrieve the black King or white King
     private King getKing(int color) {
-        if (color == Piece.WHITE_COLOR) {
+        if (color == 0) {
             return whiteKing;
         } else {
             return blackKing;
@@ -525,8 +582,8 @@ public class Main extends JFrame implements MouseListener {
             winner = black.name();
         }
         JOptionPane.showMessageDialog(board, "Checkmate!!!\n" + winner + " wins");
-        whitePlayer.remove(wDetails);
-        blackPlayer.remove(bDetails);
+        whitePlayer.remove(whiteDetails);
+        blackPlayer.remove(blackDetails);
         displayTime.remove(label);
 
         displayTime.add(start);
@@ -537,10 +594,10 @@ public class Main extends JFrame implements MouseListener {
 
         split.remove(board);
         split.add(temp);
-        WNewPlayer.enable();
-        BNewPlayer.enable();
-        wselect.enable();
-        bselect.enable();
+        whiteNewPlayer.enable();
+        blackNewPlayer.enable();
+        whiteselect.enable();
+        blackselect.enable();
         end = true;
         Mainboard.disable();
         Mainboard.dispose();
@@ -549,7 +606,7 @@ public class Main extends JFrame implements MouseListener {
         Mainboard.setResizable(false);
     }
 
-    //These are the abstract function of the parent class. Only relevant method here is the On-Click Fuction
+    //These are the abstract function of the parent class. Only relevant method here is the On-Click Function
     //which is called when the user clicks on a particular cell
     @Override
     public void mouseClicked(MouseEvent arg0) {
@@ -579,11 +636,13 @@ public class Main extends JFrame implements MouseListener {
             destinationList.clear();
             previous = null;
         } else if (cell.getPiece() == null || previous.getPieceColor() != cell.getPieceColor()) {
+        	
             if (cell.isPossibleDestination()) {
                 if (cell.getPiece() != null) {
+                	cell.getPiece().playSoundForKill();
                     cell.removePiece();
                 }
-                cell.setPiece(previous.getPiece());
+                cell.setPiece(previous.getPiece()); // moving the Piece
                 if (previous.isCheck()) {
                     previous.removeCheck();
                 }
@@ -675,10 +734,10 @@ public class Main extends JFrame implements MouseListener {
             white.updatePlayer();
             black.updateGamesPlayed();
             black.updatePlayer();
-            WNewPlayer.disable();
-            BNewPlayer.disable();
-            wselect.disable();
-            bselect.disable();
+            whiteNewPlayer.disable();
+            blackNewPlayer.disable();
+            whiteselect.disable();
+            blackselect.disable();
             split.remove(temp);
             split.add(board);
             showPlayer.remove(timeSlider);
@@ -704,6 +763,93 @@ public class Main extends JFrame implements MouseListener {
             timeRemaining = timeSlider.getValue() * 60;
         }
     }
+    
+    
+    
+    
+    class SessionSaveHandler implements ActionListener {
+
+  		@Override
+  		public void actionPerformed(ActionEvent e) {
+  			// TODO Auto-generated method stub
+  			try{
+  				
+  				ArrayList<Piece> piecesList = new ArrayList<Piece>();
+  				for(int i=0;i<8;i++){
+  					for(int j=0;j<8;j++){
+  						if(null==boardState[i][j].getPiece()){
+  							Piece nullPiece= new NullPiece();
+  							piecesList.add(nullPiece);
+  						}
+  						else{
+  							piecesList.add(boardState[i][j].getPiece()); 
+  					}
+  				}
+  				}
+  	    	FileOutputStream fileOut =
+  	    	         new FileOutputStream("/Users/omerhayat/Projects/DesignPatternsCourseProject/session.ser");
+  	    	         ObjectOutputStream out = new ObjectOutputStream(fileOut);
+  	    	         out.writeObject(piecesList);
+  	    	         out.close();
+  	    	         fileOut.close();
+  	    	         System.out.printf("Serialized data saved");
+  			}
+  			catch(Exception ex){
+  				System.out.println("Exception occured"+ex);
+  			}
+  		}
+      	
+      }
+    
+    
+    class SessionRestoreHandler implements ActionListener {
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			try{
+				
+				for(int i=0;i<8;i++){
+  					for(int j=0;j<8;j++){
+  						if(null!=boardState[i][j].getPiece()){
+  							boardState[i][j].removePiece();
+  							}
+  					}
+				}
+				
+	    	FileInputStream fileIn =
+	    	         new FileInputStream("/Users/omerhayat/Projects/DesignPatternsCourseProject/session.ser");
+	    	ObjectInputStream in = new ObjectInputStream(fileIn);
+	    	ArrayList<Piece> piecesList = new ArrayList<Piece>();
+	    	piecesList = (ArrayList<Piece>)in.readObject();
+	    	int k=0;
+	    	Piece item;
+	    	for(int i=0;i<8;i++){
+					for(int j=0;j<8;j++){
+						try{
+						item=piecesList.get(k++);
+						}
+						catch(NullPointerException ex){
+							item=null;
+						}
+							if(!(item instanceof NullPiece))
+							boardState[i][j].setPiece(item);
+					}
+				}
+	    	
+	    	
+	    	//boardState=newboardstate;
+	    	in.close();
+	    	fileIn.close();
+	    	System.out.printf("Serialized data loaded");
+			}
+			catch(Exception ex){
+				System.out.println("Exception occured"+ex);
+			}
+		}
+    	
+    }
+    
 
     class SelectHandler implements ActionListener {
 
@@ -717,17 +863,17 @@ public class Main extends JFrame implements MouseListener {
         public void actionPerformed(ActionEvent arg0) {
             // TODO Auto-generated method stub
             tempPlayer = null;
-            String n = (color == Piece.WHITE_COLOR) ? wName : bName;
-            JComboBox<String> jc = (color == Piece.WHITE_COLOR) ? wCombo : bCombo;
-            JComboBox<String> ojc = (color == Piece.WHITE_COLOR) ? bCombo : wCombo;
-            ArrayList<Player> pl = (color == Piece.WHITE_COLOR) ? wPlayer : bPlayer;
+            String n = (color == 0) ? whiteName : blackName;
+            JComboBox<String> jc = (color == 0) ? whiteCombo : blackCombo;
+            JComboBox<String> ojc = (color == 0) ? blackCombo : whiteCombo;
+            ArrayList<Player> pl = (color == 0) ? wPlayer : bPlayer;
             //ArrayList<Player> otherPlayer=(color==0)?bPlayer:wPlayer;
             ArrayList<Player> opl = Player.fetchPlayers();
             if (opl.isEmpty()) {
                 return;
             }
-            JPanel det = (color == Piece.WHITE_COLOR) ? wDetails : bDetails;
-            JPanel PL = (color == Piece.WHITE_COLOR) ? whitePlayer : blackPlayer;
+            JPanel det = (color == 0) ? whiteDetails : blackDetails;
+            JPanel PL = (color == 0) ? whitePlayer : blackPlayer;
             if (selected == true) {
                 det.removeAll();
             }
@@ -752,7 +898,7 @@ public class Main extends JFrame implements MouseListener {
             if (tempPlayer == null) {
                 return;
             }
-            if (color == Piece.WHITE_COLOR) {
+            if (color == 0) {
                 white = tempPlayer;
             } else {
                 black = tempPlayer;
@@ -786,14 +932,14 @@ public class Main extends JFrame implements MouseListener {
         public void actionPerformed(ActionEvent e) {
             // TODO Auto-generated method stub
             String name;
-            name = (color == Piece.WHITE_COLOR) ? wName : bName;
+            name = (color == 0) ? whiteName : blackName;
 
             JPanel j;
-            j = (color == Piece.WHITE_COLOR) ? whitePlayer : blackPlayer;
+            j = (color == 0) ? whitePlayer : blackPlayer;
 
             ArrayList<Player> N = Player.fetchPlayers();
             Iterator<Player> it = N.iterator();
-            JPanel detail = (color == Piece.WHITE_COLOR) ? wDetails : bDetails;
+            JPanel detail = (color == 0) ? whiteDetails : blackDetails;
             name = JOptionPane.showInputDialog(j, "Enter your name");
 
             if (name != null) {
@@ -808,7 +954,7 @@ public class Main extends JFrame implements MouseListener {
                 if (name.length() != 0) {
                     Player tem = new Player(name);
                     tem.updatePlayer();
-                    if (color == Piece.WHITE_COLOR) {
+                    if (color == 0) {
                         white = tem;
                     } else {
                         black = tem;
