@@ -5,6 +5,8 @@
  */
 package chess;
 
+import java.awt.Graphics;
+
 /**
  *
  * @author feroze
@@ -15,8 +17,6 @@ public class GameSettings extends javax.swing.JFrame {
      * Creates new form GameSettings
      */
     public GameSettings() {
-        gameSettingsMain();
-        this.setVisible(true);
         initComponents();
     }
 
@@ -29,14 +29,14 @@ public class GameSettings extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        themeButtonGroup = new javax.swing.ButtonGroup();
         selectTheme = new javax.swing.JLabel();
         classic = new javax.swing.JRadioButton();
         blueBerryPie = new javax.swing.JRadioButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-
         selectTheme.setText("Select Theme");
 
+        themeButtonGroup.add(classic);
         classic.setText("Classic ");
         classic.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -44,6 +44,7 @@ public class GameSettings extends javax.swing.JFrame {
             }
         });
 
+        themeButtonGroup.add(blueBerryPie);
         blueBerryPie.setText("Blue Berry Pie");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -82,7 +83,7 @@ public class GameSettings extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void gameSettingsMain() {
+    public void gameSettingsWindow() {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -114,11 +115,14 @@ public class GameSettings extends javax.swing.JFrame {
             }
         });
         */
+        this.setVisible(true);
     }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JRadioButton blueBerryPie;
     private javax.swing.JRadioButton classic;
     private javax.swing.JLabel selectTheme;
+    private javax.swing.ButtonGroup themeButtonGroup;
     // End of variables declaration//GEN-END:variables
 }

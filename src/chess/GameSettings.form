@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
 <Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
-  <Properties>
-    <Property name="defaultCloseOperation" type="int" value="2"/>
-  </Properties>
+  <NonVisualComponents>
+    <Component class="javax.swing.ButtonGroup" name="themeButtonGroup">
+    </Component>
+  </NonVisualComponents>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
     <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
@@ -60,6 +61,9 @@
     </Component>
     <Component class="javax.swing.JRadioButton" name="classic">
       <Properties>
+        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+          <ComponentRef name="themeButtonGroup"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Classic "/>
       </Properties>
       <Events>
@@ -68,6 +72,9 @@
     </Component>
     <Component class="javax.swing.JRadioButton" name="blueBerryPie">
       <Properties>
+        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+          <ComponentRef name="themeButtonGroup"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Blue Berry Pie"/>
       </Properties>
     </Component>

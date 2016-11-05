@@ -14,6 +14,22 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import javax.crypto.NullCipher;
+import javax.imageio.ImageIO;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.swing.*;
+import javax.swing.border.TitledBorder;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
+
+import pieces.*;
+import theme.*;
+
+import java.awt.*;
+import java.awt.event.*;
+import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileInputStream;
@@ -95,7 +111,7 @@ public class Main extends JFrame implements MouseListener,Serializable {
     private String[] whiteNames = {}, blackNames = {};
     private JSlider timeSlider;
     private BufferedImage image;
-    private Button start, whiteselect, blackselect, whiteNewPlayer, blackNewPlayer;
+    private Button start, whiteselect, blackselect, whiteNewPlayer, blackNewPlayer, quit;
     public static int timeRemaining = 60;
     private String whitePlayerName;
     private String blackPlayerName;
@@ -204,6 +220,8 @@ public class Main extends JFrame implements MouseListener,Serializable {
         blackselect.addActionListener(new SelectHandler(1));
         whiteNewPlayer = new Button("New Player");
         blackNewPlayer = new Button("New Player");
+        quit = new Button("QUIT GAME");
+        quit.setPreferredSize(new Dimension(20, 20));
    
         
         whiteNewPlayer.addActionListener(new Handler(0));
@@ -214,10 +232,18 @@ public class Main extends JFrame implements MouseListener,Serializable {
         saveCurrentSessionBtn.addActionListener(new SessionSaveHandler());
         restorePrevSessionBtn.addActionListener(new SessionRestoreHandler());
         JPanel session = new JPanel(new GridLayout(2, 2));
+        quit.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                quitBtnAction(ae); //To change body of generated methods, choose Tools | Templates.
+            }
+        });
+        JPanel session = new JPanel(new GridLayout(1, 1));
         session.setSize(10, 10);
         session.add(sessionScroll);
         session.add(saveCurrentSessionBtn);
         session.add(restorePrevSessionBtn);
+        session.add(quit);
         whiteComboPanel.add(whiteScroll);
         whiteComboPanel.add(whiteselect);
         whiteComboPanel.add(whiteNewPlayer);
@@ -462,6 +488,10 @@ public class Main extends JFrame implements MouseListener,Serializable {
         }
     }
 
+    private void quitBtnAction(java.awt.event.ActionEvent evt) {                                                   
+        // TODO add your handling code here:
+        System.exit(1);
+    }                                                  
     //Function to check if the king will be in danger if the given move is made
     private boolean willKingBeInDanger(Cell fromcell, Cell tocell) {
         Cell newboardstate[][] = new Cell[8][8];

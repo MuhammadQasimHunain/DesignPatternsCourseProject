@@ -5,6 +5,21 @@
  */
 package chess;
 
+import java.awt.Graphics;
+import sun.java2d.pipe.DrawImage;
+import java.awt.Image;
+import javax.swing.ImageIcon;
+
+import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+
+import javax.swing.Box;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+
 /**
  *
  * @author feroze
@@ -16,6 +31,7 @@ public class StartPage extends javax.swing.JFrame {
      */
     public StartPage() {
         initComponents();
+        StartPanel sp = new StartPanel(); 
     }
 
     /**
@@ -37,8 +53,11 @@ public class StartPage extends javax.swing.JFrame {
         setTitle("Chess");
         setResizable(false);
 
+        startPanel.setDebugGraphicsOptions(javax.swing.DebugGraphics.LOG_OPTION);
+        startPanel.setOpaque(false);
         startPanel.setPreferredSize(new java.awt.Dimension(1110, 700));
 
+        startNewGameButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/chess/start.png"))); // NOI18N
         startNewGameButton.setText("Start New Game");
         startNewGameButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -46,6 +65,7 @@ public class StartPage extends javax.swing.JFrame {
             }
         });
 
+        loadGameButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/chess/load.png"))); // NOI18N
         loadGameButton.setText("Load Game");
         loadGameButton.setMaximumSize(new java.awt.Dimension(104, 31));
         loadGameButton.setMinimumSize(new java.awt.Dimension(104, 31));
@@ -55,6 +75,7 @@ public class StartPage extends javax.swing.JFrame {
             }
         });
 
+        gameSettingsButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/chess/setting.png"))); // NOI18N
         gameSettingsButton.setText("Settings");
         gameSettingsButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -62,6 +83,7 @@ public class StartPage extends javax.swing.JFrame {
             }
         });
 
+        exitButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/chess/iconBtnExit.png"))); // NOI18N
         exitButton.setText("Exit");
         exitButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -74,36 +96,36 @@ public class StartPage extends javax.swing.JFrame {
         startPanelLayout.setHorizontalGroup(
             startPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(startPanelLayout.createSequentialGroup()
-                .addGap(354, 354, 354)
+                .addGap(339, 339, 339)
                 .addGroup(startPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(exitButton, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
-                    .addComponent(gameSettingsButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(startNewGameButton, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
-                    .addComponent(loadGameButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(531, Short.MAX_VALUE))
+                    .addComponent(exitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(gameSettingsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(loadGameButton, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(startNewGameButton, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addContainerGap(452, Short.MAX_VALUE))
         );
         startPanelLayout.setVerticalGroup(
             startPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(startPanelLayout.createSequentialGroup()
-                .addGap(83, 83, 83)
-                .addComponent(startNewGameButton, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(101, 101, 101)
+                .addComponent(startNewGameButton, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26)
-                .addComponent(loadGameButton, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
+                .addComponent(loadGameButton, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(gameSettingsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(37, 37, 37)
-                .addComponent(exitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(255, Short.MAX_VALUE))
+                .addGap(31, 31, 31)
+                .addComponent(exitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(268, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(startPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -130,7 +152,8 @@ public class StartPage extends javax.swing.JFrame {
 
     private void gameSettingsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gameSettingsButtonActionPerformed
         // TODO add your handling code here:
-        GameSettings gs = new GameSettings();
+        //GameSettings gs = new GameSettings();
+        gs.gameSettingsWindow();
     }//GEN-LAST:event_gameSettingsButtonActionPerformed
 
     private void exitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitButtonActionPerformed
@@ -138,6 +161,25 @@ public class StartPage extends javax.swing.JFrame {
         System.exit(1);
     }//GEN-LAST:event_exitButtonActionPerformed
 
+    
+
+    @Override
+    public void paintComponents(Graphics grphcs) {
+        java.awt.Dimension dimension = startPanel.getSize();
+	grphcs.drawImage(BG_IMAGE_MENU, 0, 0, dimension.width, dimension.height, null);
+	startPanel.setOpaque(false);
+        super.paintComponents(grphcs); 
+        //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    /*
+    public void setBackground(Graphics g){
+        Dimension d = getSize();
+	g.drawImage(Utils.BG_IMAGE_MENU, 0, 0, d.width, d.height, null);
+	javax.swing.JComponent.set(false);
+	super.paintComponent(g);
+    }
+    */
     /**
      * @param args the command line arguments
      */
@@ -164,20 +206,45 @@ public class StartPage extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(StartPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new StartPage().setVisible(true);
+                StartPage sp = new StartPage();//.setVisible(true);
+                sp.setVisible(true);
+                //sp.paintComponents(grphcs);
             }
         });
+        
+        //startPanel.paintComponents(grphcs);
+        
+        
     }
+    
 
+    private GameSettings gs = new GameSettings();
+    public static final Image BG_IMAGE_MENU = new ImageIcon(StartPage.class.getResource("chess-wallpaper.jpg")).getImage();
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton exitButton;
     private javax.swing.JButton gameSettingsButton;
     private javax.swing.JButton loadGameButton;
     private javax.swing.JButton startNewGameButton;
-    private javax.swing.JPanel startPanel;
+    public javax.swing.JPanel startPanel;
     // End of variables declaration//GEN-END:variables
+
+
+class StartPanel extends JPanel{
+    
+    public StartPanel(){
+        this.setVisible(true);
+    }
+        protected void paintComponent(Graphics grphcs) {
+        java.awt.Dimension dimension = startPanel.getSize();
+	grphcs.drawImage(StartPage.BG_IMAGE_MENU, 0, 0, dimension.width, dimension.height, null);
+	this.setOpaque(false);
+        super.paintComponents(grphcs);
+        }
+    }
+
 }
