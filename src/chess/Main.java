@@ -238,7 +238,6 @@ public class Main extends JFrame implements MouseListener,Serializable {
                 quitBtnAction(ae); //To change body of generated methods, choose Tools | Templates.
             }
         });
-        JPanel session = new JPanel(new GridLayout(1, 1));
         session.setSize(10, 10);
         session.add(sessionScroll);
         session.add(saveCurrentSessionBtn);

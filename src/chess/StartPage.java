@@ -31,7 +31,6 @@ public class StartPage extends javax.swing.JFrame {
      */
     public StartPage() {
         initComponents();
-        StartPanel sp = new StartPanel(); 
     }
 
     /**
@@ -152,7 +151,6 @@ public class StartPage extends javax.swing.JFrame {
 
     private void gameSettingsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gameSettingsButtonActionPerformed
         // TODO add your handling code here:
-        //GameSettings gs = new GameSettings();
         gs.gameSettingsWindow();
     }//GEN-LAST:event_gameSettingsButtonActionPerformed
 
@@ -206,22 +204,14 @@ public class StartPage extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(StartPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                StartPage sp = new StartPage();//.setVisible(true);
-                sp.setVisible(true);
-                //sp.paintComponents(grphcs);
+                new StartPage().setVisible(true);
             }
         });
-        
-        //startPanel.paintComponents(grphcs);
-        
-        
     }
-    
 
     private GameSettings gs = new GameSettings();
     public static final Image BG_IMAGE_MENU = new ImageIcon(StartPage.class.getResource("chess-wallpaper.jpg")).getImage();
@@ -232,19 +222,4 @@ public class StartPage extends javax.swing.JFrame {
     private javax.swing.JButton startNewGameButton;
     public javax.swing.JPanel startPanel;
     // End of variables declaration//GEN-END:variables
-
-
-class StartPanel extends JPanel{
-    
-    public StartPanel(){
-        this.setVisible(true);
-    }
-        protected void paintComponent(Graphics grphcs) {
-        java.awt.Dimension dimension = startPanel.getSize();
-	grphcs.drawImage(StartPage.BG_IMAGE_MENU, 0, 0, dimension.width, dimension.height, null);
-	this.setOpaque(false);
-        super.paintComponents(grphcs);
-        }
-    }
-
 }

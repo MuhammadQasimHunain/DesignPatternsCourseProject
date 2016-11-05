@@ -119,6 +119,7 @@ public class GameSettings extends javax.swing.JFrame {
     }
     
 
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JRadioButton blueBerryPie;
     private javax.swing.JRadioButton classic;
