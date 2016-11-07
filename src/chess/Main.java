@@ -14,12 +14,14 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+
 import javax.crypto.NullCipher;
 import javax.imageio.ImageIO;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.swing.*;
+import javax.swing.border.Border;
 import javax.swing.border.TitledBorder;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
@@ -29,7 +31,6 @@ import theme.*;
 
 import java.awt.*;
 import java.awt.event.*;
-import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileInputStream;
@@ -92,7 +93,8 @@ public class Main extends JFrame implements MouseListener,Serializable {
     private JPanel whiteComboPanel = new JPanel();
     private JPanel bComboPanel = new JPanel();
     private JPanel sessionComboPanel = new JPanel();
-    private JPanel controlPanel, whitePlayer, blackPlayer, temp, displayTime, showPlayer, time;
+    private JPanel whitePlayer, blackPlayer, temp, displayTime, showPlayer, time;
+    public static JPanel controlPanel;
     private JSplitPane split;
     private JLabel label, mov;
     private static JLabel CHNC;
@@ -103,8 +105,9 @@ public class Main extends JFrame implements MouseListener,Serializable {
     private ArrayList<Player> wPlayer, bPlayer;
     private ArrayList<String> wNames = new ArrayList<String>();
     private ArrayList<String> bNames = new ArrayList<String>();
-    private JComboBox<String> whiteCombo, blackCombo, sessionCombo;
-    private String whiteName = null, blackName = null, winner = null;
+    private JComboBox<String> whiteCombo, blackCombo;
+    private static JComboBox<String> sessionCombo;
+    public static String whiteName = null, blackName = null, winner = null;
     static String move;
     private Player tempPlayer;
     private JScrollPane whiteScroll, blackScroll,sessionScroll;
@@ -127,6 +130,120 @@ public class Main extends JFrame implements MouseListener,Serializable {
         Mainboard.setResizable(false);
     }
 
+    public static void loadGame() {
+
+        variableInitialization();
+
+        //Setting up the board
+        Mainboard = new Main(1);
+        Mainboard.setVisible(true);
+        Mainboard.setResizable(true);
+    }
+    
+    
+    public void restoreSession(){
+    	try{
+			
+			for(int i=0;i<8;i++){
+					for(int j=0;j<8;j++){
+						if(null!=boardState[i][j].getPiece()){
+							boardState[i][j].removePiece();
+							}
+					}
+			}
+			String path=System.getProperty("user.dir") + File.separator + "sessions" +File.separator + (String)sessionCombo.getSelectedItem()+".ser";
+		 
+    	FileInputStream fileIn =
+    	         new FileInputStream(path);
+    	ObjectInputStream in = new ObjectInputStream(fileIn);
+    	ArrayList<Piece> piecesList = new ArrayList<Piece>();
+    	piecesList = (ArrayList<Piece>)in.readObject();
+    	int k=0;
+    	Piece item;
+    	for(int i=0;i<8;i++){
+				for(int j=0;j<8;j++){
+					try{
+					item=piecesList.get(k++);
+					}
+					catch(NullPointerException ex){
+						item=null;
+					}
+						if(!(item instanceof NullPiece))
+						boardState[i][j].setPiece(item);
+				}
+			}
+    	
+    	
+    	//boardState=newboardstate;
+    	in.close();
+    	fileIn.close();
+    	System.out.printf("Serialized data loaded");
+		}
+		catch(Exception ex){
+			System.out.println("Exception occured"+ex);
+		}
+    	}
+    
+    
+    
+    public void selectPlayer(int color){
+    tempPlayer = null;
+    String playerName = (color == 0) ? whiteName : blackName;
+   
+    JComboBox<String> jc = (color == 0) ? whiteCombo : blackCombo;
+    JComboBox<String> ojc = (color == 0) ? blackCombo : whiteCombo;
+    ArrayList<Player> pl = (color == 0) ? wPlayer : bPlayer;
+    //ArrayList<Player> otherPlayer=(color==0)?bPlayer:wPlayer;
+    ArrayList<Player> opl = Player.fetchPlayers();
+    if (opl.isEmpty()) {
+        return;
+    }
+    JPanel det = (color == 0) ? whiteDetails : blackDetails;
+    JPanel PL = (color == 0) ? whitePlayer : blackPlayer;
+    if (selected == true) {
+        det.removeAll();
+    }
+    if (color == 0) {
+    playerName = whiteName;
+    }
+    else{
+    	playerName = blackName;
+    }
+    Iterator<Player> it = pl.iterator();
+    while (it.hasNext()) {
+        Player p = it.next();
+        if (p.name().equals(playerName)) {
+            tempPlayer = p;
+            break;
+        }
+    }
+    if (tempPlayer == null) {
+        return;
+    }
+    if (color == 0) {
+        white = tempPlayer;
+    } else {
+        black = tempPlayer;
+    }
+    bPlayer = opl;
+    ojc.removeAllItems();
+    for (Player s : opl) {
+        ojc.addItem(s.name());
+    }
+    det.add(new JLabel(" " + tempPlayer.name()));
+    det.add(new JLabel(" " + tempPlayer.getGamesPlayed()));
+    det.add(new JLabel(" " + tempPlayer.getGamesWon()));
+    if ((color == 0) )
+    	whitePlayerName=tempPlayer.name();
+    else
+    	blackPlayerName=tempPlayer.name();
+
+    PL.revalidate();
+    PL.repaint();
+    PL.add(det);
+    selected = true;
+    }
+    
     private static void variableInitialization() {
         //variable initialization
         whiteRook01 = new Rook("WR01", "White_Rook.png", 0);
@@ -180,6 +297,33 @@ public class Main extends JFrame implements MouseListener,Serializable {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
     }
 
+private Main(int a) {
+        
+        initializeMainMethodVariable();
+
+        setTimerSliderDetails(timeSlider);
+
+        fetchingPlayersDetails();
+
+        defineFrameLayout();
+
+        definePalyerDialogBox();
+
+        defineGameBoard(1);
+
+        //Defining all the Cells
+        defineAllCells();
+
+        defineTimeVariables(1);
+
+        resizingForInActiveGame();
+
+        content.add(split);
+         
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+    }
+    
+    
     private void resizingForInActiveGame() {
         //The Left Layout When Game is inactive
         temp = new JPanel() {
@@ -264,6 +408,71 @@ public class Main extends JFrame implements MouseListener,Serializable {
         controlPanel.add(session);
     }
 
+    
+    private void defineGameBoard(int a) throws HeadlessException {
+        JPanel whitestats = new JPanel(new GridLayout(3, 3));
+        JPanel blackstats = new JPanel(new GridLayout(3, 3));
+        whiteCombo = new JComboBox<String>(whiteNames);
+        blackCombo = new JComboBox<String>(blackNames);
+        whiteScroll = new JScrollPane(whiteCombo);
+        blackScroll = new JScrollPane(blackCombo);
+        populateScroolList();
+        sessionCombo = new JComboBox<String>(sessionList);
+        sessionScroll = new JScrollPane(sessionCombo);
+        whiteComboPanel.setLayout(new FlowLayout());
+        bComboPanel.setLayout(new FlowLayout());
+        whiteselect = new Button("Select");
+        blackselect = new Button("Select");
+        whiteselect.addActionListener(new SelectHandler(0));
+        blackselect.addActionListener(new SelectHandler(1));
+        whiteNewPlayer = new Button("New Player");
+        blackNewPlayer = new Button("New Player");
+       // quit = new Button("QUIT GAME");
+       // quit.setPreferredSize(new Dimension(20, 20));
+   
+        
+        whiteNewPlayer.addActionListener(new Handler(0));
+        blackNewPlayer.addActionListener(new Handler(1));
+        Button saveCurrentSessionBtn = new Button("Save current session");
+        Button restorePrevSessionBtn = new Button("Restore previous session");
+        saveCurrentSessionBtn.setPreferredSize(new Dimension(20, 20));
+        saveCurrentSessionBtn.addActionListener(new SessionSaveHandler());
+        restorePrevSessionBtn.addActionListener(new SessionRestoreHandler());
+        JPanel session = new JPanel(new GridLayout(2, 2));
+       /* quit.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                quitBtnAction(ae); //To change body of generated methods, choose Tools | Templates.
+            }
+        }); */
+        session.setSize(10, 10);
+        session.add(sessionScroll);
+       // session.add(saveCurrentSessionBtn);
+       // session.add(restorePrevSessionBtn);
+      //  session.add(quit);
+       // whiteComboPanel.add(whiteScroll);
+       // whiteComboPanel.add(whiteselect);
+       // whiteComboPanel.add(whiteNewPlayer);
+       // bComboPanel.add(blackScroll);
+       // bComboPanel.add(blackselect);
+       // bComboPanel.add(blackNewPlayer);
+        whitePlayer.add(whiteComboPanel, BorderLayout.NORTH);
+        blackPlayer.add(bComboPanel, BorderLayout.NORTH);
+        whitestats.add(new JLabel("Name   :"));
+        whitestats.add(new JLabel("Played :"));
+        whitestats.add(new JLabel("Won    :"));
+        blackstats.add(new JLabel("Name   :"));
+        blackstats.add(new JLabel("Played :"));
+        blackstats.add(new JLabel("Won    :"));
+        whitePlayer.add(whitestats, BorderLayout.WEST);
+        blackPlayer.add(blackstats, BorderLayout.WEST);
+        controlPanel.add(whitePlayer);
+        controlPanel.add(blackPlayer);
+        controlPanel.add(session);
+    }
+    
+    
+    
 	private void populateScroolList() {
 		File folder = new File(System.getProperty("user.dir") + File.separator + "sessions");
         File[] listOfFiles = folder.listFiles();
@@ -291,6 +500,29 @@ public class Main extends JFrame implements MouseListener,Serializable {
         time = new JPanel(new GridLayout(3, 3));
         time.add(setTime);
         time.add(showPlayer);
+        displayTime.add(start);
+        time.add(displayTime);
+        controlPanel.add(time);
+        board.setMinimumSize(new Dimension(800, 700));
+    }
+    
+    
+    private void defineTimeVariables(int a) throws HeadlessException {
+        showPlayer = new JPanel(new FlowLayout());
+        showPlayer.add(timeSlider);
+        JLabel setTime = new JLabel("Set Timer(in mins):");
+        start = new Button("Load");
+        start.setBackground(Color.black);
+        start.setForeground(Color.white);
+        start.addActionListener(new LOAD());
+        start.setPreferredSize(new Dimension(120, 40));
+        setTime.setFont(new Font("Arial", Font.BOLD, 16));
+        label = new JLabel("Time Starts now", JLabel.CENTER);
+        label.setFont(new Font("SERIF", Font.BOLD, 30));
+        displayTime = new JPanel(new FlowLayout());
+        time = new JPanel(new GridLayout(3, 3));
+        //time.add(setTime);
+        //time.add(showPlayer);
         displayTime.add(start);
         time.add(displayTime);
         controlPanel.add(time);
@@ -807,6 +1039,49 @@ public class Main extends JFrame implements MouseListener,Serializable {
         }
     }
 
+    class LOAD implements ActionListener {
+
+        @SuppressWarnings("deprecation")
+        @Override
+        public void actionPerformed(ActionEvent arg0) {
+            // TODO Auto-generated method stub
+
+           /* if (white == null || black == null) {
+                JOptionPane.showMessageDialog(controlPanel, "Fill in the details");
+                return;
+            }
+            white.updateGamesPlayed();
+            white.updatePlayer();
+            black.updateGamesPlayed();
+            black.updatePlayer(); */
+        	Mainboard.sessionCombo.setVisible(false);
+        	Mainboard.restoreSession();
+        	whiteName=(String)sessionCombo.getSelectedItem().toString().split("-")[0];
+        	blackName=(String)sessionCombo.getSelectedItem().toString().split("-")[1];
+        	Mainboard.selectPlayer(0);
+        	Mainboard.selectPlayer(1);
+            whiteNewPlayer.disable();
+            blackNewPlayer.disable();
+            whiteselect.disable();
+            blackselect.disable();
+            split.remove(temp);
+            split.add(board);
+            showPlayer.remove(timeSlider);
+            mov = new JLabel("Move:");
+            mov.setFont(new Font("Comic Sans MS", Font.PLAIN, 20));
+            mov.setForeground(Color.red);
+            showPlayer.add(mov);
+            CHNC = new JLabel(move);
+            CHNC.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
+            CHNC.setForeground(Color.blue);
+            showPlayer.add(CHNC);
+            displayTime.remove(start);
+            displayTime.add(label);
+            timer = new Time(label);
+            timer.startTimer();
+        }
+    }
+    
     class TimeChange implements ChangeListener {
 
         @Override
@@ -904,6 +1179,12 @@ public class Main extends JFrame implements MouseListener,Serializable {
 				System.out.println("Exception occured"+ex);
 			}
 		}
+    	
+    }
+    
+    
+    class CommonUtils {
+    	
     	
     }
     

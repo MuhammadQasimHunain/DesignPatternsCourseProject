@@ -6,19 +6,9 @@
 package chess;
 
 import java.awt.Graphics;
-import sun.java2d.pipe.DrawImage;
 import java.awt.Image;
+
 import javax.swing.ImageIcon;
-
-import java.awt.Dimension;
-import java.awt.Graphics;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-
-import javax.swing.Box;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
 
 /**
  *
@@ -146,7 +136,8 @@ public class StartPage extends javax.swing.JFrame {
     }//GEN-LAST:event_startNewGameButtonActionPerformed
 
     private void loadGameButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadGameButtonActionPerformed
-        // TODO add your handling code here:
+    	Main.loadGame();
+    	// TODO add your handling code here:
     }//GEN-LAST:event_loadGameButtonActionPerformed
 
     private void gameSettingsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gameSettingsButtonActionPerformed
