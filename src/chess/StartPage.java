@@ -10,6 +10,19 @@ import java.awt.Image;
 
 import javax.swing.ImageIcon;
 
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.DataLine;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
+
 /**
  *
  * @author feroze
@@ -19,7 +32,9 @@ public class StartPage extends javax.swing.JFrame {
     /**
      * Creates new form StartPage
      */
-    public StartPage() {
+    public StartPage() throws UnsupportedAudioFileException, IOException, LineUnavailableException {
+        this.startClip = startPageSoundClip();
+        startClip.start();
         initComponents();
     }
 
@@ -132,6 +147,7 @@ public class StartPage extends javax.swing.JFrame {
     private void startNewGameButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startNewGameButtonActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
+        startClip.stop();
         Main.startMain();
     }//GEN-LAST:event_startNewGameButtonActionPerformed
 
@@ -159,6 +175,17 @@ public class StartPage extends javax.swing.JFrame {
 	startPanel.setOpaque(false);
         super.paintComponents(grphcs); 
         //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    public Clip startPageSoundClip() throws UnsupportedAudioFileException, IOException, LineUnavailableException{
+        String path = new File("src/chess/menu.wav").getAbsolutePath();
+        File soundFile = new File(path);
+        AudioInputStream audioIn = AudioSystem.getAudioInputStream(soundFile);
+        DataLine.Info info = new DataLine.Info(Clip.class, audioIn.getFormat());
+        Clip clip = (Clip)AudioSystem.getLine(info);
+        //Clip clip = AudioSystem.getClip();
+        clip.open(audioIn);
+        return clip;
     }
     
     /*
@@ -199,13 +226,22 @@ public class StartPage extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new StartPage().setVisible(true);
+                try {
+                    new StartPage().setVisible(true);
+                } catch (UnsupportedAudioFileException ex) {
+                    Logger.getLogger(StartPage.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (IOException ex) {
+                    Logger.getLogger(StartPage.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (LineUnavailableException ex) {
+                    Logger.getLogger(StartPage.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
 
     private GameSettings gs = new GameSettings();
     public static final Image BG_IMAGE_MENU = new ImageIcon(StartPage.class.getResource("chess-wallpaper.jpg")).getImage();
+    private final Clip startClip;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton exitButton;
     private javax.swing.JButton gameSettingsButton;

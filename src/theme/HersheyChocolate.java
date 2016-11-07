@@ -6,7 +6,7 @@ public class HersheyChocolate extends Theme {
 
 	public HersheyChocolate() {
 		// TODO Auto-generated constructor stub
-		this.darkCellColor = new Color(78, 46, 40);
+		this.darkCellColor = new Color(88, 56, 50);
 		this.lightCellColor = Color.white;
 		this.pieceImageFolderPath = "";
 	}

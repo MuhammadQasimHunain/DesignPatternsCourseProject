@@ -7,6 +7,8 @@ package chess;
 
 import java.awt.Graphics;
 
+import theme.ThemeFactory;
+
 /**
  *
  * @author feroze
@@ -33,6 +35,8 @@ public class GameSettings extends javax.swing.JFrame {
         selectTheme = new javax.swing.JLabel();
         classic = new javax.swing.JRadioButton();
         blueBerryPie = new javax.swing.JRadioButton();
+        hersheysChoco = new javax.swing.JRadioButton();
+        jButton1 = new javax.swing.JButton();
 
         selectTheme.setText("Select Theme");
 
@@ -46,20 +50,47 @@ public class GameSettings extends javax.swing.JFrame {
 
         themeButtonGroup.add(blueBerryPie);
         blueBerryPie.setText("Blue Berry Pie");
+        blueBerryPie.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                blueBerryPieActionPerformed(evt);
+            }
+        });
+
+        themeButtonGroup.add(hersheysChoco);
+        hersheysChoco.setText("Hershey's Choco");
+        hersheysChoco.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                hersheysChocoActionPerformed(evt);
+            }
+        });
+
+        jButton1.setText("OK");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(68, 68, 68)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(classic)
-                        .addGap(40, 40, 40)
-                        .addComponent(blueBerryPie))
-                    .addComponent(selectTheme, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(123, Short.MAX_VALUE))
+                        .addGap(68, 68, 68)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(classic)
+                                .addGap(18, 18, 18)
+                                .addComponent(blueBerryPie)
+                                .addGap(18, 18, 18)
+                                .addComponent(hersheysChoco))
+                            .addComponent(selectTheme, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(160, 160, 160)
+                        .addComponent(jButton1)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -69,8 +100,11 @@ public class GameSettings extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(classic)
-                    .addComponent(blueBerryPie))
-                .addContainerGap(181, Short.MAX_VALUE))
+                    .addComponent(blueBerryPie)
+                    .addComponent(hersheysChoco))
+                .addGap(69, 69, 69)
+                .addComponent(jButton1)
+                .addContainerGap(81, Short.MAX_VALUE))
         );
 
         pack();
@@ -78,7 +112,24 @@ public class GameSettings extends javax.swing.JFrame {
 
     private void classicActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_classicActionPerformed
         // TODO add your handling code here:
+    	Main.selectedTheme = ThemeFactory.classicTheme;
+    	
     }//GEN-LAST:event_classicActionPerformed
+
+    private void blueBerryPieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_blueBerryPieActionPerformed
+        // TODO add your handling code here:
+    	Main.selectedTheme = ThemeFactory.blueberryPieTheme;
+    }//GEN-LAST:event_blueBerryPieActionPerformed
+
+    private void hersheysChocoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hersheysChocoActionPerformed
+        // TODO add your handling code here:
+    	Main.selectedTheme = ThemeFactory.hersheyChocolateTheme;
+    }//GEN-LAST:event_hersheysChocoActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        this.hide();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -123,6 +174,8 @@ public class GameSettings extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JRadioButton blueBerryPie;
     private javax.swing.JRadioButton classic;
+    private javax.swing.JRadioButton hersheysChoco;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel selectTheme;
     private javax.swing.ButtonGroup themeButtonGroup;
     // End of variables declaration//GEN-END:variables
