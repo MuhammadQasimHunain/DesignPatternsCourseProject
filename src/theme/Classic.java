@@ -6,9 +6,9 @@ public class Classic extends Theme {
 
 	public Classic (){
 //		this.darkCellColor = Color.black;
-		this.darkCellColor = new Color((float)0.0, (float)0.0, (float)0.0, (float)0.5);
+		this.darkCellColor = new Color((float)0.0, (float)0.0, (float)0.0, (float)0.3);
 		this.lightCellColor = Color.white;
-		this.pieceImageFolderPath = "";
+		this.pieceImageAddition = new String("Hershey-");
 		
 	}
 
@@ -36,15 +36,4 @@ public class Classic extends Theme {
 		
 	}
 
-	@Override
-	public String getPieceImageFolderPath() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void setPieceImageFolderPath(String pieceImageFolderPath) {
-		// TODO Auto-generated method stub
-		
-	}
 }

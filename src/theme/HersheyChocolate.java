@@ -8,7 +8,7 @@ public class HersheyChocolate extends Theme {
 		// TODO Auto-generated constructor stub
 		this.darkCellColor = new Color(88, 56, 50);
 		this.lightCellColor = Color.white;
-		this.pieceImageFolderPath = "";
+		this.pieceImageAddition = new String("Hershey-");
 	}
 
 //	@Override
@@ -35,16 +35,5 @@ public class HersheyChocolate extends Theme {
 		
 	}
 
-	@Override
-	public String getPieceImageFolderPath() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void setPieceImageFolderPath(String pieceImageFolderPath) {
-		// TODO Auto-generated method stub
-		
-	}
 
 }

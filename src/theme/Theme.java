@@ -6,7 +6,7 @@ public abstract class Theme {
 
 	Color lightCellColor;
 	Color darkCellColor;
-	String pieceImageFolderPath;
+	String pieceImageAddition;
 
 	public Color getLightCellColor() {
 		return lightCellColor;
@@ -18,9 +18,11 @@ public abstract class Theme {
 	}
 	public abstract void setDarkCellColor(Color darkCellColor) ;
 
-	public abstract String getPieceImageFolderPath() ;
-	public abstract void setPieceImageFolderPath(String pieceImageFolderPath) ;
-	
-//	public abstract Color get
+
+	public String getPieceImageAddition() {
+		return pieceImageAddition;
+	}
+
+
 	
 }

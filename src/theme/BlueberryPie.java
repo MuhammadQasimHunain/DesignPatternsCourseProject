@@ -8,7 +8,7 @@ public class BlueberryPie extends Theme {
 		// TODO Auto-generated constructor stub
 		this.darkCellColor = Color.BLUE;
 		this.lightCellColor = Color.WHITE;
-		this.pieceImageFolderPath = "";
+		this.pieceImageAddition = "";
 	}
 
 	@Override
@@ -35,16 +35,5 @@ public class BlueberryPie extends Theme {
 		
 	}
 
-	@Override
-	public String getPieceImageFolderPath() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void setPieceImageFolderPath(String pieceImageFolderPath) {
-		// TODO Auto-generated method stub
-		
-	}
 
 }
