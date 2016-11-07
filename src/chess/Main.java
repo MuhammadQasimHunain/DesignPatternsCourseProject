@@ -247,33 +247,28 @@ public class Main extends JFrame implements MouseListener,Serializable {
     
     private static void variableInitialization() {
         //variable initialization
-        whiteRook01 = new Rook("WR01", "White_Rook.png", 0);
-        whiteRook02 = new Rook("WR02", "White_Rook.png", 0);
+        whiteRook01 = new Rook("WR01", Main.selectedTheme.getPieceImageAddition() + "White_Rook.png", 0);
+        whiteRook02 = new Rook("WR02", Main.selectedTheme.getPieceImageAddition() + "White_Rook.png", 0);
         blackRook01 = new Rook("BR01", Main.selectedTheme.getPieceImageAddition() + "Black_Rook.png", 1);
         blackRook02 = new Rook("BR02", Main.selectedTheme.getPieceImageAddition() + "Black_Rook.png", 1);
-        whiteKnight01 = new Knight("WK01", "White_Knight.png", 0);
-        whiteKnight02 = new Knight("WK02", "White_Knight.png", 0);
+        whiteKnight01 = new Knight("WK01", Main.selectedTheme.getPieceImageAddition() + "White_Knight.png", 0);
+        whiteKnight02 = new Knight("WK02", Main.selectedTheme.getPieceImageAddition() + "White_Knight.png", 0);
         blackKnight01 = new Knight("BK01", Main.selectedTheme.getPieceImageAddition() + "Black_Knight.png", 1);
         blackKnight02 = new Knight("BK02", Main.selectedTheme.getPieceImageAddition() + "Black_Knight.png", 1);
-        whiteBishop01 = new Bishop("WB01", "White_Bishop.png", 0);
-        whiteBishop02 = new Bishop("WB02", "White_Bishop.png", 0);
+        whiteBishop01 = new Bishop("WB01", Main.selectedTheme.getPieceImageAddition() + "White_Bishop.png", 0);
+        whiteBishop02 = new Bishop("WB02", Main.selectedTheme.getPieceImageAddition() + "White_Bishop.png", 0);
         blackBishop01 = new Bishop("BB01", Main.selectedTheme.getPieceImageAddition() + "Black_Bishop.png", 1);
         blackBishop02 = new Bishop("BB02", Main.selectedTheme.getPieceImageAddition() + "Black_Bishop.png", 1);
-        whiteQueen = new Queen("WQ", "White_Queen.png", 0);
+        whiteQueen = new Queen("WQ", Main.selectedTheme.getPieceImageAddition() + "White_Queen.png", 0);
         blackQueen = new Queen("BQ", Main.selectedTheme.getPieceImageAddition() + "Black_Queen.png", 1);
-        whiteKing = new King("WK", "White_King.png", 0, 7, 3);
-        String path = System.getProperty("user.dir");
-        path = path + "/src/";
+        whiteKing = new King("WK", Main.selectedTheme.getPieceImageAddition() + "White_King.png", 0, 7, 3);
         blackKing = new King("BK", Main.selectedTheme.getPieceImageAddition() + "Black_King.png", 1, 0, 3);
         whitePawn = new Pawn[8];
         blackPawn = new Pawn[8];
         for (int i = 0; i < 8; i++) {
-            whitePawn[i] = new Pawn("WP0" + (i + 1), "White_Pawn.png", 0);
+            whitePawn[i] = new Pawn("WP0" + (i + 1), Main.selectedTheme.getPieceImageAddition() + "White_Pawn.png", 0);
             blackPawn[i] = new Pawn("BP0" + (i + 1), Main.selectedTheme.getPieceImageAddition() + "Black_Pawn.png", 1);
         }
-//        String path = System.getProperty("user.dir");
-//        path = path + "/src/pieces/NewPieceImages";
-        System.out.println("Path : " + path);
         
     }
 

@@ -8,7 +8,7 @@ public class BlueberryPie extends Theme {
 		// TODO Auto-generated constructor stub
 		this.darkCellColor = Color.BLUE;
 		this.lightCellColor = Color.WHITE;
-		this.pieceImageAddition = "";
+		this.pieceImageAddition = new String("Blueberry-");
 	}
 
 	@Override
