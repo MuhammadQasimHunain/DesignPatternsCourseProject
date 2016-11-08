@@ -114,7 +114,7 @@ public class Main extends JFrame implements MouseListener,Serializable {
     private String[] whiteNames = {}, blackNames = {};
     private JSlider timeSlider;
     private BufferedImage image;
-    private Button start, whiteselect, blackselect, whiteNewPlayer, blackNewPlayer, quit;
+    private Button start, whiteselect, blackselect, whiteNewPlayer, blackNewPlayer, quit, restart;
     public static int timeRemaining = 60;
     private String whitePlayerName;
     private String blackPlayerName;
@@ -324,8 +324,7 @@ private Main(int a) {
          
         setDefaultCloseOperation(EXIT_ON_CLOSE);
     }
-    
-    
+      
     private void resizingForInActiveGame() {
         //The Left Layout When Game is inactive
         temp = new JPanel() {
@@ -368,7 +367,8 @@ private Main(int a) {
         blackNewPlayer = new Button("New Player");
         quit = new Button("QUIT GAME");
         quit.setPreferredSize(new Dimension(20, 20));
-   
+        restart = new Button("Restart Game");
+        restart.setPreferredSize(new Dimension(30, 20));
         
         whiteNewPlayer.addActionListener(new Handler(0));
         blackNewPlayer.addActionListener(new Handler(1));
@@ -384,11 +384,18 @@ private Main(int a) {
                 quitBtnAction(ae); //To change body of generated methods, choose Tools | Templates.
             }
         });
+        restart.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                restartBtnAction(ae); //To change body of generated methods, choose Tools | Templates.
+            }
+        });
         session.setSize(10, 10);
         session.add(sessionScroll);
         session.add(saveCurrentSessionBtn);
         session.add(restorePrevSessionBtn);
         session.add(quit);
+        session.add(restart);
         whiteComboPanel.add(whiteScroll);
         whiteComboPanel.add(whiteselect);
         whiteComboPanel.add(whiteNewPlayer);
@@ -411,7 +418,9 @@ private Main(int a) {
     }
 
     
-    private void defineGameBoard(int a) throws HeadlessException {
+
+
+	private void defineGameBoard(int a) throws HeadlessException {
         JPanel whitestats = new JPanel(new GridLayout(3, 3));
         JPanel blackstats = new JPanel(new GridLayout(3, 3));
         whiteCombo = new JComboBox<String>(whiteNames);
@@ -724,7 +733,14 @@ private Main(int a) {
     private void quitBtnAction(java.awt.event.ActionEvent evt) {                                                   
         // TODO add your handling code here:
         System.exit(1);
-    }                                                  
+    }          
+    
+    protected void restartBtnAction(ActionEvent ae) {
+    	Mainboard.setVisible(false);
+    	Mainboard = null;
+    	startMain();
+		
+	}
     //Function to check if the king will be in danger if the given move is made
     private boolean willKingBeInDanger(Cell fromcell, Cell tocell) {
         Cell newboardstate[][] = new Cell[8][8];
