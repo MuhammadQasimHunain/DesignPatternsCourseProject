@@ -7,12 +7,17 @@ package chess;
 
 import java.awt.Color;
 import java.awt.Image;
+
 import javax.swing.ImageIcon;
 
 import java.awt.Graphics;
-
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -23,6 +28,9 @@ import javax.sound.sampled.Clip;
 import javax.sound.sampled.DataLine;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
+
+import pieces.NullPiece;
+import pieces.Piece;
 
 /**
  *
@@ -149,10 +157,14 @@ public class StartPage extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.setVisible(false);
         startClip.stop();
+        Main.startPage = this;
         Main.startMain();
     }//GEN-LAST:event_startNewGameButtonActionPerformed
 
     private void loadGameButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadGameButtonActionPerformed
+        this.setVisible(false);
+        startClip.stop();
+        Main.startPage = this;
     	Main.loadGame();
     	// TODO add your handling code here:
     }//GEN-LAST:event_loadGameButtonActionPerformed
@@ -164,6 +176,9 @@ public class StartPage extends javax.swing.JFrame {
 
     private void exitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitButtonActionPerformed
         // TODO add your handling code here:
+    	
+    	
+ 
         System.exit(1);
     }//GEN-LAST:event_exitButtonActionPerformed
 
@@ -242,7 +257,7 @@ public class StartPage extends javax.swing.JFrame {
 
     private GameSettings gs = new GameSettings();
     public static final Image BG_IMAGE_MENU = new ImageIcon(StartPage.class.getResource("chess-wallpaper.jpg")).getImage();
-    private final Clip startClip;
+    public final Clip startClip;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton exitButton;
     private javax.swing.JButton gameSettingsButton;

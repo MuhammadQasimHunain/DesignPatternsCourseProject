@@ -69,7 +69,7 @@ import pieces.Queen;
 import pieces.Rook;
 import theme.HersheyChocolate;
 
-public class Main extends JFrame implements MouseListener,Serializable {
+public class Main extends JFrame implements MouseListener,Serializable,Runnable {
 
     private static final long serialVersionUID = 1L;
 
@@ -82,6 +82,8 @@ public class Main extends JFrame implements MouseListener,Serializable {
     private static Pawn whitePawn[], blackPawn[];
     private static Queen whiteQueen, blackQueen;
     private static King whiteKing, blackKing;
+    public static ArrayList<Move> moves = new ArrayList<Move>();
+    public static StartPage startPage;
     private Cell cell, previous;
     private int chance = 0;
     private Cell boardState[][];
@@ -128,7 +130,7 @@ public class Main extends JFrame implements MouseListener,Serializable {
         //Setting up the board
         Mainboard = new Main();
         Mainboard.setVisible(true);
-        Mainboard.setResizable(false);
+        Mainboard.setResizable(true);
     }
 
     public static void loadGame() {
@@ -141,7 +143,40 @@ public class Main extends JFrame implements MouseListener,Serializable {
         Mainboard.setResizable(true);
     }
     
-    
+    public void animateSession() {
+    	try{
+			
+			String path=System.getProperty("user.dir") + File.separator + "sessionMoves" +File.separator + (String)sessionCombo.getSelectedItem()+"-moves.ser";
+		 
+    	FileInputStream fileIn =
+    	         new FileInputStream(path);
+    	ObjectInputStream in = new ObjectInputStream(fileIn);
+    	ArrayList<Move> moveList = null;
+    	moveList = (ArrayList<Move>)in.readObject();
+    	
+    	for(int i=0 ; i<moveList.size() ; i++) {
+    		Thread.sleep(1000);
+    		Cell prevCell = boardState[moveList.get(i).prevCellX][moveList.get(i).prevCellY];
+    		cell = prevCell;
+    		this.moveLogic();
+
+    		Thread.sleep(1000);
+    		Cell nextCell = boardState[moveList.get(i).nextCellX][moveList.get(i).nextCellY];
+    		cell = nextCell;
+    		this.moveLogic();
+    	}
+    	
+    	
+    	//boardState=newboardstate;
+    	in.close();
+    	fileIn.close();
+    	System.out.printf("Serialized data loaded");
+		}
+		catch(Exception ex){
+			System.out.println("Exception occured "+ex);
+		}
+
+    }
     public void restoreSession(){
     	try{
 			
@@ -183,6 +218,7 @@ public class Main extends JFrame implements MouseListener,Serializable {
 		catch(Exception ex){
 			System.out.println("Exception occured"+ex);
 		}
+    	
     	}
     
     
@@ -373,10 +409,10 @@ private Main(int a) {
         whiteNewPlayer.addActionListener(new Handler(0));
         blackNewPlayer.addActionListener(new Handler(1));
         Button saveCurrentSessionBtn = new Button("Save current session");
-        Button restorePrevSessionBtn = new Button("Restore previous session");
-        saveCurrentSessionBtn.setPreferredSize(new Dimension(20, 20));
-        saveCurrentSessionBtn.addActionListener(new SessionSaveHandler());
-        restorePrevSessionBtn.addActionListener(new SessionRestoreHandler());
+       // Button restorePrevSessionBtn = new Button("Restore previous session");
+      //  saveCurrentSessionBtn.setPreferredSize(new Dimension(20, 20));
+       saveCurrentSessionBtn.addActionListener(new SessionSaveHandler());
+       // restorePrevSessionBtn.addActionListener(new SessionRestoreHandler());
         JPanel session = new JPanel(new GridLayout(2, 2));
         quit.addActionListener(new ActionListener() {
             @Override
@@ -393,7 +429,7 @@ private Main(int a) {
         session.setSize(10, 10);
         session.add(sessionScroll);
         session.add(saveCurrentSessionBtn);
-        session.add(restorePrevSessionBtn);
+       // session.add(restorePrevSessionBtn);
         session.add(quit);
         session.add(restart);
         whiteComboPanel.add(whiteScroll);
@@ -457,8 +493,8 @@ private Main(int a) {
             }
         }); */
         session.setSize(10, 10);
+        session.add(saveCurrentSessionBtn);
         session.add(sessionScroll);
-       // session.add(saveCurrentSessionBtn);
        // session.add(restorePrevSessionBtn);
       //  session.add(quit);
        // whiteComboPanel.add(whiteScroll);
@@ -732,9 +768,35 @@ private Main(int a) {
 
     private void quitBtnAction(java.awt.event.ActionEvent evt) {                                                   
         // TODO add your handling code here:
-        System.exit(1);
-    }          
+       	System.exit(1);
+    }  
     
+    
+    public void storeMoves(){
+	try{
+		
+			String path=System.getProperty("user.dir") + File.separator + "sessionMoves" + File.separator + whitePlayerName+"-"+blackPlayerName+"-moves.ser";
+
+		
+	PrintWriter writer = new PrintWriter(path ,"UTF-8");
+	writer.close();
+		
+	FileOutputStream fileOut =
+	         new FileOutputStream(path);
+	         ObjectOutputStream out = new ObjectOutputStream(fileOut);
+	         out.writeObject(Main.moves);
+	         out.close();
+	         fileOut.close();
+	         System.out.printf("Serialized data saved");
+    	       Main.startPage.setVisible(true);
+    	       Main.startPage.startClip.start();
+    	       Mainboard.setVisible(false);
+	         
+	}
+	catch(Exception ex){
+		System.out.println("Exception occured"+ex);
+	}
+    }
     protected void restartBtnAction(ActionEvent ae) {
     	Mainboard.setVisible(false);
     	Mainboard = null;
@@ -912,7 +974,14 @@ private Main(int a) {
     @Override
     public void mouseClicked(MouseEvent arg0) {
         // TODO Auto-generated method stub
+        //Mainboard.animateSession();
         cell = (Cell) arg0.getSource();
+       this.moveLogic();
+        
+        
+    }
+    
+    public void moveLogic() {
         if (previous == null) {
             if (cell.getPiece() != null) {
                 if (cell.getPieceColor() != chance) {
@@ -943,7 +1012,12 @@ private Main(int a) {
                 	cell.getPiece().playSoundForKill();
                     cell.removePiece();
                 }
-                cell.setPiece(previous.getPiece()); // moving the Piece
+                cell.setPiece(previous.getPiece()); // moving the Piece 
+                
+                Main.moves.add(new Move(previous, cell));
+                
+                
+                
                 if (previous.isCheck()) {
                     previous.removeCheck();
                 }
@@ -997,6 +1071,9 @@ private Main(int a) {
             ((King) cell.getPiece()).setXAxisPosition(cell.xAxisPosition);
             ((King) cell.getPiece()).setYAxisPosition(cell.yAxisPosition);
         }
+        
+        
+ 
     }
 
     //Other Irrelevant abstract function. Only the Click Event is captured.
@@ -1073,7 +1150,8 @@ private Main(int a) {
             black.updateGamesPlayed();
             black.updatePlayer(); */
         	Mainboard.sessionCombo.setVisible(false);
-        	Mainboard.restoreSession();
+//        	Mainboard.restoreSession();
+        	new Thread(Mainboard).start();
         	whiteName=(String)sessionCombo.getSelectedItem().toString().split("-")[0];
         	blackName=(String)sessionCombo.getSelectedItem().toString().split("-")[1];
         	Mainboard.selectPlayer(0);
@@ -1097,6 +1175,7 @@ private Main(int a) {
             displayTime.add(label);
             timer = new Time(label);
             timer.startTimer();
+
         }
     }
     
@@ -1109,6 +1188,20 @@ private Main(int a) {
     }
     
     
+    
+    
+    
+    
+    
+    class AnimateSessionListener implements ActionListener {
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			new Thread(Mainboard).start();
+			System.out.println("AnimateSessionListener exiting.");
+		}
+    	
+    }
     
     
     class SessionSaveHandler implements ActionListener {
@@ -1142,6 +1235,9 @@ private Main(int a) {
   	    	         out.close();
   	    	         fileOut.close();
   	    	         System.out.printf("Serialized data saved");
+  			
+  	    	       storeMoves();
+  			
   			}
   			catch(Exception ex){
   				System.out.println("Exception occured"+ex);
@@ -1336,4 +1432,10 @@ private Main(int a) {
             selected = true;
         }
     }
+
+	@Override
+	public void run() {
+		this.animateSession();
+		System.out.println("Thread has been executed.");
+	}
 }
