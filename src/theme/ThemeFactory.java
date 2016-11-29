@@ -2,12 +2,17 @@ package theme;
 
 public class ThemeFactory {
 
-	public static BlueberryPie blueberryPieTheme = new BlueberryPie();
-	public static HersheyChocolate hersheyChocolateTheme = new HersheyChocolate();
-	public static Classic classicTheme = new Classic();
+	private static ThemeFactory sharedFactory;
 	
-	public ThemeFactory() {
+	private ThemeFactory() {
 		// TODO Auto-generated constructor stub
+	}
+	
+	public static ThemeFactory getSharedFThemeFactory() {
+		if(sharedFactory == null) {
+			sharedFactory = new ThemeFactory();
+		}
+		return sharedFactory;
 	}
 	
 	public Theme createClassicTheme() {
