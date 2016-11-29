@@ -26,7 +26,7 @@ public class Rook extends Piece {
     }
 
     //Move function defined
-    public ArrayList<Cell> move(Cell state[][], int xAxisPosition, int yAxisPosition) {
+    public ArrayList<Cell> calculateAllPossibleMoves(Cell state[][], int xAxisPosition, int yAxisPosition) {
         //Rook can move only horizontally or vertically
         this.possibleMoves.clear();
         int tempx = xAxisPosition - 1;

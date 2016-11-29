@@ -48,7 +48,7 @@ public class King extends Piece {
 
     //Move Function for King Overridden from Pieces
     @Override
-    public ArrayList<Cell> move(Cell state[][], int xPosition, int yPosition) {
+    public ArrayList<Cell> calculateAllPossibleMoves(Cell state[][], int xPosition, int yPosition) {
         //King can move only one step. So all the adjacent 8 cells have been considered.
         this.possibleMoves.clear();
         int posX[] = {xPosition, xPosition, xPosition + 1, xPosition + 1, xPosition + 1, xPosition - 1, xPosition - 1, xPosition - 1};

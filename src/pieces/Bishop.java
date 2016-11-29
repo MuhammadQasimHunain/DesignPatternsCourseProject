@@ -23,7 +23,7 @@ public class Bishop extends Piece {
 
     //move function defined. It returns a list of all the possible destinations of a Bishop
     //The basic principle of Bishop Movement on chess board has been implemented
-    public ArrayList<Cell> move(Cell state[][], int xPosition, int yPosition) {
+    public ArrayList<Cell> calculateAllPossibleMoves(Cell state[][], int xPosition, int yPosition) {
         //Bishop can Move diagonally in all 4 direction (NW,NE,SW,SE)
         //This function defines that logic
         this.possibleMoves.clear();

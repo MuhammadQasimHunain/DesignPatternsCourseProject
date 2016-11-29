@@ -26,7 +26,7 @@ public class Queen extends Piece {
     }
 
     //Move Function Defined
-    public ArrayList<Cell> move(Cell state[][], int xAxisPosition, int yAxisPosition) {
+    public ArrayList<Cell> calculateAllPossibleMoves(Cell state[][], int xAxisPosition, int yAxisPosition) {
         //Queen has most number of possible moves
         //Queen can move any number of steps in all 8 direction
         //The possible moves of queen is a combination of Rook and Bishop

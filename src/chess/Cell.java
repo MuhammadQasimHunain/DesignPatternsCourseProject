@@ -102,7 +102,7 @@ public class Cell extends JPanel implements Cloneable,Serializable {
     }
 
     public ArrayList<Cell> movePiece(Cell positionArray[][], int xPosition, int yPosition) {
-        return this.piece.move(positionArray, xPosition, yPosition);
+        return this.piece.calculateAllPossibleMoves(positionArray, xPosition, yPosition);
     }
 
     public Piece getPieceCopy() {

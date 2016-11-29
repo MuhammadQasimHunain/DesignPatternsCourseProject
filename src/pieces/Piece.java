@@ -24,7 +24,10 @@ public abstract class Piece implements Cloneable, Serializable {
     private String imagePath;
     protected ArrayList<Cell> possibleMoves = new ArrayList<Cell>();  //Protected (access from child classes)
 
-    public abstract ArrayList<Cell> move(Cell pos[][], int x, int y);  //Abstract Function. Must be overridden
+    public ArrayList<Cell> calculateAllPossiblMoves(Cell pos[][], int x, int y) {
+    	return this.possibleMoves;
+    }
+
     
     public abstract void playSoundForKill();
 
@@ -62,4 +65,7 @@ public abstract class Piece implements Cloneable, Serializable {
     public Piece getcopy() throws CloneNotSupportedException {
         return (Piece) this.clone();
     }
+    
+    public abstract ArrayList<Cell> calculateAllPossibleMoves(Cell pos[][], int x, int y);  //Abstract Function. Must be overridden
+
 }

@@ -1009,7 +1009,13 @@ private Main(int a) {
         	
             if (cell.isPossibleDestination()) {
                 if (cell.getPiece() != null) {
+                	
+                	// **************************** TEMPLATE METHOD PATTERN ****************************  //
+                	// The function playSoundForKill() is following the Template Method Pattern
                 	cell.getPiece().playSoundForKill();
+                	// The Behaviour is same for all except when a Piece is killed, only it specific sound is played.
+                	// **************************** TEMPLATE METHOD PATTERN ****************************  //
+                	
                     cell.removePiece();
                 }
                 cell.setPiece(previous.getPiece()); // moving the Piece 
