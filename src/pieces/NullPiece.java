@@ -4,10 +4,10 @@ import java.util.ArrayList;
 
 import chess.Cell;
 
-public class NullPiece extends Piece {
+public class NullPiece extends Piece { //Null object design pattern (one of the types of behavioural design pattern.)
 
 	@Override
-	public ArrayList<Cell> calculateAllPossibleMoves(Cell[][] pos, int x, int y) {
+	public ArrayList<Cell> calculateAllPossibleMoves(Cell[][] pos, int x, int y) { 
 		// TODO Auto-generated method stub
 		return null;
 	}

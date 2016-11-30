@@ -107,7 +107,7 @@ public class Bishop extends Piece {
             tempY--;
         }
     }
-    public void playSoundForKill() {
+    public void playSoundForKill() { 
     	try {
             // Open an audio input stream.           
     		String path = new File("src/pieces/9mmGunshot.wav").getAbsolutePath();

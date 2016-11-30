@@ -153,6 +153,9 @@ public class StartPage extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    
+    //Facade design pattern. Hides the underline details of algorithms.
+    
     private void startNewGameButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startNewGameButtonActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);

@@ -29,7 +29,7 @@ public abstract class Piece implements Cloneable, Serializable {
     }
 
     
-    public abstract void playSoundForKill();
+    public abstract void playSoundForKill();  //Strategy design pattern. Each piece plays its unique sound when gets killed.
 
     //Id Setter
     public void setId(String id) {

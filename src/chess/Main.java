@@ -411,7 +411,7 @@ private Main(int a) {
         Button saveCurrentSessionBtn = new Button("Save current session");
        // Button restorePrevSessionBtn = new Button("Restore previous session");
       //  saveCurrentSessionBtn.setPreferredSize(new Dimension(20, 20));
-       saveCurrentSessionBtn.addActionListener(new SessionSaveHandler());
+       saveCurrentSessionBtn.addActionListener(new SessionSaveHandler()); //Observer design patterns. Each button registers action listener.Multiple action listeners can be attached with a button When a button is pressed its inoker calls the action listeners.
        // restorePrevSessionBtn.addActionListener(new SessionRestoreHandler());
         JPanel session = new JPanel(new GridLayout(2, 2));
         quit.addActionListener(new ActionListener() {
@@ -1013,7 +1013,7 @@ private Main(int a) {
                 	// **************************** TEMPLATE METHOD PATTERN ****************************  //
                 	// The function playSoundForKill() is following the Template Method Pattern
                 	cell.getPiece().playSoundForKill();
-                	// The Behaviour is same for all except when a Piece is killed, only it specific sound is played.
+                	// The Behaviour is same for all except when a Piece is killed, only its specific sound is played.
                 	// **************************** TEMPLATE METHOD PATTERN ****************************  //
                 	
                     cell.removePiece();
@@ -1203,21 +1203,21 @@ private Main(int a) {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			new Thread(Mainboard).start();
+			new Thread(Mainboard).start();  //Concurrency pattern
 			System.out.println("AnimateSessionListener exiting.");
 		}
     	
     }
     
     
-    class SessionSaveHandler implements ActionListener {
+    class SessionSaveHandler implements ActionListener {  //Command design pattern
 
   		@Override
   		public void actionPerformed(ActionEvent e) {
   			// TODO Auto-generated method stub
   			try{
   				
-  				ArrayList<Piece> piecesList = new ArrayList<Piece>();
+  				ArrayList<Piece> piecesList = new ArrayList<Piece>(); //Iterator design pattern. Using collection to save pieces.
   				for(int i=0;i<8;i++){
   					for(int j=0;j<8;j++){
   						if(null==boardState[i][j].getPiece()){
@@ -1237,7 +1237,7 @@ private Main(int a) {
   	    	FileOutputStream fileOut =
   	    	         new FileOutputStream(path);
   	    	         ObjectOutputStream out = new ObjectOutputStream(fileOut);
-  	    	         out.writeObject(piecesList);
+  	    	         out.writeObject(piecesList); 
   	    	         out.close();
   	    	         fileOut.close();
   	    	         System.out.printf("Serialized data saved");
