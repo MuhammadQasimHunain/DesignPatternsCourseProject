@@ -113,17 +113,20 @@ public class GameSettings extends javax.swing.JFrame {
     private void classicActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_classicActionPerformed
         // TODO add your handling code here:
     	Main.selectedTheme = ThemeFactory.getSharedFThemeFactory().createClassicTheme();
+    	Main.selectedTheme.notifyAllObservers();
     	
     }//GEN-LAST:event_classicActionPerformed
 
     private void blueBerryPieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_blueBerryPieActionPerformed
         // TODO add your handling code here:
     	Main.selectedTheme = ThemeFactory.getSharedFThemeFactory().createBlueberryPieTheme();
+    	Main.selectedTheme.notifyAllObservers();
     }//GEN-LAST:event_blueBerryPieActionPerformed
 
     private void hersheysChocoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hersheysChocoActionPerformed
         // TODO add your handling code here:
     	Main.selectedTheme = ThemeFactory.getSharedFThemeFactory().createHersheyChocolateTheme();
+    	Main.selectedTheme.notifyAllObservers();
     }//GEN-LAST:event_hersheysChocoActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed

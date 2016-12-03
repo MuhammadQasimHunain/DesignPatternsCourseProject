@@ -306,15 +306,32 @@ public class Main extends JFrame implements MouseListener,Serializable,Runnable 
         	Piece p = iterator.getNext();
         	p = new Pawn("BP0" + (index + 1), Main.selectedTheme.getPieceImageAddition() + "Black_Pawn.png", 1);
         	blackPawn[index] = (Pawn) p;
+            Main.selectedTheme.registerObserver(p);
         }
         index=0;
         for(PieceIterator iterator = new PieceIterator(whitePawn); iterator.hasNext(); index++ ) {
         	Piece p = iterator.getNext();
         	p = new Pawn("WP0" + (index + 1), Main.selectedTheme.getPieceImageAddition() + "White_Pawn.png", 0);
         	whitePawn[index] = (Pawn) p;
+            Main.selectedTheme.registerObserver(p);
         }
         
-        
+        Main.selectedTheme.registerObserver(blackBishop01);
+        Main.selectedTheme.registerObserver(blackBishop02);
+        Main.selectedTheme.registerObserver(whiteBishop01);
+        Main.selectedTheme.registerObserver(whiteBishop02);
+        Main.selectedTheme.registerObserver(blackKing);
+        Main.selectedTheme.registerObserver(blackKnight01);
+        Main.selectedTheme.registerObserver(blackKnight02);
+        Main.selectedTheme.registerObserver(blackQueen);
+        Main.selectedTheme.registerObserver(blackRook01);
+        Main.selectedTheme.registerObserver(blackRook02);
+        Main.selectedTheme.registerObserver(whiteKing);
+        Main.selectedTheme.registerObserver(whiteKnight01);
+        Main.selectedTheme.registerObserver(whiteKnight02);
+        Main.selectedTheme.registerObserver(whiteQueen);
+        Main.selectedTheme.registerObserver(whiteRook01);
+        Main.selectedTheme.registerObserver(whiteRook02);
 //        for (int i = 0; i < 8; i++) {
 //            whitePawn[i] = new Pawn("WP0" + (i + 1), Main.selectedTheme.getPieceImageAddition() + "White_Pawn.png", 0);
 //            blackPawn[i] = new Pawn("BP0" + (i + 1), Main.selectedTheme.getPieceImageAddition() + "Black_Pawn.png", 1);

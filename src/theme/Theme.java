@@ -1,12 +1,17 @@
 package theme;
 
 import java.awt.Color;
+import java.util.ArrayList;
+import java.util.Observer;
 
-public abstract class Theme {
+import pieces.Piece;
+public abstract class Theme implements SubjectInterfaceObserverPattern{
 
 	Color lightCellColor;
 	Color darkCellColor;
 	String pieceImageAddition;
+	
+	protected ArrayList<Piece> observees;
 
 	public Color getLightCellColor() {
 		return lightCellColor;
@@ -22,7 +27,6 @@ public abstract class Theme {
 	public String getPieceImageAddition() {
 		return pieceImageAddition;
 	}
-
 
 	
 }

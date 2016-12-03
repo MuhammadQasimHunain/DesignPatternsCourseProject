@@ -18,4 +18,10 @@ public class NullPiece extends Piece { //Null object design pattern (one of the 
 		
 	}
 
+	@Override
+	public void update() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

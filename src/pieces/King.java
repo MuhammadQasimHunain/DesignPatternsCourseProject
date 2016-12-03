@@ -315,6 +315,13 @@ public class King extends Piece {
     	
     	
     }
+
+	@Override
+	public void update() {
+		// TODO Auto-generated method stub
+        this.setImagePath(this.imagePath);
+		
+	}
     
     
 }

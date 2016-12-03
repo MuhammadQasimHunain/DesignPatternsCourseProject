@@ -1,14 +1,18 @@
 package theme;
 
 import java.awt.Color;
+import java.util.ArrayList;
 
-public class BlueberryPie extends Theme {
+import pieces.Piece;
+
+public class BlueberryPie extends Theme implements SubjectInterfaceObserverPattern {
 
 	public BlueberryPie() {
 		// TODO Auto-generated constructor stub
 		this.darkCellColor = Color.BLUE;
 		this.lightCellColor = Color.WHITE;
 		this.pieceImageAddition = new String("Blueberry-");
+		this.observees = new ArrayList<Piece>();
 	}
 
 	@Override
@@ -32,6 +36,21 @@ public class BlueberryPie extends Theme {
 	@Override
 	public void setDarkCellColor(Color darkCellColor) {
 		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void registerObserver(Piece p) {
+		// TODO Auto-generated method stub
+		this.observees.add(p);
+	}
+
+	@Override
+	public void notifyAllObservers() {
+		// TODO Auto-generated method stub
+		for (Piece piece : observees) {
+			piece.update();
+		}
 		
 	}
 

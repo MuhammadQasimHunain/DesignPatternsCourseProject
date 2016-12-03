@@ -1,14 +1,18 @@
 package theme;
 
 import java.awt.Color;
+import java.util.ArrayList;
 
-public class Classic extends Theme {
+import pieces.Piece;
+
+public class Classic extends Theme implements SubjectInterfaceObserverPattern {
 
 	public Classic (){
 //		this.darkCellColor = Color.black;
 		this.darkCellColor = new Color((float)0.0, (float)0.0, (float)0.0, (float)0.3);
 		this.lightCellColor = Color.white;
 		this.pieceImageAddition = new String("Hershey-");
+		this.observees = new ArrayList<Piece>();
 		
 	}
 
@@ -34,6 +38,20 @@ public class Classic extends Theme {
 	public void setDarkCellColor(Color darkCellColor) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public void registerObserver(Piece p) {
+		// TODO Auto-generated method stub
+		this.observees.add(p);
+	}
+
+	@Override
+	public void notifyAllObservers() {
+		// TODO Auto-generated method stub
+		for (Piece piece : observees) {
+			piece.update();
+		}
 	}
 
 }

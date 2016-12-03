@@ -21,7 +21,7 @@ public abstract class Piece implements Cloneable, Serializable {
 	//Member Variables
     private int color;
     private String id = null;
-    private String imagePath;
+    protected String imagePath;
     protected ArrayList<Cell> possibleMoves = new ArrayList<Cell>();  //Protected (access from child classes)
 
     public ArrayList<Cell> calculateAllPossiblMoves(Cell pos[][], int x, int y) {
@@ -30,6 +30,8 @@ public abstract class Piece implements Cloneable, Serializable {
 
     
     public abstract void playSoundForKill();  //Strategy design pattern. Each piece plays its unique sound when gets killed.
+    
+    public abstract void update();
 
     //Id Setter
     public void setId(String id) {
