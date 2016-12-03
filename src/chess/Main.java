@@ -301,10 +301,24 @@ public class Main extends JFrame implements MouseListener,Serializable,Runnable 
         blackKing = new King("BK", Main.selectedTheme.getPieceImageAddition() + "Black_King.png", 1, 0, 3);
         whitePawn = new Pawn[8];
         blackPawn = new Pawn[8];
-        for (int i = 0; i < 8; i++) {
-            whitePawn[i] = new Pawn("WP0" + (i + 1), Main.selectedTheme.getPieceImageAddition() + "White_Pawn.png", 0);
-            blackPawn[i] = new Pawn("BP0" + (i + 1), Main.selectedTheme.getPieceImageAddition() + "Black_Pawn.png", 1);
+        int index=0;
+        for(PieceIterator iterator = new PieceIterator(blackPawn); iterator.hasNext(); index++ ) {
+        	Piece p = iterator.getNext();
+        	p = new Pawn("BP0" + (index + 1), Main.selectedTheme.getPieceImageAddition() + "Black_Pawn.png", 1);
+        	blackPawn[index] = (Pawn) p;
         }
+        index=0;
+        for(PieceIterator iterator = new PieceIterator(whitePawn); iterator.hasNext(); index++ ) {
+        	Piece p = iterator.getNext();
+        	p = new Pawn("WP0" + (index + 1), Main.selectedTheme.getPieceImageAddition() + "White_Pawn.png", 0);
+        	whitePawn[index] = (Pawn) p;
+        }
+        
+        
+//        for (int i = 0; i < 8; i++) {
+//            whitePawn[i] = new Pawn("WP0" + (i + 1), Main.selectedTheme.getPieceImageAddition() + "White_Pawn.png", 0);
+//            blackPawn[i] = new Pawn("BP0" + (i + 1), Main.selectedTheme.getPieceImageAddition() + "Black_Pawn.png", 1);
+//        }
         
     }
 
