@@ -7,12 +7,16 @@ import pieces.Piece;
 
 public class HersheyChocolate extends Theme implements SubjectInterfaceObserverPattern {
 
-	public HersheyChocolate() {
+	private HersheyChocolate() {
 		// TODO Auto-generated constructor stub
 		this.darkCellColor = new Color(88, 56, 50);
 		this.lightCellColor = Color.white;
 		this.pieceImageAddition = new String("Hershey-");
 		this.observees = new ArrayList<Piece>();
+	}
+	
+	public static HersheyChocolate createHersheyChocoloateTheme() {
+		return new HersheyChocolate();
 	}
 
 //	@Override

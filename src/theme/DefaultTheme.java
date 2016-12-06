@@ -7,12 +7,16 @@ import pieces.Piece;
 
 public class DefaultTheme extends Theme implements SubjectInterfaceObserverPattern {
 
-	public DefaultTheme() {
+	private DefaultTheme() {
 		// TODO Auto-generated constructor stub
 		this.darkCellColor = new Color(93, 235, 253);
 		this.lightCellColor = new Color(235, 235, 235);
 		this.pieceImageAddition = new String("");
 		this.observees = new ArrayList<Piece>();
+	}
+	
+	public static DefaultTheme createDefaultTheme() {
+		return new DefaultTheme();
 	}
 
 	@Override

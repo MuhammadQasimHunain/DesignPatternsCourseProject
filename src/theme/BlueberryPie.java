@@ -7,12 +7,16 @@ import pieces.Piece;
 
 public class BlueberryPie extends Theme implements SubjectInterfaceObserverPattern {
 
-	public BlueberryPie() {
+	private BlueberryPie() {
 		// TODO Auto-generated constructor stub
 		this.darkCellColor = Color.BLUE;
 		this.lightCellColor = Color.WHITE;
 		this.pieceImageAddition = new String("Blueberry-");
 		this.observees = new ArrayList<Piece>();
+	}
+	
+	public static BlueberryPie createBlueberryPieTheme() {
+		return new BlueberryPie();
 	}
 
 	@Override

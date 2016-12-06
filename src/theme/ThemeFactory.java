@@ -16,15 +16,15 @@ public class ThemeFactory {
 	}
 	
 	public Theme createClassicTheme() {
-		return new Classic();
+		return Classic.createClassicTheme();
 	}
 	
 	public Theme createBlueberryPieTheme() {
-		return new BlueberryPie();
+		return BlueberryPie.createBlueberryPieTheme();
 	}
 	
 	public Theme createHersheyChocolateTheme() {
-		return new HersheyChocolate();
+		return HersheyChocolate.createHersheyChocoloateTheme();
 	}
 	
 

@@ -121,7 +121,7 @@ public class Main extends JFrame implements MouseListener,Serializable,Runnable 
     private String whitePlayerName;
     private String blackPlayerName;
     private String[] sessionList = {};
-    public static Theme selectedTheme = new DefaultTheme();
+    public static Theme selectedTheme = DefaultTheme.createDefaultTheme();
 
     public static void startMain() {
 
