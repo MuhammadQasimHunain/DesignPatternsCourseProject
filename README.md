@@ -37,3 +37,19 @@ Project Contributors
 
 1. Ashish Kedia (ashish1294@gmail.com)
 2. Adarsh Mohata (amohta163@gmail.com)
+
+Extension of the Project
+--------------------
+
+This project has been extended for research purposes. The original behaviour of the game has not been changed, some additional
+features have been added to test the impact of those features on the existing code base. The code has, to some extent, been 
+refactored and redesigned as well. A few of the design patterns have also been introduced. The reason behind all these
+changes is mainly to enhance the flexibility and enhance the overall stability of this small codebase.
+
+Extension Contributors
+--------------------
+
+1. Hassaan Fayyaz (hassaanfayyaz@gmail.com)
+2. Umer Hayat 
+3. Feroze Waris
+4. Qasim Humanin
