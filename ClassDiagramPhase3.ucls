@@ -1,16 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <class-diagram version="1.1.11" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
   associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
-  <class id="1" language="java" name="chess.Main.CommonUtils" project="Chess" file="/Chess/src/chess/Main.java" 
-    binary="false" corner="BOTTOM_RIGHT">    
-    <position height="69" width="116" x="5468" y="470"/>    
-    <display autosize="true" stereotype="true" package="false" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="false">      
-      <attributes public="false" package="true" protected="false" private="false" static="true"/>      
-      <operations public="true" package="true" protected="true" private="false" static="true"/>    
-    </display>  
-  </class>  
-  <class id="2" language="java" name="chess.StartPage" project="Chess" file="/Chess/src/chess/StartPage.java" 
+  <class id="1" language="java" name="chess.StartPage" project="Chess" file="/Chess/src/chess/StartPage.java" 
     binary="false" corner="BOTTOM_RIGHT">    
     <position height="123" width="206" x="1256" y="37"/>    
     <display autosize="true" stereotype="true" package="false" initial-value="false" signature="true" 
@@ -19,7 +10,7 @@
       <operations public="true" package="true" protected="true" private="false" static="true"/>    
     </display>  
   </class>  
-  <class id="3" language="java" name="chess.Time.CountdownTimerListener" project="Chess" 
+  <class id="2" language="java" name="chess.Time.CountdownTimerListener" project="Chess" 
     file="/Chess/src/chess/Time.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="123" width="215" x="41" y="470"/>    
     <display autosize="true" stereotype="true" package="false" initial-value="false" signature="true" 
@@ -28,7 +19,7 @@
       <operations public="true" package="true" protected="true" private="false" static="true"/>    
     </display>  
   </class>  
-  <class id="4" language="java" name="chess.Main.AnimateSessionListener" project="Chess" 
+  <class id="3" language="java" name="chess.Main.AnimateSessionListener" project="Chess" 
     file="/Chess/src/chess/Main.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="87" width="215" x="4703" y="470"/>    
     <display autosize="true" stereotype="true" package="false" initial-value="false" signature="true" 
@@ -37,7 +28,7 @@
       <operations public="true" package="true" protected="true" private="false" static="true"/>    
     </display>  
   </class>  
-  <class id="5" language="java" name="chess.GameSettings" project="Chess" file="/Chess/src/chess/GameSettings.java" 
+  <class id="4" language="java" name="chess.GameSettings" project="Chess" file="/Chess/src/chess/GameSettings.java" 
     binary="false" corner="BOTTOM_RIGHT">    
     <position height="87" width="179" x="663" y="37"/>    
     <display autosize="true" stereotype="true" package="false" initial-value="false" signature="true" 
@@ -46,7 +37,7 @@
       <operations public="true" package="true" protected="true" private="false" static="true"/>    
     </display>  
   </class>  
-  <class id="6" language="java" name="chess.Main.Handler" project="Chess" file="/Chess/src/chess/Main.java" 
+  <class id="5" language="java" name="chess.Main.Handler" project="Chess" file="/Chess/src/chess/Main.java" 
     binary="false" corner="BOTTOM_RIGHT">    
     <position height="87" width="215" x="3683" y="470"/>    
     <display autosize="true" stereotype="true" package="false" initial-value="false" signature="true" 
@@ -55,7 +46,7 @@
       <operations public="true" package="true" protected="true" private="false" static="true"/>    
     </display>  
   </class>  
-  <class id="7" language="java" name="chess.Main.SessionRestoreHandler" project="Chess" 
+  <class id="6" language="java" name="chess.Main.SessionRestoreHandler" project="Chess" 
     file="/Chess/src/chess/Main.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="87" width="215" x="4193" y="470"/>    
     <display autosize="true" stereotype="true" package="false" initial-value="false" signature="true" 
@@ -64,7 +55,7 @@
       <operations public="true" package="true" protected="true" private="false" static="true"/>    
     </display>  
   </class>  
-  <class id="8" language="java" name="chess.Player" project="Chess" file="/Chess/src/chess/Player.java" binary="false" 
+  <class id="7" language="java" name="chess.Player" project="Chess" file="/Chess/src/chess/Player.java" binary="false" 
     corner="BOTTOM_RIGHT">    
     <position height="213" width="201" x="948" y="37"/>    
     <display autosize="true" stereotype="true" package="false" initial-value="false" signature="true" 
@@ -73,7 +64,7 @@
       <operations public="true" package="true" protected="true" private="false" static="true"/>    
     </display>  
   </class>  
-  <class id="9" language="java" name="chess.Cell" project="Chess" file="/Chess/src/chess/Cell.java" binary="false" 
+  <class id="8" language="java" name="chess.Cell" project="Chess" file="/Chess/src/chess/Cell.java" binary="false" 
     corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1588" y="1512"/>    
     <display autosize="true" stereotype="true" package="false" initial-value="false" signature="true" 
@@ -82,8 +73,8 @@
       <operations public="true" package="true" protected="true" private="false" static="true"/>    
     </display>  
   </class>  
-  <class id="10" language="java" name="chess.Main.START" project="Chess" file="/Chess/src/chess/Main.java" 
-    binary="false" corner="BOTTOM_RIGHT">    
+  <class id="9" language="java" name="chess.Main.START" project="Chess" file="/Chess/src/chess/Main.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
     <position height="87" width="215" x="3938" y="470"/>    
     <display autosize="true" stereotype="true" package="false" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="false">      
@@ -91,7 +82,7 @@
       <operations public="true" package="true" protected="true" private="false" static="true"/>    
     </display>  
   </class>  
-  <class id="11" language="java" name="chess.Main.SelectHandler" project="Chess" file="/Chess/src/chess/Main.java" 
+  <class id="10" language="java" name="chess.Main.SelectHandler" project="Chess" file="/Chess/src/chess/Main.java" 
     binary="false" corner="BOTTOM_RIGHT">    
     <position height="87" width="215" x="4448" y="470"/>    
     <display autosize="true" stereotype="true" package="false" initial-value="false" signature="true" 
@@ -100,7 +91,7 @@
       <operations public="true" package="true" protected="true" private="false" static="true"/>    
     </display>  
   </class>  
-  <class id="12" language="java" name="chess.Main" project="Chess" file="/Chess/src/chess/Main.java" binary="false" 
+  <class id="11" language="java" name="chess.Main" project="Chess" file="/Chess/src/chess/Main.java" binary="false" 
     corner="BOTTOM_RIGHT">    
     <position height="393" width="218" x="4323" y="37"/>    
     <display autosize="true" stereotype="true" package="false" initial-value="false" signature="true" 
@@ -109,7 +100,7 @@
       <operations public="true" package="true" protected="true" private="false" static="true"/>    
     </display>  
   </class>  
-  <class id="13" language="java" name="chess.Main.LOAD" project="Chess" file="/Chess/src/chess/Main.java" binary="false" 
+  <class id="12" language="java" name="chess.Main.LOAD" project="Chess" file="/Chess/src/chess/Main.java" binary="false" 
     corner="BOTTOM_RIGHT">    
     <position height="87" width="215" x="4958" y="470"/>    
     <display autosize="true" stereotype="true" package="false" initial-value="false" signature="true" 
@@ -118,7 +109,7 @@
       <operations public="true" package="true" protected="true" private="false" static="true"/>    
     </display>  
   </class>  
-  <class id="14" language="java" name="chess.Main.SessionSaveHandler" project="Chess" file="/Chess/src/chess/Main.java" 
+  <class id="13" language="java" name="chess.Main.SessionSaveHandler" project="Chess" file="/Chess/src/chess/Main.java" 
     binary="false" corner="BOTTOM_RIGHT">    
     <position height="87" width="215" x="5213" y="470"/>    
     <display autosize="true" stereotype="true" package="false" initial-value="false" signature="true" 
@@ -127,7 +118,7 @@
       <operations public="true" package="true" protected="true" private="false" static="true"/>    
     </display>  
   </class>  
-  <class id="15" language="java" name="chess.Main.TimeChange" project="Chess" file="/Chess/src/chess/Main.java" 
+  <class id="14" language="java" name="chess.Main.TimeChange" project="Chess" file="/Chess/src/chess/Main.java" 
     binary="false" corner="BOTTOM_RIGHT">    
     <position height="87" width="212" x="3431" y="470"/>    
     <display autosize="true" stereotype="true" package="false" initial-value="false" signature="true" 
@@ -136,7 +127,7 @@
       <operations public="true" package="true" protected="true" private="false" static="true"/>    
     </display>  
   </class>  
-  <class id="16" language="java" name="chess.Time" project="Chess" file="/Chess/src/chess/Time.java" binary="false" 
+  <class id="15" language="java" name="chess.Time" project="Chess" file="/Chess/src/chess/Time.java" binary="false" 
     corner="BOTTOM_RIGHT">    
     <position height="141" width="154" x="41" y="37"/>    
     <display autosize="true" stereotype="true" package="false" initial-value="false" signature="true" 
@@ -145,7 +136,7 @@
       <operations public="true" package="true" protected="true" private="false" static="true"/>    
     </display>  
   </class>  
-  <class id="17" language="java" name="chess.Move" project="Chess" file="/Chess/src/chess/Move.java" binary="false" 
+  <class id="16" language="java" name="chess.Move" project="Chess" file="/Chess/src/chess/Move.java" binary="false" 
     corner="BOTTOM_RIGHT">    
     <position height="69" width="111" x="1569" y="37"/>    
     <display autosize="true" stereotype="true" package="false" initial-value="false" signature="true" 
@@ -154,7 +145,7 @@
       <operations public="true" package="true" protected="true" private="false" static="true"/>    
     </display>  
   </class>  
-  <class id="18" language="java" name="pieces.Queen" project="Chess" file="/Chess/src/pieces/Queen.java" binary="false" 
+  <class id="17" language="java" name="pieces.Queen" project="Chess" file="/Chess/src/pieces/Queen.java" binary="false" 
     corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="884" y="1377"/>    
     <display autosize="true" stereotype="true" package="false" initial-value="false" signature="true" 
@@ -163,7 +154,7 @@
       <operations public="true" package="true" protected="true" private="false" static="true"/>    
     </display>  
   </class>  
-  <class id="19" language="java" name="pieces.Pawn" project="Chess" file="/Chess/src/pieces/Pawn.java" binary="false" 
+  <class id="18" language="java" name="pieces.Pawn" project="Chess" file="/Chess/src/pieces/Pawn.java" binary="false" 
     corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1918" y="1377"/>    
     <display autosize="true" stereotype="true" package="false" initial-value="false" signature="true" 
@@ -172,7 +163,7 @@
       <operations public="true" package="true" protected="true" private="false" static="true"/>    
     </display>  
   </class>  
-  <class id="20" language="java" name="pieces.Rook" project="Chess" file="/Chess/src/pieces/Rook.java" binary="false" 
+  <class id="19" language="java" name="pieces.Rook" project="Chess" file="/Chess/src/pieces/Rook.java" binary="false" 
     corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="138" y="1377"/>    
     <display autosize="true" stereotype="true" package="false" initial-value="false" signature="true" 
@@ -181,7 +172,7 @@
       <operations public="true" package="true" protected="true" private="false" static="true"/>    
     </display>  
   </class>  
-  <class id="21" language="java" name="pieces.Bishop" project="Chess" file="/Chess/src/pieces/Bishop.java" 
+  <class id="20" language="java" name="pieces.Bishop" project="Chess" file="/Chess/src/pieces/Bishop.java" 
     binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1257" y="1377"/>    
     <display autosize="true" stereotype="true" package="false" initial-value="false" signature="true" 
@@ -190,7 +181,7 @@
       <operations public="true" package="true" protected="true" private="false" static="true"/>    
     </display>  
   </class>  
-  <class id="22" language="java" name="pieces.Knight" project="Chess" file="/Chess/src/pieces/Knight.java" 
+  <class id="21" language="java" name="pieces.Knight" project="Chess" file="/Chess/src/pieces/Knight.java" 
     binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="511" y="1377"/>    
     <display autosize="true" stereotype="true" package="false" initial-value="false" signature="true" 
@@ -199,7 +190,7 @@
       <operations public="true" package="true" protected="true" private="false" static="true"/>    
     </display>  
   </class>  
-  <class id="23" language="java" name="pieces.Piece" project="Chess" file="/Chess/src/pieces/Piece.java" binary="false" 
+  <class id="22" language="java" name="pieces.Piece" project="Chess" file="/Chess/src/pieces/Piece.java" binary="false" 
     corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1900" y="706"/>    
     <display autosize="true" stereotype="true" package="false" initial-value="false" signature="true" 
@@ -208,7 +199,7 @@
       <operations public="true" package="false" protected="false" private="false" static="true"/>    
     </display>  
   </class>  
-  <class id="24" language="java" name="pieces.NullPiece" project="Chess" file="/Chess/src/pieces/NullPiece.java" 
+  <class id="23" language="java" name="pieces.NullPiece" project="Chess" file="/Chess/src/pieces/NullPiece.java" 
     binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="2664" y="1377"/>    
     <display autosize="true" stereotype="true" package="false" initial-value="false" signature="true" 
@@ -217,7 +208,7 @@
       <operations public="true" package="true" protected="true" private="false" static="true"/>    
     </display>  
   </class>  
-  <class id="25" language="java" name="pieces.King" project="Chess" file="/Chess/src/pieces/King.java" binary="false" 
+  <class id="24" language="java" name="pieces.King" project="Chess" file="/Chess/src/pieces/King.java" binary="false" 
     corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="2291" y="1422"/>    
     <display autosize="true" stereotype="true" package="false" initial-value="false" signature="true" 
@@ -226,7 +217,7 @@
       <operations public="true" package="true" protected="true" private="false" static="true"/>    
     </display>  
   </class>  
-  <class id="26" language="java" name="theme.BlueberryPie" project="Chess" file="/Chess/src/theme/BlueberryPie.java" 
+  <class id="25" language="java" name="theme.BlueberryPie" project="Chess" file="/Chess/src/theme/BlueberryPie.java" 
     binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="3955" y="1669"/>    
     <display autosize="true" stereotype="true" package="false" initial-value="false" signature="true" 
@@ -235,7 +226,7 @@
       <operations public="true" package="true" protected="true" private="false" static="true"/>    
     </display>  
   </class>  
-  <class id="27" language="java" name="theme.HersheyChocolate" project="Chess" 
+  <class id="26" language="java" name="theme.HersheyChocolate" project="Chess" 
     file="/Chess/src/theme/HersheyChocolate.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="4583" y="1641"/>    
     <display autosize="true" stereotype="true" package="false" initial-value="false" signature="true" 
@@ -244,7 +235,7 @@
       <operations public="true" package="true" protected="true" private="false" static="true"/>    
     </display>  
   </class>  
-  <class id="28" language="java" name="theme.Classic" project="Chess" file="/Chess/src/theme/Classic.java" 
+  <class id="27" language="java" name="theme.Classic" project="Chess" file="/Chess/src/theme/Classic.java" 
     binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="4254" y="1651"/>    
     <display autosize="true" stereotype="true" package="false" initial-value="false" signature="true" 
@@ -253,7 +244,7 @@
       <operations public="true" package="true" protected="true" private="false" static="true"/>    
     </display>  
   </class>  
-  <class id="29" language="java" name="theme.DefaultTheme" project="Chess" file="/Chess/src/theme/DefaultTheme.java" 
+  <class id="28" language="java" name="theme.DefaultTheme" project="Chess" file="/Chess/src/theme/DefaultTheme.java" 
     binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="3642" y="1651"/>    
     <display autosize="true" stereotype="true" package="false" initial-value="false" signature="true" 
@@ -262,7 +253,7 @@
       <operations public="true" package="true" protected="true" private="false" static="true"/>    
     </display>  
   </class>  
-  <class id="30" language="java" name="theme.Theme" project="Chess" file="/Chess/src/theme/Theme.java" binary="false" 
+  <class id="29" language="java" name="theme.Theme" project="Chess" file="/Chess/src/theme/Theme.java" binary="false" 
     corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="4059" y="936"/>    
     <display autosize="true" stereotype="true" package="false" initial-value="false" signature="true" 
@@ -271,7 +262,7 @@
       <operations public="true" package="true" protected="true" private="false" static="true"/>    
     </display>  
   </class>  
-  <class id="31" language="java" name="theme.ThemeFactory" project="Chess" file="/Chess/src/theme/ThemeFactory.java" 
+  <class id="30" language="java" name="theme.ThemeFactory" project="Chess" file="/Chess/src/theme/ThemeFactory.java" 
     binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="4795" y="902"/>    
     <display autosize="true" stereotype="true" package="false" initial-value="false" signature="true" 
@@ -280,7 +271,7 @@
       <operations public="true" package="true" protected="true" private="false" static="true"/>    
     </display>  
   </class>  
-  <interface id="32" language="java" name="theme.SubjectInterfaceObserverPattern" project="Chess" 
+  <interface id="31" language="java" name="theme.SubjectInterfaceObserverPattern" project="Chess" 
     file="/Chess/src/theme/SubjectInterfaceObserverPattern.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="3482" y="1128"/>    
     <display autosize="true" stereotype="true" package="false" initial-value="false" signature="true" 
@@ -289,7 +280,7 @@
       <operations public="false" package="false" protected="false" private="false" static="true"/>    
     </display>  
   </interface>  
-  <class id="33" language="java" name="pieces.PieceIterator" project="Chess" file="/Chess/src/pieces/PieceIterator.java" 
+  <class id="32" language="java" name="pieces.PieceIterator" project="Chess" file="/Chess/src/pieces/PieceIterator.java" 
     binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1148" y="660"/>    
     <display autosize="true" stereotype="true" package="false" initial-value="false" signature="true" 
@@ -298,410 +289,306 @@
       <operations public="true" package="false" protected="false" private="false" static="true"/>    
     </display>  
   </class>  
+  <nesting id="33">    
+    <end type="SOURCE" refId="11"/>    
+    <end type="TARGET" refId="10"/>  
+  </nesting>  
   <dependency id="34">    
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="15"/>  
+  </dependency>  
+  <generalization id="35">    
+    <end type="SOURCE" refId="19"/>    
+    <end type="TARGET" refId="22"/>  
+  </generalization>  
+  <realization id="36">    
     <end type="SOURCE" refId="25"/>    
-    <end type="TARGET" refId="21"/>  
-  </dependency>  
-  <nesting id="35">    
-    <end type="SOURCE" refId="12"/>    
-    <end type="TARGET" refId="6"/>  
-  </nesting>  
-  <association id="36">    
-    <end type="SOURCE" refId="33" navigable="false">      
-      <attribute id="37" name="pieces">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="38" minimum="0" maximum="2147483647">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="23" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <generalization id="39">    
-    <end type="SOURCE" refId="27"/>    
-    <end type="TARGET" refId="30"/>  
-  </generalization>  
-  <dependency id="40">    
-    <end type="SOURCE" refId="9"/>    
-    <end type="TARGET" refId="24"/>  
-  </dependency>  
-  <dependency id="41">    
-    <end type="SOURCE" refId="22"/>    
-    <end type="TARGET" refId="9"/>  
-  </dependency>  
-  <nesting id="42">    
-    <end type="SOURCE" refId="12"/>    
-    <end type="TARGET" refId="1"/>  
-  </nesting>  
-  <dependency id="43">    
-    <end type="SOURCE" refId="9"/>    
-    <end type="TARGET" refId="25"/>  
-  </dependency>  
-  <dependency id="44">    
-    <end type="SOURCE" refId="31"/>    
-    <end type="TARGET" refId="30"/>  
-  </dependency>  
-  <association id="45">    
-    <end type="SOURCE" refId="12" navigable="false">      
-      <attribute id="46" name="tempPlayer">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="47" minimum="0" maximum="1">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="8" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <nesting id="48">    
-    <end type="SOURCE" refId="12"/>    
-    <end type="TARGET" refId="11"/>  
-  </nesting>  
-  <dependency id="49">    
-    <end type="SOURCE" refId="18"/>    
-    <end type="TARGET" refId="9"/>  
-  </dependency>  
-  <generalization id="50">    
-    <end type="SOURCE" refId="18"/>    
-    <end type="TARGET" refId="23"/>  
-  </generalization>  
-  <association id="51">    
-    <end type="SOURCE" refId="30" navigable="false">      
-      <attribute id="52" name="observees">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="53" minimum="0" maximum="2147483647">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="23" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <dependency id="54">    
-    <end type="SOURCE" refId="29"/>    
-    <end type="TARGET" refId="23"/>  
-  </dependency>  
-  <dependency id="55">    
-    <end type="SOURCE" refId="9"/>    
-    <end type="TARGET" refId="12"/>  
-  </dependency>  
-  <dependency id="56">    
-    <end type="SOURCE" refId="14"/>    
-    <end type="TARGET" refId="9"/>  
-  </dependency>  
-  <generalization id="57">    
-    <end type="SOURCE" refId="22"/>    
-    <end type="TARGET" refId="23"/>  
-  </generalization>  
-  <generalization id="58">    
-    <end type="SOURCE" refId="29"/>    
-    <end type="TARGET" refId="30"/>  
-  </generalization>  
-  <association id="59">    
-    <end type="SOURCE" refId="12" navigable="false">      
-      <attribute id="60" name="wPlayer">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="61" minimum="0" maximum="2147483647">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="8" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="62">    
-    <end type="SOURCE" refId="12" navigable="false">      
-      <attribute id="63" name="whiteKing">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="64" minimum="0" maximum="1">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="25" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <dependency id="65">    
-    <end type="SOURCE" refId="20"/>    
-    <end type="TARGET" refId="9"/>  
-  </dependency>  
-  <dependency id="66">    
-    <end type="SOURCE" refId="31"/>    
+    <end type="TARGET" refId="31"/>  
+  </realization>  
+  <dependency id="37">    
+    <end type="SOURCE" refId="30"/>    
     <end type="TARGET" refId="27"/>  
   </dependency>  
-  <association id="67">    
-    <end type="SOURCE" refId="12" navigable="false">      
-      <attribute id="68" name="black">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="69" minimum="0" maximum="1">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="8" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="70">    
-    <end type="SOURCE" refId="12" navigable="false">      
-      <attribute id="71" name="white">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="72" minimum="0" maximum="1">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="8" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <realization id="73">    
-    <end type="SOURCE" refId="30"/>    
-    <end type="TARGET" refId="32"/>  
-  </realization>  
-  <nesting id="74">    
-    <end type="SOURCE" refId="12"/>    
-    <end type="TARGET" refId="13"/>  
-  </nesting>  
-  <dependency id="75">    
-    <end type="SOURCE" refId="27"/>    
-    <end type="TARGET" refId="23"/>  
-  </dependency>  
-  <dependency id="76">    
-    <end type="SOURCE" refId="28"/>    
-    <end type="TARGET" refId="23"/>  
-  </dependency>  
-  <dependency id="77">    
-    <end type="SOURCE" refId="9"/>    
-    <end type="TARGET" refId="30"/>  
-  </dependency>  
-  <dependency id="78">    
-    <end type="SOURCE" refId="25"/>    
-    <end type="TARGET" refId="9"/>  
-  </dependency>  
-  <dependency id="79">    
-    <end type="SOURCE" refId="7"/>    
-    <end type="TARGET" refId="23"/>  
-  </dependency>  
-  <association id="80">    
-    <end type="SOURCE" refId="9" navigable="false">      
-      <attribute id="81" name="piece">        
-        <position height="0" width="0" x="-54" y="536"/>      
-      </attribute>      
-      <multiplicity id="82" minimum="0" maximum="1">        
-        <position height="0" width="0" x="-54" y="536"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="23" navigable="true"/>    
-    <display labels="false" multiplicity="true"/>  
-  </association>  
-  <nesting id="83">    
-    <end type="SOURCE" refId="16"/>    
-    <end type="TARGET" refId="3"/>  
-  </nesting>  
-  <dependency id="84">    
-    <end type="SOURCE" refId="5"/>    
-    <end type="TARGET" refId="31"/>  
-  </dependency>  
-  <generalization id="85">    
-    <end type="SOURCE" refId="24"/>    
-    <end type="TARGET" refId="23"/>  
-  </generalization>  
-  <dependency id="86">    
-    <end type="SOURCE" refId="25"/>    
-    <end type="TARGET" refId="22"/>  
-  </dependency>  
-  <generalization id="87">    
-    <end type="SOURCE" refId="19"/>    
-    <end type="TARGET" refId="23"/>  
-  </generalization>  
-  <dependency id="88">    
-    <end type="SOURCE" refId="25"/>    
-    <end type="TARGET" refId="18"/>  
-  </dependency>  
-  <association id="89">    
-    <end type="SOURCE" refId="12" navigable="false">      
-      <attribute id="90" name="bPlayer">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="91" minimum="0" maximum="2147483647">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="8" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <dependency id="92">    
-    <end type="SOURCE" refId="31"/>    
-    <end type="TARGET" refId="28"/>  
-  </dependency>  
-  <nesting id="93">    
-    <end type="SOURCE" refId="12"/>    
-    <end type="TARGET" refId="7"/>  
-  </nesting>  
-  <nesting id="94">    
-    <end type="SOURCE" refId="12"/>    
-    <end type="TARGET" refId="15"/>  
-  </nesting>  
-  <dependency id="95">    
-    <end type="SOURCE" refId="12"/>    
-    <end type="TARGET" refId="33"/>  
-  </dependency>  
-  <dependency id="96">    
-    <end type="SOURCE" refId="12"/>    
-    <end type="TARGET" refId="19"/>  
-  </dependency>  
-  <generalization id="97">    
-    <end type="SOURCE" refId="25"/>    
-    <end type="TARGET" refId="23"/>  
-  </generalization>  
-  <dependency id="98">    
-    <end type="SOURCE" refId="31"/>    
-    <end type="TARGET" refId="26"/>  
-  </dependency>  
-  <dependency id="99">    
-    <end type="SOURCE" refId="25"/>    
+  <dependency id="38">    
+    <end type="SOURCE" refId="11"/>    
     <end type="TARGET" refId="20"/>  
   </dependency>  
-  <realization id="100">    
-    <end type="SOURCE" refId="26"/>    
-    <end type="TARGET" refId="32"/>  
-  </realization>  
-  <realization id="101">    
-    <end type="SOURCE" refId="28"/>    
-    <end type="TARGET" refId="32"/>  
-  </realization>  
-  <generalization id="102">    
-    <end type="SOURCE" refId="26"/>    
-    <end type="TARGET" refId="30"/>  
-  </generalization>  
-  <association id="103">    
-    <end type="SOURCE" refId="31" navigable="false">      
-      <attribute id="104" name="sharedFactory">        
-        <position height="0" width="0" x="492" y="86"/>      
+  <association id="39">    
+    <end type="SOURCE" refId="32" navigable="false">      
+      <attribute id="40" name="pieces">        
+        <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
-      <multiplicity id="105" minimum="0" maximum="1">        
-        <position height="0" width="0" x="492" y="86"/>      
+      <multiplicity id="41" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="0" y="0"/>      
       </multiplicity>    
     </end>    
-    <end type="TARGET" refId="31" navigable="true"/>    
+    <end type="TARGET" refId="22" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <dependency id="106">    
-    <end type="SOURCE" refId="17"/>    
-    <end type="TARGET" refId="9"/>  
+  <dependency id="42">    
+    <end type="SOURCE" refId="24"/>    
+    <end type="TARGET" refId="19"/>  
   </dependency>  
-  <generalization id="107">    
-    <end type="SOURCE" refId="20"/>    
+  <nesting id="43">    
+    <end type="SOURCE" refId="15"/>    
+    <end type="TARGET" refId="2"/>  
+  </nesting>  
+  <nesting id="44">    
+    <end type="SOURCE" refId="11"/>    
+    <end type="TARGET" refId="5"/>  
+  </nesting>  
+  <dependency id="45">    
+    <end type="SOURCE" refId="8"/>    
     <end type="TARGET" refId="23"/>  
+  </dependency>  
+  <dependency id="46">    
+    <end type="SOURCE" refId="11"/>    
+    <end type="TARGET" refId="19"/>  
+  </dependency>  
+  <generalization id="47">    
+    <end type="SOURCE" refId="26"/>    
+    <end type="TARGET" refId="29"/>  
   </generalization>  
-  <dependency id="108">    
-    <end type="SOURCE" refId="19"/>    
-    <end type="TARGET" refId="9"/>  
+  <dependency id="48">    
+    <end type="SOURCE" refId="8"/>    
+    <end type="TARGET" refId="11"/>  
   </dependency>  
-  <realization id="109">    
-    <end type="SOURCE" refId="27"/>    
-    <end type="TARGET" refId="32"/>  
+  <realization id="49">    
+    <end type="SOURCE" refId="28"/>    
+    <end type="TARGET" refId="31"/>  
   </realization>  
-  <dependency id="110">    
-    <end type="SOURCE" refId="12"/>    
-    <end type="TARGET" refId="23"/>  
-  </dependency>  
-  <nesting id="111">    
-    <end type="SOURCE" refId="12"/>    
+  <nesting id="50">    
+    <end type="SOURCE" refId="11"/>    
     <end type="TARGET" refId="14"/>  
   </nesting>  
-  <generalization id="112">    
-    <end type="SOURCE" refId="21"/>    
-    <end type="TARGET" refId="23"/>  
-  </generalization>  
-  <dependency id="113">    
-    <end type="SOURCE" refId="7"/>    
-    <end type="TARGET" refId="9"/>  
-  </dependency>  
-  <dependency id="114">    
-    <end type="SOURCE" refId="21"/>    
-    <end type="TARGET" refId="9"/>  
-  </dependency>  
-  <nesting id="115">    
+  <dependency id="51">    
     <end type="SOURCE" refId="12"/>    
-    <end type="TARGET" refId="4"/>  
-  </nesting>  
-  <dependency id="116">    
-    <end type="SOURCE" refId="26"/>    
-    <end type="TARGET" refId="23"/>  
+    <end type="TARGET" refId="15"/>  
   </dependency>  
-  <dependency id="117">    
-    <end type="SOURCE" refId="12"/>    
+  <dependency id="52">    
+    <end type="SOURCE" refId="18"/>    
+    <end type="TARGET" refId="8"/>  
+  </dependency>  
+  <dependency id="53">    
+    <end type="SOURCE" refId="11"/>    
     <end type="TARGET" refId="22"/>  
   </dependency>  
-  <association id="118">    
-    <end type="SOURCE" refId="12" navigable="false">      
-      <attribute id="119" name="selectedTheme">        
-        <position height="0" width="0" x="766" y="360"/>      
+  <dependency id="54">    
+    <end type="SOURCE" refId="24"/>    
+    <end type="TARGET" refId="18"/>  
+  </dependency>  
+  <generalization id="55">    
+    <end type="SOURCE" refId="21"/>    
+    <end type="TARGET" refId="22"/>  
+  </generalization>  
+  <generalization id="56">    
+    <end type="SOURCE" refId="25"/>    
+    <end type="TARGET" refId="29"/>  
+  </generalization>  
+  <generalization id="57">    
+    <end type="SOURCE" refId="28"/>    
+    <end type="TARGET" refId="29"/>  
+  </generalization>  
+  <dependency id="58">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="30"/>  
+  </dependency>  
+  <association id="59">    
+    <end type="SOURCE" refId="11" navigable="false">      
+      <attribute id="60" name="timer"/>      
+      <multiplicity id="61" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="15" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="62">    
+    <end type="SOURCE" refId="28"/>    
+    <end type="TARGET" refId="22"/>  
+  </dependency>  
+  <dependency id="63">    
+    <end type="SOURCE" refId="25"/>    
+    <end type="TARGET" refId="22"/>  
+  </dependency>  
+  <dependency id="64">    
+    <end type="SOURCE" refId="21"/>    
+    <end type="TARGET" refId="8"/>  
+  </dependency>  
+  <generalization id="65">    
+    <end type="SOURCE" refId="24"/>    
+    <end type="TARGET" refId="22"/>  
+  </generalization>  
+  <dependency id="66">    
+    <end type="SOURCE" refId="30"/>    
+    <end type="TARGET" refId="29"/>  
+  </dependency>  
+  <dependency id="67">    
+    <end type="SOURCE" refId="13"/>    
+    <end type="TARGET" refId="22"/>  
+  </dependency>  
+  <realization id="68">    
+    <end type="SOURCE" refId="27"/>    
+    <end type="TARGET" refId="31"/>  
+  </realization>  
+  <dependency id="69">    
+    <end type="SOURCE" refId="26"/>    
+    <end type="TARGET" refId="22"/>  
+  </dependency>  
+  <realization id="70">    
+    <end type="SOURCE" refId="29"/>    
+    <end type="TARGET" refId="31"/>  
+  </realization>  
+  <dependency id="71">    
+    <end type="SOURCE" refId="13"/>    
+    <end type="TARGET" refId="8"/>  
+  </dependency>  
+  <dependency id="72">    
+    <end type="SOURCE" refId="16"/>    
+    <end type="TARGET" refId="8"/>  
+  </dependency>  
+  <dependency id="73">    
+    <end type="SOURCE" refId="30"/>    
+    <end type="TARGET" refId="25"/>  
+  </dependency>  
+  <dependency id="74">    
+    <end type="SOURCE" refId="24"/>    
+    <end type="TARGET" refId="8"/>  
+  </dependency>  
+  <dependency id="75">    
+    <end type="SOURCE" refId="30"/>    
+    <end type="TARGET" refId="26"/>  
+  </dependency>  
+  <dependency id="76">    
+    <end type="SOURCE" refId="24"/>    
+    <end type="TARGET" refId="20"/>  
+  </dependency>  
+  <dependency id="77">    
+    <end type="SOURCE" refId="8"/>    
+    <end type="TARGET" refId="24"/>  
+  </dependency>  
+  <dependency id="78">    
+    <end type="SOURCE" refId="24"/>    
+    <end type="TARGET" refId="21"/>  
+  </dependency>  
+  <nesting id="79">    
+    <end type="SOURCE" refId="11"/>    
+    <end type="TARGET" refId="9"/>  
+  </nesting>  
+  <association id="80">    
+    <end type="SOURCE" refId="30" navigable="false">      
+      <attribute id="81" name="sharedFactory">        
+        <position height="0" width="0" x="492" y="86"/>      
       </attribute>      
-      <multiplicity id="120" minimum="0" maximum="1">        
-        <position height="0" width="0" x="766" y="360"/>      
+      <multiplicity id="82" minimum="0" maximum="1">        
+        <position height="0" width="0" x="492" y="86"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="30" navigable="true"/>    
-    <display labels="false" multiplicity="true"/>  
-  </association>  
-  <generalization id="121">    
-    <end type="SOURCE" refId="28"/>    
-    <end type="TARGET" refId="30"/>  
-  </generalization>  
-  <realization id="122">    
-    <end type="SOURCE" refId="29"/>    
-    <end type="TARGET" refId="32"/>  
-  </realization>  
-  <dependency id="123">    
-    <end type="SOURCE" refId="12"/>    
-    <end type="TARGET" refId="21"/>  
-  </dependency>  
-  <dependency id="124">    
-    <end type="SOURCE" refId="32"/>    
-    <end type="TARGET" refId="23"/>  
-  </dependency>  
-  <nesting id="125">    
-    <end type="SOURCE" refId="12"/>    
-    <end type="TARGET" refId="10"/>  
-  </nesting>  
-  <dependency id="126">    
-    <end type="SOURCE" refId="14"/>    
-    <end type="TARGET" refId="23"/>  
-  </dependency>  
-  <dependency id="127">    
-    <end type="SOURCE" refId="25"/>    
-    <end type="TARGET" refId="19"/>  
-  </dependency>  
-  <association id="128">    
-    <end type="SOURCE" refId="23" navigable="false">      
-      <attribute id="129" name="possibleMoves">        
-        <position height="0" width="0" x="-324" y="846"/>      
-      </attribute>      
-      <multiplicity id="130" minimum="0" maximum="2147483647">        
-        <position height="0" width="0" x="-324" y="846"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="9" navigable="true"/>    
-    <display labels="false" multiplicity="true"/>  
-  </association>  
-  <dependency id="131">    
-    <end type="SOURCE" refId="12"/>    
-    <end type="TARGET" refId="20"/>  
-  </dependency>  
-  <association id="132">    
-    <end type="SOURCE" refId="12" navigable="false">      
-      <attribute id="133" name="blackKing">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="134" minimum="0" maximum="1">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="25" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
+  <generalization id="83">    
+    <end type="SOURCE" refId="20"/>    
+    <end type="TARGET" refId="22"/>  
+  </generalization>  
+  <generalization id="84">    
+    <end type="SOURCE" refId="23"/>    
+    <end type="TARGET" refId="22"/>  
+  </generalization>  
+  <dependency id="85">    
+    <end type="SOURCE" refId="11"/>    
+    <end type="TARGET" refId="21"/>  
+  </dependency>  
+  <realization id="86">    
+    <end type="SOURCE" refId="26"/>    
+    <end type="TARGET" refId="31"/>  
+  </realization>  
+  <dependency id="87">    
+    <end type="SOURCE" refId="17"/>    
+    <end type="TARGET" refId="8"/>  
+  </dependency>  
+  <dependency id="88">    
+    <end type="SOURCE" refId="24"/>    
+    <end type="TARGET" refId="17"/>  
+  </dependency>  
+  <dependency id="89">    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="8"/>  
+  </dependency>  
+  <association id="90">    
+    <end type="SOURCE" refId="29" navigable="false">      
+      <attribute id="91" name="observees">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="92" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="22" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="93">    
+    <end type="SOURCE" refId="8" navigable="false">      
+      <attribute id="94" name="piece">        
+        <position height="0" width="0" x="-54" y="536"/>      
+      </attribute>      
+      <multiplicity id="95" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-54" y="536"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="22" navigable="true"/>    
+    <display labels="false" multiplicity="true"/>  
+  </association>  
+  <generalization id="96">    
+    <end type="SOURCE" refId="17"/>    
+    <end type="TARGET" refId="22"/>  
+  </generalization>  
+  <dependency id="97">    
+    <end type="SOURCE" refId="20"/>    
+    <end type="TARGET" refId="8"/>  
+  </dependency>  
+  <dependency id="98">    
+    <end type="SOURCE" refId="11"/>    
+    <end type="TARGET" refId="18"/>  
+  </dependency>  
+  <dependency id="99">    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="22"/>  
+  </dependency>  
+  <generalization id="100">    
+    <end type="SOURCE" refId="27"/>    
+    <end type="TARGET" refId="29"/>  
+  </generalization>  
+  <dependency id="101">    
+    <end type="SOURCE" refId="27"/>    
+    <end type="TARGET" refId="22"/>  
+  </dependency>  
+  <association id="102">    
+    <end type="SOURCE" refId="11" navigable="false">      
+      <attribute id="103" name="tempPlayer">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="104" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="7" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="105">    
+    <end type="SOURCE" refId="31"/>    
+    <end type="TARGET" refId="22"/>  
+  </dependency>  
+  <generalization id="106">    
+    <end type="SOURCE" refId="18"/>    
+    <end type="TARGET" refId="22"/>  
+  </generalization>  
+  <dependency id="107">    
+    <end type="SOURCE" refId="19"/>    
+    <end type="TARGET" refId="8"/>  
+  </dependency>  
+  <dependency id="108">    
+    <end type="SOURCE" refId="15"/>    
+    <end type="TARGET" refId="11"/>  
+  </dependency>  
   <classifier-display autosize="true" stereotype="true" package="false" initial-value="false" signature="true" 
     sort-features="false" accessors="true" visibility="false">    
     <attributes public="false" package="false" protected="false" private="false" static="true"/>    
