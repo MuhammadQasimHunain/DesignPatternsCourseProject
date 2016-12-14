@@ -19,10 +19,10 @@ import chess.Cell;
 public class Pawn extends Piece {
 
     //COnstructors
-    public Pawn(String i, String p, int c) {
-        setId(i);
-        setImagePath(p);
-        setColor(c);
+    public Pawn(String id, String path, int colr) {
+        setId(id);
+        setImagePath(path);
+        setColor(colr);
     }
 
 	//Move Function Overridden
@@ -76,11 +76,11 @@ public class Pawn extends Piece {
     public void playSoundForKill() {
     	try {
             // Open an audio input stream.
-    		String path = new File("src/pieces/AlertSound.wav").getAbsolutePath();
-    		File soundFile = new File(path); //you could also get the sound file with an URL
-             AudioInputStream audioIn = AudioSystem.getAudioInputStream(soundFile);              
+    		final String path = new File("src/pieces/AlertSound.wav").getAbsolutePath();
+    		final File soundFile = new File(path); //you could also get the sound file with an URL
+            final AudioInputStream audioIn = AudioSystem.getAudioInputStream(soundFile);              
             // Get a sound clip resource.
-            Clip clip = AudioSystem.getClip();
+            final Clip clip = AudioSystem.getClip();
             // Open audio clip and load samples from the audio input stream.
             clip.open(audioIn);
             clip.start();

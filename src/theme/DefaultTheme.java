@@ -9,6 +9,7 @@ public class DefaultTheme extends Theme implements SubjectInterfaceObserverPatte
 
 	private DefaultTheme() {
 		// TODO Auto-generated constructor stub
+		super();
 		this.darkCellColor = new Color(93, 235, 253);
 		this.lightCellColor = new Color(235, 235, 235);
 		this.pieceImageAddition = new String("");

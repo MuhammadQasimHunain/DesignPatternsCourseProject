@@ -146,11 +146,11 @@ public class Main extends JFrame implements MouseListener,Serializable,Runnable 
     public void animateSession() {
     	try{
 			
-			String path=System.getProperty("user.dir") + File.separator + "sessionMoves" +File.separator + (String)sessionCombo.getSelectedItem()+"-moves.ser";
+			final String path=System.getProperty("user.dir") + File.separator + "sessionMoves" +File.separator + (String)sessionCombo.getSelectedItem()+"-moves.ser";
 		 
-    	FileInputStream fileIn =
+    	final FileInputStream fileIn =
     	         new FileInputStream(path);
-    	ObjectInputStream in = new ObjectInputStream(fileIn);
+    	final ObjectInputStream in = new ObjectInputStream(fileIn);
     	ArrayList<Move> moveList = null;
     	moveList = (ArrayList<Move>)in.readObject();
     	
@@ -187,11 +187,11 @@ public class Main extends JFrame implements MouseListener,Serializable,Runnable 
 							}
 					}
 			}
-			String path=System.getProperty("user.dir") + File.separator + "sessions" +File.separator + (String)sessionCombo.getSelectedItem()+".ser";
+			final String path=System.getProperty("user.dir") + File.separator + "sessions" +File.separator + (String)sessionCombo.getSelectedItem()+".ser";
 		 
-    	FileInputStream fileIn =
+    	final FileInputStream fileIn =
     	         new FileInputStream(path);
-    	ObjectInputStream in = new ObjectInputStream(fileIn);
+    	final ObjectInputStream in = new ObjectInputStream(fileIn);
     	ArrayList<Piece> piecesList = new ArrayList<Piece>();
     	piecesList = (ArrayList<Piece>)in.readObject();
     	int k=0;
@@ -227,16 +227,16 @@ public class Main extends JFrame implements MouseListener,Serializable,Runnable 
     tempPlayer = null;
     String playerName = (color == 0) ? whiteName : blackName;
    
-    JComboBox<String> jc = (color == 0) ? whiteCombo : blackCombo;
-    JComboBox<String> ojc = (color == 0) ? blackCombo : whiteCombo;
+    final JComboBox<String> jc = (color == 0) ? whiteCombo : blackCombo;
+    final JComboBox<String> ojc = (color == 0) ? blackCombo : whiteCombo;
     ArrayList<Player> pl = (color == 0) ? wPlayer : bPlayer;
     //ArrayList<Player> otherPlayer=(color==0)?bPlayer:wPlayer;
-    ArrayList<Player> opl = Player.fetchPlayers();
+    final ArrayList<Player> opl = Player.fetchPlayers();
     if (opl.isEmpty()) {
         return;
     }
-    JPanel det = (color == 0) ? whiteDetails : blackDetails;
-    JPanel PL = (color == 0) ? whitePlayer : blackPlayer;
+    final JPanel det = (color == 0) ? whiteDetails : blackDetails;
+    final JPanel PL = (color == 0) ? whitePlayer : blackPlayer;
     if (selected == true) {
         det.removeAll();
     }
@@ -248,9 +248,9 @@ public class Main extends JFrame implements MouseListener,Serializable,Runnable 
     }
     Iterator<Player> it = pl.iterator();
     while (it.hasNext()) {
-        Player p = it.next();
-        if (p.name().equals(playerName)) {
-            tempPlayer = p;
+        final Player plyr = it.next();
+        if (plyr.name().equals(playerName)) {
+            tempPlayer = plyr;
             break;
         }
     }
@@ -415,8 +415,8 @@ private Main(int a) {
     }
 
     private void defineGameBoard() throws HeadlessException {
-        JPanel whitestats = new JPanel(new GridLayout(3, 3));
-        JPanel blackstats = new JPanel(new GridLayout(3, 3));
+        final JPanel whitestats = new JPanel(new GridLayout(3, 3));
+        final JPanel blackstats = new JPanel(new GridLayout(3, 3));
         whiteCombo = new JComboBox<String>(whiteNames);
         blackCombo = new JComboBox<String>(blackNames);
         whiteScroll = new JScrollPane(whiteCombo);

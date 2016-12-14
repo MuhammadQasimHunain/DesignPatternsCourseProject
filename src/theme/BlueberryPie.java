@@ -9,6 +9,7 @@ public class BlueberryPie extends Theme implements SubjectInterfaceObserverPatte
 
 	private BlueberryPie() {
 		// TODO Auto-generated constructor stub
+		super();
 		this.darkCellColor = Color.BLUE;
 		this.lightCellColor = Color.WHITE;
 		this.pieceImageAddition = new String("Blueberry-");

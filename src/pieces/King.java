@@ -30,18 +30,21 @@ public class King extends Piece {
     }
 
     //general value access functions
-    public void setXAxisPosition(int x) {
+    public void setXAxisPosition(final int x) {
         this.xAxisPosition = x;
     }
 
+    // Set yaxis
     public void setYAxisPosition(int y) {
         this.yAxisPosition = y;
     }
 
+    // Get Xaxis
     public int getXAxisPosition() {
         return xAxisPosition;
     }
-
+    
+    // Get yaxis
     public int getYAxisPosition() {
         return yAxisPosition;
     }
@@ -66,7 +69,7 @@ public class King extends Piece {
 
     //Function to check if king is under threat
     //It checks whether there is any piece of opposite color that can attack king for a given board state
-    public boolean isInDanger(Cell state[][]) {
+    public boolean isInDanger(final Cell state[][]) {
 
         if (isRookAttacking(state)
                 || isBishopAttacking(state)
@@ -78,9 +81,9 @@ public class King extends Piece {
     }
 
     //Checking for attack from the Pawn of opposite color
-    private boolean isPawnAttacking(Cell[][] state) {
-        int pox[] = {xAxisPosition + 1, xAxisPosition + 1, xAxisPosition + 1, xAxisPosition, xAxisPosition, xAxisPosition - 1, xAxisPosition - 1, xAxisPosition - 1};
-        int poy[] = {yAxisPosition - 1, yAxisPosition + 1, yAxisPosition, yAxisPosition + 1, yAxisPosition - 1, yAxisPosition + 1, yAxisPosition - 1, yAxisPosition};
+    private boolean isPawnAttacking(final Cell[][] state) {
+        final int pox[] = {xAxisPosition + 1, xAxisPosition + 1, xAxisPosition + 1, xAxisPosition, xAxisPosition, xAxisPosition - 1, xAxisPosition - 1, xAxisPosition - 1};
+        final int poy[] = {yAxisPosition - 1, yAxisPosition + 1, yAxisPosition, yAxisPosition + 1, yAxisPosition - 1, yAxisPosition + 1, yAxisPosition - 1, yAxisPosition};
         {
             for (int i = 0; i < 8; i++) {
                 if (pox[i] >= 0 && pox[i] < 8 && poy[i] >= 0 && poy[i] < 8) {
@@ -123,7 +126,7 @@ public class King extends Piece {
     }
 
     //Checking for attack from the Knight of opposite color
-    private boolean isKnightAttacking(Cell[][] state) {
+    private boolean isKnightAttacking(final Cell[][] state) {
         int posx[] = {xAxisPosition + 1, xAxisPosition + 1, xAxisPosition + 2, xAxisPosition + 2, xAxisPosition - 1, xAxisPosition - 1, xAxisPosition - 2, xAxisPosition - 2};
         int posy[] = {yAxisPosition - 2, yAxisPosition + 2, yAxisPosition - 1, yAxisPosition + 1, yAxisPosition - 2, yAxisPosition + 2, yAxisPosition - 1, yAxisPosition + 1};
         for (int i = 0; i < 8; i++) {
@@ -139,7 +142,7 @@ public class King extends Piece {
     }
 
     //checking for attack from diagonal direction
-    private boolean isBishopAttacking(Cell[][] state) {
+    private boolean isBishopAttacking(final Cell[][] state) {
         int tempx = xAxisPosition + 1;
         int tempy = yAxisPosition - 1;
         while (tempx < 8 && tempy >= 0) {
@@ -226,7 +229,7 @@ public class King extends Piece {
     }
     
     // Helper Fucntions
-    private boolean isRookAttackingFromRight(Cell[][] state) {
+    private boolean isRookAttackingFromRight(final Cell[][] state) {
 
         for (int i = xAxisPosition + 1; i < 8; i++) {
             if (state[i][yAxisPosition].getPiece() == null) {
@@ -294,11 +297,11 @@ public class King extends Piece {
     public void playSoundForKill() {
     	try {
             // Open an audio input stream.           
-    		String path = new File("src/pieces/AlertSound.wav").getAbsolutePath();
-    		File soundFile = new File(path); //you could also get the sound file with an URL
-             AudioInputStream audioIn = AudioSystem.getAudioInputStream(soundFile);              
+    		final String path = new File("src/pieces/AlertSound.wav").getAbsolutePath();
+    		final File soundFile = new File(path); //you could also get the sound file with an URL
+    		final  AudioInputStream audioIn = AudioSystem.getAudioInputStream(soundFile);              
             // Get a sound clip resource.
-            Clip clip = AudioSystem.getClip();
+    		final Clip clip = AudioSystem.getClip();
             // Open audio clip and load samples from the audio input stream.
             clip.open(audioIn);
             clip.start();

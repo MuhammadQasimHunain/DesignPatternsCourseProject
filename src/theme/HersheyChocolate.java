@@ -9,6 +9,7 @@ public class HersheyChocolate extends Theme implements SubjectInterfaceObserverP
 
 	private HersheyChocolate() {
 		// TODO Auto-generated constructor stub
+		super();
 		this.darkCellColor = new Color(88, 56, 50);
 		this.lightCellColor = Color.white;
 		this.pieceImageAddition = new String("Hershey-");
@@ -44,9 +45,9 @@ public class HersheyChocolate extends Theme implements SubjectInterfaceObserverP
 	}
 
 	@Override
-	public void registerObserver(Piece p) {
+	public void registerObserver(final Piece piece) {
 		// TODO Auto-generated method stub
-		this.observees.add(p);
+		this.observees.add(piece);
 	}
 
 	@Override

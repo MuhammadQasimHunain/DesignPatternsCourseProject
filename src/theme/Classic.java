@@ -8,6 +8,7 @@ import pieces.Piece;
 public class Classic extends Theme implements SubjectInterfaceObserverPattern {
 
 	private Classic (){
+		super();
 //		this.darkCellColor = Color.black;
 		this.darkCellColor = new Color((float)0.0, (float)0.0, (float)0.0, (float)0.3);
 		this.lightCellColor = Color.white;

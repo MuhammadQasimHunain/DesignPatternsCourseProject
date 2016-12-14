@@ -1,6 +1,6 @@
 package theme;
 
-public class ThemeFactory {
+final public class ThemeFactory {
 
 	private static ThemeFactory sharedFactory;
 	
